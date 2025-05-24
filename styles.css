@@ -767,4 +767,65 @@ footer {
   .error-message {
     display: none;
   }
+}
+
+/* SSL Uyarısı */
+.ssl-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  text-align: center;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ssl-warning i {
+  font-size: 1.2rem;
+}
+
+.ssl-warning .ssl-link {
+  color: #0056b3;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.ssl-warning .ssl-link:hover {
+  color: #003d82;
+}
+
+/* Error Message Stilleri */
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+.error-message i {
+  font-size: 1.2rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 } 
