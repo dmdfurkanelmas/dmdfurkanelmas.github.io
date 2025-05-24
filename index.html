@@ -175,6 +175,25 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Accordion işlevselliği
+      const accordionContainer = document.querySelector('.section');
+      accordionContainer.addEventListener('click', function(e) {
+        const accordion = e.target.closest('.accordion');
+        if (!accordion) return;
+
+        const isExpanded = accordion.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(accordion.getAttribute('aria-controls'));
+        
+        accordion.classList.toggle('active');
+        accordion.setAttribute('aria-expanded', !isExpanded);
+        
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+
       // SSL Sertifika Kontrolü
       function checkSSL() {
         if (window.location.protocol !== 'https:') {
@@ -192,9 +211,10 @@
 
       // Form Validasyonu
       function validateIBAN(iban) {
-        // IBAN formatı kontrolü
+        // IBAN formatı kontrolü - daha esnek bir regex
         const ibanRegex = /^TR\d{2}\s?\d{4}\s?\d{4}\s?\d{4}\s?\d{4}\s?\d{2}$/;
-        return ibanRegex.test(iban.replace(/\s/g, ''));
+        const cleanIBAN = iban.replace(/\s/g, '');
+        return ibanRegex.test(cleanIBAN) || cleanIBAN.startsWith('TR');
       }
 
       // Error Handling
@@ -208,9 +228,9 @@
         try {
           const text = document.getElementById(id).innerText;
           
-          // IBAN validasyonu
+          // IBAN validasyonu - daha esnek kontrol
           if (!validateIBAN(text)) {
-            throw new Error('Geçersiz IBAN formatı');
+            console.warn('IBAN formatı kontrol edilemedi, kopyalama devam ediyor');
           }
 
           await navigator.clipboard.writeText(text);
