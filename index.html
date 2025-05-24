@@ -111,7 +111,7 @@
         </div>
         <div class="bank-header">
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
-          <span>Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong></span>
+          <span id="bankRecipient"></span>
         </div>
         <div class="iban-list">
           <div class="iban-box iban-tl">
@@ -388,6 +388,7 @@
         document.querySelector('.slogan').textContent = t.slogan;
         document.querySelector('.valilik-izin p:first-child').textContent = t.valilikText;
         document.querySelector('.valilik-izin p:last-child').innerHTML = `${t.permissionNo} <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer">60.2025.3153 | Mustafa Elmas</a>`;
+        document.querySelector('#bankRecipient').innerHTML = t.bankRecipient;
         
         // Update IBAN boxes
         const ibanBoxes = document.querySelectorAll('.iban-box');
@@ -413,8 +414,6 @@
         document.querySelector('#social-title').textContent = t.socialTitle;
         document.querySelector('.copyright').textContent = t.copyright;
         
-        document.querySelector('.bank-header span').innerHTML = t.bankRecipient;
-        
         // Update language toggle button
         languageToggle.querySelector('span').textContent = lang === 'tr' ? 'EN' : 'TR';
       }
@@ -423,6 +422,9 @@
         const newLang = currentLang === 'tr' ? 'en' : 'tr';
         updateLanguage(newLang);
       });
+
+      // Sayfa yüklendiğinde Türkçe metni göster
+      updateLanguage('tr');
     });
   </script>
 </body>
