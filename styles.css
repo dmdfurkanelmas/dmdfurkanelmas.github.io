@@ -7,6 +7,8 @@
   --border-radius: 12px;
   --box-shadow: 0 2px 8px rgba(26,54,93,0.07);
   --transition: all 0.3s ease;
+  --focus-outline: 3px solid var(--secondary-color);
+  --focus-outline-offset: 2px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
@@ -610,6 +612,7 @@ body {
     --accent-color: #0000ff;
     --text-color: #000000;
     --background-color: #ffffff;
+    --focus-outline: 3px solid #0000ff;
   }
 
   .container {
@@ -617,6 +620,11 @@ body {
   }
 
   .accordion {
+    border: 2px solid #000000;
+  }
+
+  .thank-you-message,
+  .error-message {
     border: 2px solid #000000;
   }
 }
@@ -663,5 +671,100 @@ body {
     font-size: 1rem;
     padding: 12px 20px;
     bottom: 10px;
+  }
+}
+
+/* Erişilebilirlik ve Performans İyileştirmeleri */
+:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Hata mesajı stili */
+.error-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e53e3e;
+  color: white;
+  padding: 16px 24px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(229,62,62,0.2);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Footer stili */
+footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 0.9rem;
+}
+
+.copyright {
+  opacity: 0.8;
+}
+
+/* Performans için will-change */
+.iban-box,
+.accordion,
+.thank-you-message,
+.error-message {
+  will-change: transform, opacity;
+}
+
+/* Reduced motion tercihi için animasyon kontrolü */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print stilleri */
+@media print {
+  body {
+    background: white;
+  }
+
+  .container {
+    box-shadow: none;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .accordion {
+    border: 1px solid #ccc;
+  }
+
+  .panel {
+    max-height: none !important;
+  }
+
+  .donation-section,
+  .social-media-section {
+    break-inside: avoid;
+  }
+
+  .thank-you-message,
+  .error-message {
+    display: none;
   }
 } 
