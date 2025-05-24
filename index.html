@@ -9,19 +9,21 @@
   <meta property="og:description" content="DMD Kas Hastası Furkan Elmas için bağış kampanyası. Gen tedavisi için destek olun, umut olun.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dmdfurkanelmas.github.io">
-  <meta property="og:image" content="furkan.jpg">
+  <meta property="og:image" content="https://dmdfurkanelmas.github.io/furkan.jpg">
   <link rel="canonical" href="https://dmdfurkanelmas.github.io">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <title>DMD Kas Hastası Furkan Elmas'a Umut Ol</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic">
+    <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic" loading="lazy">
     <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
 
     <section class="section">
-      <button class="accordion" aria-expanded="false" aria-controls="dmd-info">DMD Nedir?</button>
-      <div class="panel" id="dmd-info">
+      <button class="accordion" aria-expanded="false" aria-controls="dmd-info" aria-label="DMD hakkında bilgi almak için tıklayın">DMD Nedir?</button>
+      <div class="panel" id="dmd-info" role="region" aria-labelledby="dmd-info">
         <p>
           Duchenne Musküler Distrofi (DMD), çoğunlukla erkek çocuklarda görülen <strong>genetik, ilerleyici ve ölümcül bir kas hastalığıdır</strong>.
           Bu hastalıkta, kasların onarımı ve gücü için gerekli olan <strong>"distrofin" proteini</strong> ya hiç üretilemez ya da hatalı üretilir.
@@ -32,8 +34,8 @@
         </p>
       </div>
 
-      <button class="accordion" aria-expanded="false" aria-controls="furkan-story">Furkan'ın DMD ile Yaşam Mücadelesi</button>
-      <div class="panel" id="furkan-story">
+      <button class="accordion" aria-expanded="false" aria-controls="furkan-story" aria-label="Furkan'ın hikayesini okumak için tıklayın">Furkan'ın DMD ile Yaşam Mücadelesi</button>
+      <div class="panel" id="furkan-story" role="region" aria-labelledby="furkan-story">
         <p>
           Merhaba, ben Furkan.<br>
           3 aylıkken soğuk algınlığı şikayetiyle gittiğim hastanede yapılan kan tahlilinde <strong>ALT, AST ve CK değerlerimin yüksek</strong> olduğunu öğrendik.
@@ -47,8 +49,8 @@
         </p>
       </div>
 
-      <button class="accordion" aria-expanded="false" aria-controls="treatment-info">Tedavisi Var Mı?</button>
-      <div class="panel" id="treatment-info">
+      <button class="accordion" aria-expanded="false" aria-controls="treatment-info" aria-label="Tedavi bilgisi için tıklayın">Tedavisi Var Mı?</button>
+      <div class="panel" id="treatment-info" role="region" aria-labelledby="treatment-info">
         <p>
           Duchenne Musküler Distrofi (DMD) için son yıllarda <strong>büyük bir umut doğdu</strong>. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys,
           DMD tedavisinde <strong>devrim niteliğinde bir gelişme</strong> oldu. Bu tedavi, vücuda eksik olan <strong>"mikro-distrofin" genini</strong> taşıyan bir virüs aracılığıyla
@@ -62,6 +64,9 @@
       <h2>Bağış Yap</h2>
       <div class="donation-goal">
         <p class="goal-text">Hedefimiz: <strong>2.899.907 USD</strong></p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 0%"></div>
+        </div>
         <p class="slogan">Her bağış bir umut, her umut bir hayat...</p>
       </div>
       <div class="valilik-izin">
@@ -115,53 +120,64 @@
       <h2>Sosyal Medya Hesaplarımız</h2>
       <div class="social-links">
         <a href="https://instagram.com/dmd.furkanelmas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram hesabımızı ziyaret edin">
-          <i class="fab fa-instagram" aria-hidden="true"></i>
-          Instagram
+          <i class="fab fa-instagram" aria-hidden="true" title="Instagram"></i>
+          <span>Instagram</span>
         </a>
         <a href="https://twitter.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter hesabımızı ziyaret edin">
-          <i class="fab fa-twitter" aria-hidden="true"></i>
-          Twitter
+          <i class="fab fa-twitter" aria-hidden="true" title="Twitter"></i>
+          <span>Twitter</span>
         </a>
         <a href="https://m.facebook.com/61576251226044" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook hesabımızı ziyaret edin">
-          <i class="fab fa-facebook" aria-hidden="true"></i>
-          Facebook
+          <i class="fab fa-facebook" aria-hidden="true" title="Facebook"></i>
+          <span>Facebook</span>
         </a>
       </div>
     </section>
   </div>
 
   <script>
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        const isExpanded = this.getAttribute("aria-expanded") === "true";
-        this.setAttribute("aria-expanded", !isExpanded);
+    document.addEventListener('DOMContentLoaded', function() {
+      // Accordion işlevselliği
+      const accordionContainer = document.querySelector('.section');
+      accordionContainer.addEventListener('click', function(e) {
+        const accordion = e.target.closest('.accordion');
+        if (!accordion) return;
+
+        const isExpanded = accordion.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(accordion.getAttribute('aria-controls'));
+        
+        accordion.classList.toggle('active');
+        accordion.setAttribute('aria-expanded', !isExpanded);
         
         if (panel.style.maxHeight) {
           panel.style.maxHeight = null;
         } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
+          panel.style.maxHeight = panel.scrollHeight + 'px';
         }
       });
-    }
 
-    function copyToClipboard(id) {
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
-        const originalText = button.innerText;
-        button.innerText = "Kopyalandı!";
-        button.classList.add("copied");
-        
-        setTimeout(() => {
-          button.innerText = originalText;
-          button.classList.remove("copied");
-        }, 2000);
-      });
-    }
+      // Kopyalama işlevselliği
+      window.copyToClipboard = async function(id) {
+        try {
+          const text = document.getElementById(id).innerText;
+          await navigator.clipboard.writeText(text);
+          
+          const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+          const originalText = button.innerText;
+          
+          button.innerText = 'Kopyalandı!';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            button.innerText = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Kopyalama işlemi başarısız:', err);
+          alert('Kopyalama işlemi başarısız oldu. Lütfen manuel olarak kopyalayın.');
+        }
+      };
+    });
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
