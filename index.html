@@ -47,7 +47,8 @@
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
       <button id="languageToggle" class="language-toggle" aria-label="Dili değiştir">
         <i class="fas fa-globe"></i>
-        <span>EN</span>
+        <span class="lang-text">EN</span>
+        <i class="fas fa-chevron-down"></i>
       </button>
     </div>
   </header>
@@ -335,7 +336,8 @@
           copyButton: "IBAN'ı Kopyala",
           copySwiftButton: "SWIFT Kodunu Kopyala",
           socialTitle: "Sosyal Medya Hesaplarımız",
-          copyright: "© 2025 Furkan Elmas. Tüm hakları saklıdır."
+          copyright: "© 2025 Furkan Elmas. Tüm hakları saklıdır.",
+          bankRecipient: "Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong>"
         },
         en: {
           title: "Be Hope for Furkan Elmas with DMD",
@@ -364,7 +366,8 @@
           copyButton: "Copy IBAN",
           copySwiftButton: "Copy SWIFT Code",
           socialTitle: "Our Social Media Accounts",
-          copyright: "© 2025 Furkan Elmas. All rights reserved."
+          copyright: "© 2025 Furkan Elmas. All rights reserved.",
+          bankRecipient: "Kuveyt Turk Bank | <strong>Recipient: Furkan Elmas</strong>"
         }
       };
 
@@ -409,6 +412,8 @@
         
         document.querySelector('#social-title').textContent = t.socialTitle;
         document.querySelector('.copyright').textContent = t.copyright;
+        
+        document.querySelector('.bank-header span').innerHTML = t.bankRecipient;
         
         // Update language toggle button
         languageToggle.querySelector('span').textContent = lang === 'tr' ? 'EN' : 'TR';
