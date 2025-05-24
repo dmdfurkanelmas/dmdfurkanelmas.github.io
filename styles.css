@@ -848,6 +848,7 @@ footer {
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(26,54,93,0.15);
+  z-index: 1000;
 }
 
 .language-toggle:hover {
@@ -880,13 +881,14 @@ footer {
   box-shadow: 0 0 0 3px rgba(49,130,206,0.3);
 }
 
-/* Mobil cihazlar için dil değiştirme butonu düzenlemesi */
+/* Tablet için dil değiştirme butonu düzenlemesi */
 @media (max-width: 768px) {
   .language-toggle {
     top: 15px;
     right: 15px;
     padding: 8px 16px;
     font-size: 13px;
+    border-radius: 20px;
   }
   
   .language-toggle i {
@@ -894,24 +896,71 @@ footer {
   }
 }
 
+/* Mobil cihazlar için dil değiştirme butonu düzenlemesi */
 @media (max-width: 480px) {
   .language-toggle {
     top: 10px;
     right: 10px;
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .language-toggle i {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .language-toggle .lang-text,
+  .language-toggle .fa-chevron-down {
+    display: none;
+  }
+
+  .language-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .language-toggle:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Çok küçük ekranlar için ek düzenleme */
+@media (max-width: 360px) {
+  .language-toggle {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
   }
   
   .language-toggle i {
     font-size: 12px;
   }
-  
-  .language-toggle .lang-text {
-    display: none;
+}
+
+/* Yüksek kontrast modu için düzenleme */
+@media (prefers-contrast: high) {
+  .language-toggle {
+    border: 2px solid white;
   }
   
+  .language-toggle:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion tercihi için düzenleme */
+@media (prefers-reduced-motion: reduce) {
   .language-toggle {
-    padding: 8px;
-    border-radius: 50%;
+    transition: none;
+  }
+  
+  .language-toggle:hover i.fa-chevron-down {
+    transform: none;
   }
 } 

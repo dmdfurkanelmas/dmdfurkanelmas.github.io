@@ -229,87 +229,11 @@
       };
 
       // Kopyalama işlevselliği
-      window.copyToClipboard = async function(id) {
-        try {
-          const text = document.getElementById(id).innerText;
-          
-          // IBAN validasyonu - daha esnek kontrol
-          if (!validateIBAN(text)) {
-            console.warn('IBAN formatı kontrol edilemedi, kopyalama devam ediyor');
-          }
-
-          await navigator.clipboard.writeText(text);
-          
-          const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
-          const originalText = button.innerText;
-          
-          // Teşekkür mesajı ve kalp emojisi
-          const thankYouMessage = document.createElement('div');
-          thankYouMessage.className = 'thank-you-message';
-          thankYouMessage.setAttribute('role', 'alert');
-          thankYouMessage.setAttribute('aria-live', 'polite');
-          thankYouMessage.innerHTML = 'Yapacağınız bağışlar için teşekkür ederiz. Furkan\'a umut oldunuz 💙';
-          thankYouMessage.style.display = 'none';
-          
-          // Eğer zaten bir mesaj varsa kaldır
-          const existingMessage = document.querySelector('.thank-you-message');
-          if (existingMessage) {
-            existingMessage.remove();
-          }
-          
-          // Yeni mesajı ekle
-          document.querySelector('.donation-section').appendChild(thankYouMessage);
-          
-          button.innerText = 'Kopyalandı!';
-          button.classList.add('copied');
-          
-          // Mesajı göster
-          setTimeout(() => {
-            thankYouMessage.style.display = 'block';
-            thankYouMessage.classList.add('show');
-          }, 100);
-          
-          setTimeout(() => {
-            button.innerText = originalText;
-            button.classList.remove('copied');
-            thankYouMessage.classList.remove('show');
-            setTimeout(() => {
-              thankYouMessage.remove();
-            }, 500);
-          }, 3000);
-        } catch (err) {
-          console.error('Kopyalama işlemi başarısız:', err);
-          const errorMessage = document.createElement('div');
-          errorMessage.className = 'error-message';
-          errorMessage.setAttribute('role', 'alert');
-          errorMessage.innerHTML = `
-            <i class="fas fa-exclamation-circle"></i>
-            <span>${err.message || 'Kopyalama işlemi başarısız oldu. Lütfen manuel olarak kopyalayın.'}</span>
-          `;
-          document.querySelector('.donation-section').appendChild(errorMessage);
-          setTimeout(() => errorMessage.remove(), 3000);
-        }
-      };
-
-      // SSL kontrolünü başlat
-      checkSSL();
-
-      // Klavye navigasyonu için focus yönetimi
-      document.querySelectorAll('a, button').forEach(element => {
-        element.addEventListener('focus', function() {
-          this.classList.add('focus-visible');
-        });
-        element.addEventListener('blur', function() {
-          this.classList.remove('focus-visible');
-        });
-      });
-
-      // Dil değiştirme işlevselliği
-      const languageToggle = document.getElementById('languageToggle');
-      let currentLang = 'tr';
-      
       const translations = {
         tr: {
+          copiedText: "Kopyalandı!",
+          thankYouMessage: "Yapacağınız bağışlar için teşekkür ederiz. Furkan'a umut oldunuz 💙",
+          copyError: "Kopyalama işlemi başarısız oldu. Lütfen manuel olarak kopyalayın.",
           title: "DMD Kas Hastası Furkan Elmas'a Umut Ol",
           dmdTitle: "DMD Nedir?",
           dmdContent: "Duchenne Musküler Distrofi (DMD), çoğunlukla erkek çocuklarda görülen genetik, ilerleyici ve ölümcül bir kas hastalığıdır. Bu hastalıkta, kasların onarımı ve gücü için gerekli olan \"distrofin\" proteini ya hiç üretilemez ya da hatalı üretilir. Sonuç olarak kaslar zamanla zayıflar ve görevlerini yerine getiremez hâle gelir. Belirtiler genellikle 2-5 yaş arasında ortaya çıkar. Çocuklar yürümekte, koşmakta ve merdiven çıkmakta zorlanmaya başlar. İlerleyen yıllarda kas erimesi hızlanır, tekerlekli sandalyeye bağımlılık ve solunum ile kalp kaslarının etkilenmesi görülür. Genellikle genç yaşta hayati organların işlev kaybı nedeniyle kayıplar yaşanabilir.",
@@ -340,6 +264,9 @@
           bankRecipient: "Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong>"
         },
         en: {
+          copiedText: "Copied!",
+          thankYouMessage: "Thank you for your donations. You've given hope to Furkan 💙",
+          copyError: "Copy operation failed. Please copy manually.",
           title: "Be Hope for Furkan Elmas with DMD",
           dmdTitle: "What is DMD?",
           dmdContent: "Duchenne Muscular Dystrophy (DMD) is a genetic, progressive, and fatal muscle disease that primarily affects boys. In this disease, the \"dystrophin\" protein, which is essential for muscle repair and strength, is either not produced or produced incorrectly. As a result, muscles gradually weaken and lose their function. Symptoms typically appear between ages 2-5. Children begin to have difficulty walking, running, and climbing stairs. In later years, muscle wasting accelerates, leading to wheelchair dependency and affecting respiratory and heart muscles. Loss of life can occur at a young age due to vital organ failure.",
@@ -372,7 +299,6 @@
       };
 
       function updateLanguage(lang) {
-        currentLang = lang;
         const t = translations[lang];
         
         // Update all text content
@@ -413,13 +339,91 @@
         
         document.querySelector('#social-title').textContent = t.socialTitle;
         document.querySelector('.copyright').textContent = t.copyright;
-        
-        // Update language toggle button
-        languageToggle.querySelector('span').textContent = lang === 'tr' ? 'EN' : 'TR';
       }
 
+      // Kopyalama işlevselliği
+      window.copyToClipboard = async function(id) {
+        try {
+          const text = document.getElementById(id).innerText;
+          
+          if (!validateIBAN(text)) {
+            console.warn('IBAN formatı kontrol edilemedi, kopyalama devam ediyor');
+          }
+
+          await navigator.clipboard.writeText(text);
+          
+          const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
+          const originalText = button.innerText;
+          const t = translations[currentLang];
+          
+          // Teşekkür mesajı ve kalp emojisi
+          const thankYouMessage = document.createElement('div');
+          thankYouMessage.className = 'thank-you-message';
+          thankYouMessage.setAttribute('role', 'alert');
+          thankYouMessage.setAttribute('aria-live', 'polite');
+          thankYouMessage.innerHTML = t.thankYouMessage;
+          thankYouMessage.style.display = 'none';
+          
+          // Eğer zaten bir mesaj varsa kaldır
+          const existingMessage = document.querySelector('.thank-you-message');
+          if (existingMessage) {
+            existingMessage.remove();
+          }
+          
+          // Yeni mesajı ekle
+          document.querySelector('.donation-section').appendChild(thankYouMessage);
+          
+          button.innerText = t.copiedText;
+          button.classList.add('copied');
+          
+          // Mesajı göster
+          setTimeout(() => {
+            thankYouMessage.style.display = 'block';
+            thankYouMessage.classList.add('show');
+          }, 100);
+          
+          setTimeout(() => {
+            button.innerText = originalText;
+            button.classList.remove('copied');
+            thankYouMessage.classList.remove('show');
+            setTimeout(() => {
+              thankYouMessage.remove();
+            }, 500);
+          }, 3000);
+        } catch (err) {
+          console.error('Kopyalama işlemi başarısız:', err);
+          const errorMessage = document.createElement('div');
+          errorMessage.className = 'error-message';
+          errorMessage.setAttribute('role', 'alert');
+          errorMessage.innerHTML = `
+            <i class="fas fa-exclamation-circle"></i>
+            <span>${err.message || translations[currentLang].copyError}</span>
+          `;
+          document.querySelector('.donation-section').appendChild(errorMessage);
+          setTimeout(() => errorMessage.remove(), 3000);
+        }
+      };
+
+      // SSL kontrolünü başlat
+      checkSSL();
+
+      // Klavye navigasyonu için focus yönetimi
+      document.querySelectorAll('a, button').forEach(element => {
+        element.addEventListener('focus', function() {
+          this.classList.add('focus-visible');
+        });
+        element.addEventListener('blur', function() {
+          this.classList.remove('focus-visible');
+        });
+      });
+
+      // Dil değiştirme işlevselliği
+      const languageToggle = document.getElementById('languageToggle');
+      let currentLang = 'tr';
+      
       languageToggle.addEventListener('click', () => {
         const newLang = currentLang === 'tr' ? 'en' : 'tr';
+        currentLang = newLang;
         updateLanguage(newLang);
       });
 
