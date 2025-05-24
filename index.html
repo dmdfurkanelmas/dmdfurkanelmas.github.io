@@ -45,6 +45,10 @@
     <div class="container">
       <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic" loading="lazy" width="120" height="120">
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
+      <button id="languageToggle" class="language-toggle" aria-label="Dili değiştir">
+        <i class="fas fa-globe"></i>
+        <span>EN</span>
+      </button>
     </div>
   </header>
 
@@ -297,6 +301,122 @@
         element.addEventListener('blur', function() {
           this.classList.remove('focus-visible');
         });
+      });
+
+      // Dil değiştirme işlevselliği
+      const languageToggle = document.getElementById('languageToggle');
+      let currentLang = 'tr';
+      
+      const translations = {
+        tr: {
+          title: "DMD Kas Hastası Furkan Elmas'a Umut Ol",
+          dmdTitle: "DMD Nedir?",
+          dmdContent: "Duchenne Musküler Distrofi (DMD), çoğunlukla erkek çocuklarda görülen genetik, ilerleyici ve ölümcül bir kas hastalığıdır. Bu hastalıkta, kasların onarımı ve gücü için gerekli olan \"distrofin\" proteini ya hiç üretilemez ya da hatalı üretilir. Sonuç olarak kaslar zamanla zayıflar ve görevlerini yerine getiremez hâle gelir. Belirtiler genellikle 2-5 yaş arasında ortaya çıkar. Çocuklar yürümekte, koşmakta ve merdiven çıkmakta zorlanmaya başlar. İlerleyen yıllarda kas erimesi hızlanır, tekerlekli sandalyeye bağımlılık ve solunum ile kalp kaslarının etkilenmesi görülür. Genellikle genç yaşta hayati organların işlev kaybı nedeniyle kayıplar yaşanabilir.",
+          storyTitle: "Furkan'ın DMD ile Yaşam Mücadelesi",
+          storyContent: "Merhaba, ben Furkan.\n3 aylıkken soğuk algınlığı şikayetiyle gittiğim hastanede yapılan kan tahlilinde ALT, AST ve CK değerlerimin yüksek olduğunu öğrendik. 6 aylıkken yapılan genetik kan testi sonucunda ilerleyici ve ölümcül bir kas hastalığı olan DMD (Duchenne Musküler Distrofi) teşhisi aldım.\n\nTeşhis sonrasında yaşam kalitemi arttırmak için beslenme düzenime dikkat ettik, fizik tedavi ve yüzme ile tedavimi destekledik. Çünkü kaslarıma ve eklemlerime iyi gelen tek şey bunlardı.\n\n2023 yılının Haziran ayında DMD için geliştirilen Elevidys adlı Gen tedavisi FDA tarafından onaylandı. Ancak bu tedavinin maliyeti oldukça yüksek. Bu yüzden sizlerin desteklerinize ve yardımınıza ihtiyacım var.\n\nSizlerin desteğiyle Gen tedavisine ulaşarak diğer çocuklar gibi yürümeye devam edebilirim.\nBu zorlu savaşımda beni yalnız bırakmayın. Sizlere ihtiyacım var.",
+          treatmentTitle: "Tedavisi Var Mı?",
+          treatmentContent: "Duchenne Musküler Distrofi (DMD) için son yıllarda büyük bir umut doğdu. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys, DMD tedavisinde devrim niteliğinde bir gelişme oldu. Bu tedavi, vücuda eksik olan \"mikro-distrofin\" genini taşıyan bir virüs aracılığıyla uygulanıyor. Böylece kas dokusu korunabiliyor ve hastalığın ilerleyişi yavaşlatılabiliyor. Şu anda ABD'de uygulanmaya başlanan bu tedavi, hastalığın seyrini değiştirebilecek güçlü bir seçenek sunuyor. Ancak oldukça maliyetli olduğu için aileler bağış kampanyaları ile destek arıyor.",
+          donationTitle: "Bağış Yap",
+          goalText: "Hedefimiz:",
+          slogan: "Her bağış bir umut, her umut bir hayat...",
+          valilikText: "Bu kampanya Tokat Valiliği tarafından onaylanmıştır.",
+          permissionNo: "İzin No:",
+          tlIbanTitle: "TL IBAN",
+          tlIbanDesc: "Bu hesaba Türk Lirası cinsinden bağış yapabilirsiniz",
+          usdIbanTitle: "USD IBAN",
+          usdIbanDesc: "Amerikan Doları cinsinden bağış için bu hesabı kullanabilirsiniz",
+          eurIbanTitle: "EUR IBAN",
+          eurIbanDesc: "Euro cinsinden bağış için bu hesabı kullanabilirsiniz",
+          gbpIbanTitle: "GBP IBAN",
+          gbpIbanDesc: "İngiliz Sterlini cinsinden bağış için bu hesabı kullanabilirsiniz",
+          chfIbanTitle: "CHF IBAN",
+          chfIbanDesc: "İsviçre Frangı cinsinden bağış için bu hesabı kullanabilirsiniz",
+          swiftTitle: "SWIFT Kodu:",
+          copyButton: "IBAN'ı Kopyala",
+          copySwiftButton: "SWIFT Kodunu Kopyala",
+          socialTitle: "Sosyal Medya Hesaplarımız",
+          copyright: "© 2025 Furkan Elmas. Tüm hakları saklıdır."
+        },
+        en: {
+          title: "Be Hope for Furkan Elmas with DMD",
+          dmdTitle: "What is DMD?",
+          dmdContent: "Duchenne Muscular Dystrophy (DMD) is a genetic, progressive, and fatal muscle disease that primarily affects boys. In this disease, the \"dystrophin\" protein, which is essential for muscle repair and strength, is either not produced or produced incorrectly. As a result, muscles gradually weaken and lose their function. Symptoms typically appear between ages 2-5. Children begin to have difficulty walking, running, and climbing stairs. In later years, muscle wasting accelerates, leading to wheelchair dependency and affecting respiratory and heart muscles. Loss of life can occur at a young age due to vital organ failure.",
+          storyTitle: "Furkan's Life Struggle with DMD",
+          storyContent: "Hello, I'm Furkan.\nAt 3 months old, during a hospital visit for a cold, blood tests revealed elevated ALT, AST, and CK levels. At 6 months, genetic blood testing confirmed a diagnosis of DMD (Duchenne Muscular Dystrophy), a progressive and fatal muscle disease.\n\nAfter diagnosis, we focused on improving my quality of life through careful nutrition, physical therapy, and swimming. These were the only things that helped my muscles and joints.\n\nIn June 2023, Elevidys, a gene therapy developed for DMD, was approved by the FDA. However, this treatment is quite expensive. That's why I need your support and help.\n\nWith your support, I can continue walking like other children by accessing gene therapy.\nPlease don't leave me alone in this difficult battle. I need you.",
+          treatmentTitle: "Is There a Treatment?",
+          treatmentContent: "In recent years, great hope has emerged for Duchenne Muscular Dystrophy (DMD). The gene therapy Elevidys, approved by the FDA in 2023, represents a revolutionary development in DMD treatment. This treatment is administered through a virus carrying the missing \"micro-dystrophin\" gene. This helps preserve muscle tissue and slow disease progression. Currently being implemented in the USA, this treatment offers a powerful option that can change the course of the disease. However, due to its high cost, families are seeking support through donation campaigns.",
+          donationTitle: "Make a Donation",
+          goalText: "Our Goal:",
+          slogan: "Every donation is a hope, every hope is a life...",
+          valilikText: "This campaign is approved by the Tokat Governorship.",
+          permissionNo: "Permission No:",
+          tlIbanTitle: "TRY IBAN",
+          tlIbanDesc: "You can make donations in Turkish Lira to this account",
+          usdIbanTitle: "USD IBAN",
+          usdIbanDesc: "You can use this account for donations in US Dollars",
+          eurIbanTitle: "EUR IBAN",
+          eurIbanDesc: "You can use this account for donations in Euros",
+          gbpIbanTitle: "GBP IBAN",
+          gbpIbanDesc: "You can use this account for donations in British Pounds",
+          chfIbanTitle: "CHF IBAN",
+          chfIbanDesc: "You can use this account for donations in Swiss Francs",
+          swiftTitle: "SWIFT Code:",
+          copyButton: "Copy IBAN",
+          copySwiftButton: "Copy SWIFT Code",
+          socialTitle: "Our Social Media Accounts",
+          copyright: "© 2025 Furkan Elmas. All rights reserved."
+        }
+      };
+
+      function updateLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        
+        // Update all text content
+        document.querySelector('.main-title').textContent = t.title;
+        document.querySelector('#dmd-info-title').textContent = t.dmdTitle;
+        document.querySelector('#dmd-info p').textContent = t.dmdContent;
+        document.querySelectorAll('.accordion')[1].textContent = t.storyTitle;
+        document.querySelector('#furkan-story p').textContent = t.storyContent;
+        document.querySelectorAll('.accordion')[2].textContent = t.treatmentTitle;
+        document.querySelector('#treatment-info p').textContent = t.treatmentContent;
+        document.querySelector('#donation-title').textContent = t.donationTitle;
+        document.querySelector('.goal-text').innerHTML = `${t.goalText} <strong>2.899.907 USD</strong>`;
+        document.querySelector('.slogan').textContent = t.slogan;
+        document.querySelector('.valilik-izin p:first-child').textContent = t.valilikText;
+        document.querySelector('.valilik-izin p:last-child').innerHTML = `${t.permissionNo} <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer">60.2025.3153 | Mustafa Elmas</a>`;
+        
+        // Update IBAN boxes
+        const ibanBoxes = document.querySelectorAll('.iban-box');
+        ibanBoxes[0].querySelector('h3').textContent = t.tlIbanTitle;
+        ibanBoxes[0].querySelector('.iban-description').textContent = t.tlIbanDesc;
+        ibanBoxes[1].querySelector('h3').textContent = t.usdIbanTitle;
+        ibanBoxes[1].querySelector('.iban-description').textContent = t.usdIbanDesc;
+        ibanBoxes[2].querySelector('h3').textContent = t.eurIbanTitle;
+        ibanBoxes[2].querySelector('.iban-description').textContent = t.eurIbanDesc;
+        ibanBoxes[3].querySelector('h3').textContent = t.gbpIbanTitle;
+        ibanBoxes[3].querySelector('.iban-description').textContent = t.gbpIbanDesc;
+        ibanBoxes[4].querySelector('h3').textContent = t.chfIbanTitle;
+        ibanBoxes[4].querySelector('.iban-description').textContent = t.chfIbanDesc;
+        
+        // Update buttons
+        document.querySelectorAll('.iban-box button').forEach(btn => {
+          btn.textContent = t.copyButton;
+        });
+        
+        document.querySelector('.swift-box h3').textContent = t.swiftTitle;
+        document.querySelector('.swift-box button').textContent = t.copySwiftButton;
+        
+        document.querySelector('#social-title').textContent = t.socialTitle;
+        document.querySelector('.copyright').textContent = t.copyright;
+        
+        // Update language toggle button
+        languageToggle.querySelector('span').textContent = lang === 'tr' ? 'EN' : 'TR';
+      }
+
+      languageToggle.addEventListener('click', () => {
+        const newLang = currentLang === 'tr' ? 'en' : 'tr';
+        updateLanguage(newLang);
       });
     });
   </script>

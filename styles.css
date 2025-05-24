@@ -828,4 +828,50 @@ footer {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* Dil değiştirme butonu stilleri */
+.language-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #1a365d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.language-toggle:hover {
+  background: #2a4a7d;
+  transform: translateY(-2px);
+}
+
+.language-toggle i {
+  font-size: 16px;
+}
+
+.language-toggle:focus {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Mobil cihazlar için dil değiştirme butonu düzenlemesi */
+@media (max-width: 768px) {
+  .language-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .language-toggle i {
+    font-size: 14px;
+  }
 } 
