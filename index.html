@@ -299,6 +299,7 @@
       };
 
       function updateLanguage(lang) {
+        currentLang = lang;
         const t = translations[lang];
         
         // Update all text content
@@ -339,6 +340,9 @@
         
         document.querySelector('#social-title').textContent = t.socialTitle;
         document.querySelector('.copyright').textContent = t.copyright;
+        
+        // Update language toggle button - show the language we're switching TO
+        languageToggle.querySelector('.lang-text').textContent = lang === 'tr' ? 'EN' : 'TR';
       }
 
       // Kopyalama işlevselliği
