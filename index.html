@@ -165,13 +165,38 @@
           const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
           const originalText = button.innerText;
           
+          // Teşekkür mesajı ve kalp emojisi
+          const thankYouMessage = document.createElement('div');
+          thankYouMessage.className = 'thank-you-message';
+          thankYouMessage.innerHTML = 'Yapacağınız bağışlar için teşekkür ederiz. Furkan\'a umut oldunuz 💙';
+          thankYouMessage.style.display = 'none';
+          
+          // Eğer zaten bir mesaj varsa kaldır
+          const existingMessage = document.querySelector('.thank-you-message');
+          if (existingMessage) {
+            existingMessage.remove();
+          }
+          
+          // Yeni mesajı ekle
+          document.querySelector('.donation-section').appendChild(thankYouMessage);
+          
           button.innerText = 'Kopyalandı!';
           button.classList.add('copied');
+          
+          // Mesajı göster
+          setTimeout(() => {
+            thankYouMessage.style.display = 'block';
+            thankYouMessage.classList.add('show');
+          }, 100);
           
           setTimeout(() => {
             button.innerText = originalText;
             button.classList.remove('copied');
-          }, 2000);
+            thankYouMessage.classList.remove('show');
+            setTimeout(() => {
+              thankYouMessage.remove();
+            }, 500);
+          }, 3000);
         } catch (err) {
           console.error('Kopyalama işlemi başarısız:', err);
           alert('Kopyalama işlemi başarısız oldu. Lütfen manuel olarak kopyalayın.');
