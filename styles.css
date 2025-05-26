@@ -270,8 +270,9 @@ body {
 }
 
 .iban-box h3::before {
-  content: '💳';
+  content: '';
   font-size: 1.2rem;
+  margin-right: 8px;
 }
 
 .iban-box .iban-description {
@@ -1054,4 +1055,24 @@ footer {
   .lang-option:hover {
     transform: none;
   }
+}
+
+.iban-tl h3::before {
+  content: '₺';
+}
+
+.iban-box:nth-child(2) h3::before {
+  content: '$';
+}
+
+.iban-box:nth-child(3) h3::before {
+  content: '€';
+}
+
+.iban-box:nth-child(4) h3::before {
+  content: '£';
+}
+
+.iban-box:nth-child(5) h3::before {
+  content: 'Fr';
 } 
