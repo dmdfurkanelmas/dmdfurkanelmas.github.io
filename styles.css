@@ -1103,9 +1103,15 @@ footer {
 }
 
 .target-amount {
-  font-size: 1.3rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700;
   color: #1a365d !important;
+  margin: 16px 0 !important;
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(26,54,93,0.1);
+  display: inline-block;
 }
 
 .donation-examples {
@@ -1240,5 +1246,63 @@ footer {
   .example-list li,
   .awareness-list li {
     padding: 10px;
+  }
+}
+
+.social-links-inline {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+
+.social-link-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #fff;
+  border-radius: 6px;
+  color: #2d3748;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(26,54,93,0.1);
+}
+
+.social-link-inline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(26,54,93,0.15);
+}
+
+.social-link-inline i {
+  font-size: 1.1rem;
+}
+
+.social-link-inline:nth-child(1) i {
+  color: #E1306C;
+}
+
+.social-link-inline:nth-child(2) i {
+  color: #1DA1F2;
+}
+
+.social-link-inline:nth-child(3) i {
+  color: #4267B2;
+}
+
+@media (max-width: 480px) {
+  .social-links-inline {
+    gap: 8px;
+  }
+
+  .social-link-inline {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
+
+  .social-link-inline i {
+    font-size: 1rem;
   }
 } 
