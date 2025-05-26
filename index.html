@@ -168,9 +168,10 @@
         <h2 id="donation-title">Bağış Yap</h2>
         <div class="donation-goal" role="status" aria-live="polite">
           <p class="goal-text">Hedefimiz: <strong>2.899.907 USD</strong></p>
-          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress" style="width: 0%"></div>
+          <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress" style="width: 1%"></div>
           </div>
+          <p class="progress-text">Şu ana kadar toplanan: <strong>28.999 USD</strong> (%1)</p>
           <p class="slogan">Her bağış bir umut, her umut bir hayat...</p>
         </div>
         <div class="valilik-izin">
@@ -311,7 +312,11 @@
           treatmentContent: "Duchenne Musküler Distrofi (DMD) için son yıllarda <strong>büyük bir umut doğdu</strong>. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys, DMD tedavisinde <strong>devrim niteliğinde bir gelişme</strong> oldu. Bu tedavi, vücuda eksik olan <strong>\"mikro-distrofin\" genini</strong> taşıyan bir virüs aracılığıyla uygulanıyor. Böylece kas dokusu korunabiliyor ve hastalığın ilerleyişi yavaşlatılabiliyor.\n\nŞu anda <strong>ABD'de uygulanmaya başlanan</strong> bu tedavi, hastalığın seyrini değiştirebilecek güçlü bir seçenek sunuyor. Ancak <strong>oldukça maliyetli</strong> olduğu için aileler bağış kampanyaları ile destek arıyor.",
           donationTitle: "Bağış Yap",
           goalText: "Hedefimiz:",
-          slogan: "Her bağış bir umut, her umut bir hayat...",
+          goalAmount: "2.899.907 USD",
+          progressText: "Şu ana kadar toplanan:",
+          currentAmount: "28.999 USD",
+          progressPercentage: "%1",
+          goalMessage: "Her bağış bir umut, her umut bir hayat...",
           valilikText: "Bu kampanya Tokat Valiliği tarafından onaylanmıştır.",
           permissionNo: "İzin No:",
           tlIbanTitle: "TL IBAN",
@@ -378,7 +383,11 @@
           treatmentContent: "In recent years, <strong>great hope has emerged</strong> for Duchenne Muscular Dystrophy (DMD). The gene therapy Elevidys, approved by the FDA in 2023, represents a <strong>revolutionary development</strong> in DMD treatment. This treatment is administered through a virus carrying the missing <strong>\"micro-dystrophin\" gene</strong>. This helps preserve muscle tissue and slow disease progression.\n\nCurrently being implemented in the <strong>USA</strong>, this treatment offers a powerful option that can change the course of the disease. However, due to its <strong>high cost</strong>, families are seeking support through donation campaigns.",
           donationTitle: "Make a Donation",
           goalText: "Our Goal:",
-          slogan: "Every donation is a hope, every hope is a life...",
+          goalAmount: "2,899,907 USD",
+          progressText: "Raised so far:",
+          currentAmount: "28,999 USD",
+          progressPercentage: "1%",
+          goalMessage: "Every donation is a hope, every hope is a life...",
           valilikText: "This campaign is approved by the Tokat Governorship.",
           permissionNo: "Permission No:",
           tlIbanTitle: "TRY IBAN",
@@ -445,7 +454,11 @@
           treatmentContent: "In den letzten Jahren ist <strong>große Hoffnung</strong> für die Duchenne-Muskeldystrophie (DMD) entstanden. Die Gentherapie Elevidys, die 2023 von der FDA zugelassen wurde, stellt eine <strong>revolutionäre Entwicklung</strong> in der DMD-Behandlung dar. Diese Behandlung wird durch ein Virus verabreicht, das das fehlende <strong>\"Mikro-Dystrophin\"-Gen</strong> trägt. Dies hilft, Muskelgewebe zu erhalten und das Fortschreiten der Krankheit zu verlangsamen.\n\nDerzeit in den <strong>USA</strong> implementiert, bietet diese Behandlung eine starke Option, die den Krankheitsverlauf verändern kann. Aufgrund der <strong>hohen Kosten</strong> suchen Familien jedoch Unterstützung durch Spendenkampagnen.",
           donationTitle: "Spenden",
           goalText: "Unser Ziel:",
-          slogan: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
+          goalAmount: "2.899.907 USD",
+          progressText: "Bisher gesammelt:",
+          currentAmount: "28.999 USD",
+          progressPercentage: "1%",
+          goalMessage: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
           valilikText: "Diese Kampagne wird von der Provinzverwaltung Tokat genehmigt.",
           permissionNo: "Genehmigungsnummer:",
           tlIbanTitle: "TRY IBAN",
@@ -559,8 +572,9 @@
         
         // Update IBAN boxes and other elements
         document.querySelector('#donation-title').textContent = t.donationTitle;
-        document.querySelector('.goal-text').textContent = t.goalText;
-        document.querySelector('.slogan').textContent = t.slogan;
+        document.querySelector('.goal-text').innerHTML = `${t.goalText} <strong>${t.goalAmount}</strong>`;
+        document.querySelector('.progress-text').innerHTML = `${t.progressText} <strong>${t.currentAmount}</strong> (${t.progressPercentage})`;
+        document.querySelector('.slogan').textContent = t.goalMessage;
         document.querySelector('.valilik-izin p:first-child').textContent = t.valilikText;
         document.querySelector('.valilik-izin p:last-child').textContent = t.permissionNo;
         
