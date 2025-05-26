@@ -222,7 +222,7 @@
           <p>Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.</p>
           <p>İzin No: <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer">60.2025.3153 | Mustafa Elmas</a></p>
         </div>
-        <div class="bank-header">
+        <div class="bank-header" id="bankInfo">
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
           <span id="bankRecipient">Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong></span>
         </div>
@@ -782,8 +782,8 @@
 
       // Smooth scroll to IBAN section
       document.getElementById('quickIbanButton').addEventListener('click', function() {
-        const ibanList = document.getElementById('ibanList');
-        ibanList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const bankInfo = document.getElementById('bankInfo');
+        bankInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   </script>
