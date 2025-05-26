@@ -47,8 +47,13 @@
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
       <button id="languageToggle" class="language-toggle" aria-label="Dili değiştir">
         <i class="fas fa-globe"></i>
-        <span class="lang-text">EN</span>
+        <span class="lang-text">TR</span>
         <i class="fas fa-chevron-down"></i>
+        <div class="language-dropdown">
+          <button class="lang-option" data-lang="tr">TR</button>
+          <button class="lang-option" data-lang="en">EN</button>
+          <button class="lang-option" data-lang="de">DE</button>
+        </div>
       </button>
     </div>
   </header>
@@ -295,6 +300,39 @@
           socialTitle: "Our Social Media Accounts",
           copyright: "© 2025 Furkan Elmas. All rights reserved.",
           bankRecipient: "Kuveyt Turk Bank | <strong>Recipient: Furkan Elmas</strong>"
+        },
+        de: {
+          copiedText: "Kopiert!",
+          thankYouMessage: "Vielen Dank für Ihre Spenden. Sie haben Furkan Hoffnung gegeben 💙",
+          copyError: "Kopieroperation fehlgeschlagen. Bitte manuell kopieren.",
+          title: "Seien Sie Hoffnung für Furkan Elmas mit DMD",
+          dmdTitle: "Was ist DMD?",
+          dmdContent: "Die Duchenne-Muskeldystrophie (DMD) ist eine genetische, fortschreitende und tödliche Muskelerkrankung, die hauptsächlich Jungen betrifft. Bei dieser Krankheit wird das für die Muskelreparatur und -stärke essentielle \"Dystrophin\"-Protein entweder nicht produziert oder fehlerhaft produziert. Infolgedessen schwächen sich die Muskeln allmählich ab und verlieren ihre Funktion. Die Symptome treten typischerweise im Alter von 2-5 Jahren auf. Kinder beginnen Schwierigkeiten beim Gehen, Laufen und Treppensteigen zu haben. In späteren Jahren beschleunigt sich der Muskelschwund, was zu Rollstuhlabhängigkeit und Beeinträchtigung der Atmungs- und Herzmuskulatur führt. Der Verlust des Lebens kann in jungen Jahren aufgrund von Versagen lebenswichtiger Organe auftreten.",
+          storyTitle: "Furkans Lebenskampf mit DMD",
+          storyContent: "Hallo, ich bin Furkan.\nMit 3 Monaten wurden bei einem Krankenhausbesuch wegen einer Erkältung erhöhte ALT-, AST- und CK-Werte festgestellt. Mit 6 Monaten bestätigte ein genetischer Bluttest die Diagnose DMD (Duchenne-Muskeldystrophie), eine fortschreitende und tödliche Muskelerkrankung.\n\nNach der Diagnose konzentrierten wir uns darauf, meine Lebensqualität durch sorgfältige Ernährung, Physiotherapie und Schwimmen zu verbessern. Dies waren die einzigen Dinge, die meinen Muskeln und Gelenken halfen.\n\nIm Juni 2023 wurde Elevidys, eine für DMD entwickelte Gentherapie, von der FDA zugelassen. Diese Behandlung ist jedoch sehr teuer. Deshalb brauche ich Ihre Unterstützung und Hilfe.\n\nMit Ihrer Unterstützung kann ich durch den Zugang zur Gentherapie wie andere Kinder weiterlaufen.\nBitte lassen Sie mich in diesem schwierigen Kampf nicht allein. Ich brauche Sie.",
+          treatmentTitle: "Gibt es eine Behandlung?",
+          treatmentContent: "In den letzten Jahren ist große Hoffnung für die Duchenne-Muskeldystrophie (DMD) entstanden. Die Gentherapie Elevidys, die 2023 von der FDA zugelassen wurde, stellt eine revolutionäre Entwicklung in der DMD-Behandlung dar. Diese Behandlung wird durch ein Virus verabreicht, das das fehlende \"Mikro-Dystrophin\"-Gen trägt. Dies hilft, Muskelgewebe zu erhalten und das Fortschreiten der Krankheit zu verlangsamen. Derzeit in den USA implementiert, bietet diese Behandlung eine starke Option, die den Krankheitsverlauf verändern kann. Aufgrund der hohen Kosten suchen Familien jedoch Unterstützung durch Spendenkampagnen.",
+          donationTitle: "Spenden",
+          goalText: "Unser Ziel:",
+          slogan: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
+          valilikText: "Diese Kampagne wird von der Provinzverwaltung Tokat genehmigt.",
+          permissionNo: "Genehmigungsnummer:",
+          tlIbanTitle: "TRY IBAN",
+          tlIbanDesc: "Sie können Spenden in Türkischer Lira auf dieses Konto überweisen",
+          usdIbanTitle: "USD IBAN",
+          usdIbanDesc: "Sie können dieses Konto für Spenden in US-Dollar verwenden",
+          eurIbanTitle: "EUR IBAN",
+          eurIbanDesc: "Sie können dieses Konto für Spenden in Euro verwenden",
+          gbpIbanTitle: "GBP IBAN",
+          gbpIbanDesc: "Sie können dieses Konto für Spenden in Britischen Pfund verwenden",
+          chfIbanTitle: "CHF IBAN",
+          chfIbanDesc: "Sie können dieses Konto für Spenden in Schweizer Franken verwenden",
+          swiftTitle: "SWIFT-Code:",
+          copyButton: "IBAN kopieren",
+          copySwiftButton: "SWIFT-Code kopieren",
+          socialTitle: "Unsere Social-Media-Konten",
+          copyright: "© 2025 Furkan Elmas. Alle Rechte vorbehalten.",
+          bankRecipient: "Kuveyt Turk Bank | <strong>Empfänger: Furkan Elmas</strong>"
         }
       };
 
@@ -425,10 +463,31 @@
       const languageToggle = document.getElementById('languageToggle');
       let currentLang = 'tr';
       
-      languageToggle.addEventListener('click', () => {
-        const newLang = currentLang === 'tr' ? 'en' : 'tr';
-        currentLang = newLang;
-        updateLanguage(newLang);
+      // Dil seçeneklerini göster/gizle
+      languageToggle.addEventListener('click', (e) => {
+        const dropdown = document.querySelector('.language-dropdown');
+        dropdown.classList.toggle('show');
+        e.stopPropagation();
+      });
+
+      // Sayfa herhangi bir yerine tıklandığında dropdown'ı kapat
+      document.addEventListener('click', () => {
+        const dropdown = document.querySelector('.language-dropdown');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      // Dil seçeneklerine tıklama
+      document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const newLang = option.dataset.lang;
+          currentLang = newLang;
+          updateLanguage(newLang);
+          document.querySelector('.lang-text').textContent = newLang.toUpperCase();
+          document.querySelector('.language-dropdown').classList.remove('show');
+        });
       });
 
       // Sayfa yüklendiğinde Türkçe metni göster
