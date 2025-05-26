@@ -1090,7 +1090,7 @@ footer {
 
 .target-info {
   background: #e3eafc;
-  padding: 20px;
+  padding: 16px;
   border-radius: 12px;
   margin-bottom: 24px;
   text-align: center;
@@ -1102,8 +1102,20 @@ footer {
   font-size: 1.1rem;
 }
 
+.target-info p:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a365d;
+}
+
+.target-info p:last-child {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #3182ce;
+}
+
 .target-amount {
-  font-size: 1.5rem !important;
+  font-size: 1.8rem !important;
   font-weight: 700;
   color: #1a365d !important;
   margin: 16px 0 !important;
@@ -1251,16 +1263,16 @@ footer {
 
 .social-links-inline {
   display: flex;
-  gap: 12px;
-  margin: 8px 0;
+  gap: 20px;
+  margin: 12px 0;
   flex-wrap: wrap;
 }
 
 .social-link-inline {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: 8px;
+  padding: 8px 16px;
   background: #fff;
   border-radius: 6px;
   color: #2d3748;
