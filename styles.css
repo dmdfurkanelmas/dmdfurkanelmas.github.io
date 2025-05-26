@@ -1075,4 +1075,170 @@ footer {
 
 .iban-box:nth-child(5) h3::before {
   content: 'Fr';
+}
+
+.help-content {
+  padding: 20px;
+}
+
+.help-title {
+  color: #1a365d;
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.target-info {
+  background: #e3eafc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.target-info p {
+  margin: 8px 0;
+  color: #2d3748;
+  font-size: 1.1rem;
+}
+
+.target-amount {
+  font-size: 1.3rem !important;
+  font-weight: 700;
+  color: #1a365d !important;
+}
+
+.donation-examples {
+  margin-bottom: 32px;
+}
+
+.donation-examples h4 {
+  color: #1a365d;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.example-list {
+  list-style: none;
+  padding: 0;
+}
+
+.example-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.example-list li:hover {
+  transform: translateX(8px);
+  background: #edf2f7;
+}
+
+.example-icon {
+  font-size: 1.2rem;
+  color: #3182ce;
+}
+
+.example-text {
+  flex: 1;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.example-result {
+  color: #3182ce;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.awareness-section {
+  background: #e3eafc;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.awareness-section h4 {
+  color: #1a365d;
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.awareness-list {
+  list-style: none;
+  padding: 0;
+}
+
+.awareness-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.awareness-list li:hover {
+  transform: translateX(8px);
+  background: #f8fafc;
+}
+
+.awareness-icon {
+  font-size: 1.2rem;
+  color: #3182ce;
+}
+
+.awareness-text {
+  color: #2d3748;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .example-list li {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .example-result {
+    white-space: normal;
+  }
+
+  .target-amount {
+    font-size: 1.2rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-content {
+    padding: 15px;
+  }
+
+  .help-title {
+    font-size: 1.2rem;
+  }
+
+  .target-info {
+    padding: 15px;
+  }
+
+  .target-info p {
+    font-size: 1rem;
+  }
+
+  .target-amount {
+    font-size: 1.1rem !important;
+  }
+
+  .example-list li,
+  .awareness-list li {
+    padding: 10px;
+  }
 } 
