@@ -39,6 +39,46 @@
   <title>DMD Kas Hastası Furkan Elmas'a Umut Ol</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .quick-iban-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 15px auto;
+      padding: 12px 24px;
+      background-color: #1a365d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .quick-iban-button:hover {
+      background-color: #2a4a7d;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .quick-iban-button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .quick-iban-button i {
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .quick-iban-button {
+        width: 90%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
   <header role="banner">
@@ -50,6 +90,10 @@
         <button class="lang-option" data-lang="en">EN</button>
         <button class="lang-option" data-lang="de">DE</button>
       </div>
+      <button id="quickIbanButton" class="quick-iban-button" aria-label="IBAN bilgilerine hızlı erişim">
+        <i class="fas fa-university"></i>
+        <span>IBAN'a Hızlı Erişim</span>
+      </button>
     </div>
   </header>
 
@@ -370,7 +414,8 @@
               text: "500 kişi, <strong>10.000 TL</strong> bağışlasa:",
               result: "→ <strong>5.000.000 TL</strong> toplanır → Hedefin yaklaşık <strong>%4,4'ü</strong> tamamlanır"
             }
-          ]
+          ],
+          quickIbanButton: "IBAN'a Hızlı Erişim",
         },
         en: {
           copiedText: "Copied!",
@@ -443,7 +488,8 @@
               text: "If 500 people donate <strong>$10,000</strong>:",
               result: "→ <strong>$5,000,000</strong> raised → About <strong>4.4%</strong> of the goal completed"
             }
-          ]
+          ],
+          quickIbanButton: "Quick Access to IBAN",
         },
         de: {
           copiedText: "Kopiert!",
@@ -516,7 +562,8 @@
               text: "Wenn 500 Menschen <strong>10.000 TL</strong> spenden:",
               result: "→ <strong>5.000.000 TL</strong> gesammelt → Etwa <strong>4,4%</strong> des Ziels erreicht"
             }
-          ]
+          ],
+          quickIbanButton: "Schnellzugriff auf IBAN",
         }
       };
 
@@ -618,6 +665,9 @@
             <span class="example-result">${example.result}</span>
           </li>
         `).join('');
+
+        // Update quick IBAN button text
+        document.querySelector('#quickIbanButton span').textContent = t.quickIbanButton;
       }
 
       // Kopyalama işlevselliği
@@ -729,6 +779,12 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
+
+      // Smooth scroll to IBAN section
+      document.getElementById('quickIbanButton').addEventListener('click', function() {
+        const ibanSection = document.querySelector('.donation-section');
+        ibanSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
   </script>
 </body>
