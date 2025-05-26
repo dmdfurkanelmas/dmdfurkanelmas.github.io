@@ -226,7 +226,7 @@
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
           <span id="bankRecipient">Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong></span>
         </div>
-        <div class="iban-list">
+        <div class="iban-list" id="ibanList">
           <div class="iban-box iban-tl">
             <h3>TL IBAN</h3>
             <div class="iban-description">Bu hesaba Türk Lirası cinsinden bağış yapabilirsiniz</div>
@@ -782,8 +782,8 @@
 
       // Smooth scroll to IBAN section
       document.getElementById('quickIbanButton').addEventListener('click', function() {
-        const ibanSection = document.querySelector('.donation-section');
-        ibanSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const ibanList = document.getElementById('ibanList');
+        ibanList.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   </script>
