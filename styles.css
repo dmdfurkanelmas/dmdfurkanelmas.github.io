@@ -971,4 +971,87 @@ footer {
   .language-toggle:hover i.fa-chevron-down {
     transform: none;
   }
+}
+
+.language-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.lang-option {
+  background: #e3eafc;
+  color: #1a365d;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(26,54,93,0.07);
+}
+
+.lang-option:hover {
+  background: #c3dafe;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26,54,93,0.12);
+}
+
+.lang-option.active {
+  background: #1a365d;
+  color: white;
+  box-shadow: 0 4px 12px rgba(26,54,93,0.15);
+}
+
+.lang-option:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49,130,206,0.3);
+}
+
+/* Mobil cihazlar için düzenleme */
+@media (max-width: 480px) {
+  .language-buttons {
+    gap: 6px;
+  }
+
+  .lang-option {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Çok küçük ekranlar için ek düzenleme */
+@media (max-width: 360px) {
+  .language-buttons {
+    gap: 4px;
+  }
+
+  .lang-option {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Yüksek kontrast modu için düzenleme */
+@media (prefers-contrast: high) {
+  .lang-option {
+    border: 2px solid #1a365d;
+  }
+  
+  .lang-option.active {
+    border-color: white;
+  }
+}
+
+/* Reduced motion tercihi için düzenleme */
+@media (prefers-reduced-motion: reduce) {
+  .lang-option {
+    transition: none;
+  }
+  
+  .lang-option:hover {
+    transform: none;
+  }
 } 

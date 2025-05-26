@@ -45,16 +45,11 @@
     <div class="container">
       <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic" loading="lazy" width="120" height="120">
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
-      <button id="languageToggle" class="language-toggle" aria-label="Dili değiştir">
-        <i class="fas fa-globe"></i>
-        <span class="lang-text">TR</span>
-        <i class="fas fa-chevron-down"></i>
-        <div class="language-dropdown">
-          <button class="lang-option" data-lang="tr">TR</button>
-          <button class="lang-option" data-lang="en">EN</button>
-          <button class="lang-option" data-lang="de">DE</button>
-        </div>
-      </button>
+      <div class="language-buttons">
+        <button class="lang-option active" data-lang="tr">TR</button>
+        <button class="lang-option" data-lang="en">EN</button>
+        <button class="lang-option" data-lang="de">DE</button>
+      </div>
     </div>
   </header>
 
@@ -460,7 +455,7 @@
       });
 
       // Dil değiştirme işlevselliği
-      const languageToggle = document.getElementById('languageToggle');
+      const languageToggle = document.querySelector('.language-buttons');
       let currentLang = 'tr';
       
       // Dil seçeneklerini göster/gizle
