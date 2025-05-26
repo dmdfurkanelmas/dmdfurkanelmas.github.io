@@ -317,8 +317,10 @@
           currentAmount: "28.999 USD",
           progressPercentage: "%1",
           goalMessage: "Her bağış bir umut, her umut bir hayat...",
-          valilikText: "Bu kampanya Tokat Valiliği tarafından onaylanmıştır.",
+          valilikText: "Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.",
           permissionNo: "İzin No:",
+          permissionNumber: "60.2025.3153",
+          permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
           tlIbanTitle: "TL IBAN",
           tlIbanDesc: "Bu hesaba Türk Lirası cinsinden bağış yapabilirsiniz",
           usdIbanTitle: "USD IBAN",
@@ -388,8 +390,10 @@
           currentAmount: "28,999 USD",
           progressPercentage: "1%",
           goalMessage: "Every donation is a hope, every hope is a life...",
-          valilikText: "This campaign is approved by the Tokat Governorship.",
+          valilikText: "This campaign is approved by the <strong>Tokat Governorship</strong>.",
           permissionNo: "Permission No:",
+          permissionNumber: "60.2025.3153",
+          permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
           tlIbanTitle: "TRY IBAN",
           tlIbanDesc: "You can make donations in Turkish Lira to this account",
           usdIbanTitle: "USD IBAN",
@@ -459,8 +463,10 @@
           currentAmount: "28.999 USD",
           progressPercentage: "1%",
           goalMessage: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
-          valilikText: "Diese Kampagne wird von der Provinzverwaltung Tokat genehmigt.",
+          valilikText: "Diese Kampagne wird von der <strong>Provinzverwaltung Tokat</strong> genehmigt.",
           permissionNo: "Genehmigungsnummer:",
+          permissionNumber: "60.2025.3153",
+          permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
           tlIbanTitle: "TRY IBAN",
           tlIbanDesc: "Sie können Spenden in Türkischer Lira auf dieses Konto überweisen",
           usdIbanTitle: "USD IBAN",
@@ -575,8 +581,9 @@
         document.querySelector('.goal-text').innerHTML = `${t.goalText} <strong>${t.goalAmount}</strong>`;
         document.querySelector('.progress-text').innerHTML = `${t.progressText} <strong>${t.currentAmount}</strong> (${t.progressPercentage})`;
         document.querySelector('.slogan').textContent = t.goalMessage;
-        document.querySelector('.valilik-izin p:first-child').textContent = t.valilikText;
-        document.querySelector('.valilik-izin p:last-child').textContent = t.permissionNo;
+        document.querySelector('.valilik-izin p:first-child').innerHTML = t.valilikText;
+        document.querySelector('.valilik-izin p:last-child').innerHTML = 
+          `${t.permissionNo} <a href="${t.permissionLink}" target="_blank" rel="noopener noreferrer">${t.permissionNumber} | Mustafa Elmas</a>`;
         
         // Update IBAN boxes
         const ibanBoxes = document.querySelectorAll('.iban-box');
