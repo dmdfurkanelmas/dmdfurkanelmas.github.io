@@ -704,6 +704,7 @@
         document.querySelector('#quickIbanButton span').textContent = t.quickIbanButton;
         document.querySelector('.quick-credit-card-button span').textContent = t.quickCreditCardButton;
         document.querySelector('.quick-buttons-description').textContent = t.quickButtonsDescription;
+        addQuickIbanButtonListener();
       }
 
       // Kopyalama işlevselliği
@@ -815,13 +816,19 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
-
-      // Smooth scroll to IBAN section
-      document.getElementById('quickIbanButton').addEventListener('click', function() {
-        const bankInfo = document.getElementById('bankInfo');
-        bankInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+      addQuickIbanButtonListener();
     });
+
+    function addQuickIbanButtonListener() {
+      var quickIbanButton = document.getElementById('quickIbanButton');
+      var bankInfo = document.getElementById('bankInfo');
+      if (quickIbanButton && bankInfo) {
+        quickIbanButton.onclick = function(e) {
+          e.preventDefault();
+          bankInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+      }
+    }
   </script>
 </body>
 </html>
