@@ -94,6 +94,10 @@
         <i class="fas fa-university"></i>
         <span>IBAN'a Hızlı Erişim</span>
       </button>
+      <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-credit-card-button" aria-label="Kredi kartı ile bağış yap">
+        <i class="fas fa-credit-card"></i>
+        <span>Kredi Kartı ile Bağış Yap</span>
+      </a>
     </div>
   </header>
 
@@ -225,6 +229,14 @@
         <div class="bank-header" id="bankInfo">
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
           <span id="bankRecipient">Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong></span>
+        </div>
+        <div class="credit-card-donation">
+          <h3>Kredi Kartı ile Bağış Yap</h3>
+          <p class="credit-card-description">Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz</p>
+          <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="credit-card-button">
+            <i class="fas fa-credit-card"></i>
+            <span>Kredi Kartı ile Bağış Yap</span>
+          </a>
         </div>
         <div class="iban-list" id="ibanList">
           <div class="iban-box iban-tl">
@@ -416,6 +428,7 @@
             }
           ],
           quickIbanButton: "IBAN'a Hızlı Erişim",
+          quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
         },
         en: {
           copiedText: "Copied!",
@@ -490,6 +503,7 @@
             }
           ],
           quickIbanButton: "Quick Access to IBAN",
+          quickCreditCardButton: "Donate with Credit Card",
         },
         de: {
           copiedText: "Kopiert!",
@@ -564,6 +578,7 @@
             }
           ],
           quickIbanButton: "Schnellzugriff auf IBAN",
+          quickCreditCardButton: "Mit Kreditkarte spenden",
         }
       };
 
@@ -657,6 +672,11 @@
         document.querySelector('.copyright').textContent = t.copyright;
         document.querySelector('#bankRecipient').innerHTML = t.bankRecipient;
 
+        // Update credit card donation section
+        document.querySelector('.credit-card-donation h3').textContent = t.creditCardTitle;
+        document.querySelector('.credit-card-description').textContent = t.creditCardDesc;
+        document.querySelector('.credit-card-button span').textContent = t.creditCardButton;
+
         // Update donation examples
         const exampleList = document.querySelector('.example-list');
         exampleList.innerHTML = t.donationExamples.map(example => `
@@ -668,6 +688,7 @@
 
         // Update quick IBAN button text
         document.querySelector('#quickIbanButton span').textContent = t.quickIbanButton;
+        document.querySelector('.quick-credit-card-button span').textContent = t.quickCreditCardButton;
       }
 
       // Kopyalama işlevselliği

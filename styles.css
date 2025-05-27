@@ -1317,4 +1317,121 @@ footer {
   .social-link-inline i {
     font-size: 1rem;
   }
+}
+
+.credit-card-donation {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.credit-card-donation h3 {
+  color: #1a365d;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+}
+
+.credit-card-description {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.credit-card-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1a365d;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.credit-card-button:hover {
+  background-color: #2a4a7d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.credit-card-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.credit-card-button i {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .credit-card-button {
+    width: 90%;
+    justify-content: center;
+  }
+}
+
+.quick-iban-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px auto;
+  padding: 12px 24px;
+  background-color: #1a365d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quick-credit-card-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px auto;
+  padding: 12px 24px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.quick-credit-card-button:hover {
+  background-color: #2c5282;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.quick-credit-card-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.quick-credit-card-button i {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .quick-iban-button,
+  .quick-credit-card-button {
+    width: 90%;
+    justify-content: center;
+  }
 } 
