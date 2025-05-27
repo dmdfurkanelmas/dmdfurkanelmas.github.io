@@ -607,13 +607,25 @@
             element.innerHTML = content.replace(/\n\n/g, '<br><br>');
           }
         };
-
+        
         // Update all text content
         document.querySelector('.main-title').textContent = t.title;
         document.querySelector('#dmd-info-title').textContent = t.dmdTitle;
         document.querySelectorAll('.accordion')[1].textContent = t.storyTitle;
         document.querySelectorAll('.accordion')[2].textContent = t.treatmentTitle;
         document.querySelectorAll('.accordion')[3].textContent = t.howToHelpTitle;
+        
+        // Update quick access buttons
+        const quickIbanButton = document.getElementById('quickIbanButton');
+        const quickCreditCardButton = document.querySelector('.quick-credit-card-button');
+        
+        if (quickIbanButton) {
+          quickIbanButton.querySelector('span').textContent = t.quickIbanButton;
+        }
+        
+        if (quickCreditCardButton) {
+          quickCreditCardButton.querySelector('span').textContent = t.quickCreditCardButton;
+        }
         
         // Update help section content
         document.querySelector('.donation-examples h4').textContent = t.donationExamplesTitle;
@@ -699,12 +711,6 @@
             <span class="example-result">${example.result}</span>
           </li>
         `).join('');
-
-        // Update quick IBAN button text
-        const quickIbanButton = document.getElementById('quickIbanButton');
-        if (quickIbanButton) {
-          quickIbanButton.querySelector('span').textContent = t.quickIbanButton;
-        }
       }
 
       // Kopyalama işlevselliği
