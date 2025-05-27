@@ -701,10 +701,10 @@
         `).join('');
 
         // Update quick IBAN button text
-        document.querySelector('#quickIbanButton span').textContent = t.quickIbanButton;
-        document.querySelector('.quick-credit-card-button span').textContent = t.quickCreditCardButton;
-        document.querySelector('.quick-buttons-description').textContent = t.quickButtonsDescription;
-        addQuickIbanButtonListener();
+        const quickIbanButton = document.getElementById('quickIbanButton');
+        if (quickIbanButton) {
+          quickIbanButton.querySelector('span').textContent = t.quickIbanButton;
+        }
       }
 
       // Kopyalama işlevselliği
@@ -814,21 +814,26 @@
         });
       });
 
+      // IBAN butonu için event listener
+      const quickIbanButton = document.getElementById('quickIbanButton');
+      if (quickIbanButton) {
+        quickIbanButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const bankInfo = document.getElementById('bankInfo');
+          if (bankInfo) {
+            const yOffset = -20; // Üstten biraz boşluk bırak
+            const y = bankInfo.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({
+              top: y,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
-      addQuickIbanButtonListener();
     });
-
-    function addQuickIbanButtonListener() {
-      var quickIbanButton = document.getElementById('quickIbanButton');
-      var bankInfo = document.getElementById('bankInfo');
-      if (quickIbanButton && bankInfo) {
-        quickIbanButton.onclick = function(e) {
-          e.preventDefault();
-          bankInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        };
-      }
-    }
   </script>
 </body>
 </html>
