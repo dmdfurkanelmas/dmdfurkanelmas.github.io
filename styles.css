@@ -271,8 +271,14 @@ body {
 
 .iban-box h3::before {
   content: '';
-  font-size: 1.2rem;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
   margin-right: 8px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .iban-box .iban-description {
@@ -1059,22 +1065,37 @@ footer {
 
 .iban-tl h3::before {
   content: '₺';
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a365d;
 }
 
-.iban-box:nth-child(2) h3::before {
+.iban-box:nth-of-type(3) h3::before {
   content: '$';
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a365d;
 }
 
-.iban-box:nth-child(3) h3::before {
+.iban-box:nth-of-type(4) h3::before {
   content: '€';
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a365d;
 }
 
-.iban-box:nth-child(4) h3::before {
+.iban-box:nth-of-type(5) h3::before {
   content: '£';
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a365d;
 }
 
-.iban-box:nth-child(5) h3::before {
-  content: 'Fr';
+.iban-box:nth-of-type(6) h3::before {
+  content: '₣';
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #1a365d;
 }
 
 .help-content {
