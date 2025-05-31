@@ -95,7 +95,7 @@
           <i class="fas fa-university"></i>
           <span>IBAN'a Hızlı Erişim</span>
         </button>
-        <a href="#" class="quick-iban-button quick-credit-card-button" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
+        <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-credit-card-button" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
           <i class="fas fa-credit-card"></i>
           <span>Kredi Kartı ile Bağış Yap</span>
         </a>
@@ -229,11 +229,11 @@
         </div>
         <div class="credit-card-box">
           <h3>Kredi Kartı ile Bağış</h3>
-          <div class="credit-card-description">Çok yakında kredi kartı ile bağış seçeneğimiz aktif olacaktır. Şu an için IBAN üzerinden bağış yapabilirsiniz.</div>
-          <div class="credit-card-button disabled">
+          <div class="credit-card-description">Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.</div>
+          <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="credit-card-button">
             <i class="fas fa-credit-card"></i>
-            <span>Çok Yakında Aktif Olacak</span>
-          </div>
+            <span>Kredi Kartı ile Bağış Yap</span>
+          </a>
         </div>
         <div class="bank-header" id="bankInfo">
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
@@ -430,10 +430,10 @@
           ],
           quickIbanButton: "IBAN'a Hızlı Erişim",
           quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
-          quickButtonsDescription: "Kredi kartınızla hızlı ve güvenli bir şekilde bağış yaparak Furkan'ın tedavi yolculuğuna destek olabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır. Kredi kartı bilgileriniz kesinlikle sistemde tutulmaz. Bağışınız karşılığında sunulan ürün sembolik ve dijitaldir, fiziksel bir gönderim yapılmaz; dijital ürününüz e-posta yoluyla tarafınıza iletilecektir. Desteğiniz Furkan'a umut oluyor, teşekkür ederiz!",
+          quickButtonsDescription: "Kredi kartınızla hızlı ve güvenli bir şekilde bağış yaparak Furkan'ın tedavi yolculuğuna destek olabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
           creditCardTitle: "Kredi Kartı ile Bağış",
-          creditCardDesc: "Çok yakında kredi kartı ile bağış seçeneğimiz aktif olacaktır. Şu an için IBAN üzerinden bağış yapabilirsiniz.",
-          creditCardButton: "Çok Yakında Aktif Olacak",
+          creditCardDesc: "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
+          creditCardButton: "Kredi Kartı ile Bağış Yap",
         },
         en: {
           copiedText: "Copied!",
@@ -505,10 +505,10 @@
           ],
           quickIbanButton: "Quick Access to IBAN",
           quickCreditCardButton: "Donate with Credit Card",
-          quickButtonsDescription: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure.",
+          quickButtonsDescription: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure and SSL certificate protection.",
           creditCardTitle: "Donate by Credit Card",
-          creditCardDesc: "Credit card donation option will be available very soon. For now, you can donate via IBAN.",
-          creditCardButton: "Coming Soon",
+          creditCardDesc: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure and SSL certificate protection.",
+          creditCardButton: "Donate with Credit Card",
         },
         de: {
           copiedText: "Kopiert!",
@@ -580,10 +580,10 @@
           ],
           quickIbanButton: "Schnellzugriff auf IBAN",
           quickCreditCardButton: "Mit Kreditkarte spenden",
-          quickButtonsDescription: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur sicher.",
+          quickButtonsDescription: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur und SSL-Zertifikatsschutz sicher.",
           creditCardTitle: "Mit Kreditkarte spenden",
-          creditCardDesc: "Die Kreditkarten-Spendeoption wird sehr bald verfügbar sein. Derzeit können Sie über IBAN spenden.",
-          creditCardButton: "Demnächst verfügbar",
+          creditCardDesc: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur und SSL-Zertifikatsschutz sicher.",
+          creditCardButton: "Mit Kreditkarte spenden",
         }
       };
 
@@ -823,23 +823,6 @@
           if (bankInfo) {
             const yOffset = -20; // Üstten biraz boşluk bırak
             const y = bankInfo.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({
-              top: y,
-              behavior: 'smooth'
-            });
-          }
-        });
-      }
-
-      // Kredi kartı butonu için event listener
-      const quickCreditCardButton = document.getElementById('quickCreditCardButton');
-      if (quickCreditCardButton) {
-        quickCreditCardButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          const creditCardBox = document.querySelector('.credit-card-box');
-          if (creditCardBox) {
-            const yOffset = -20; // Üstten biraz boşluk bırak
-            const y = creditCardBox.getBoundingClientRect().top + window.pageYOffset + yOffset;
             window.scrollTo({
               top: y,
               behavior: 'smooth'
