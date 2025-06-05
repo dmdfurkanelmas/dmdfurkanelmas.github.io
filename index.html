@@ -39,56 +39,25 @@
   <title>DMD Kas Hastası Furkan Elmas'a Umut Ol</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    .quick-iban-button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 15px auto;
-      padding: 12px 24px;
-      background-color: #1a365d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .quick-iban-button:hover {
-      background-color: #2a4a7d;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .quick-iban-button:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .quick-iban-button i {
-      font-size: 18px;
-    }
-
-    @media (max-width: 768px) {
-      .quick-iban-button {
-        width: 90%;
-        justify-content: center;
-      }
-    }
-  </style>
 </head>
 <body>
   <header role="banner">
     <div class="container">
       <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic" loading="lazy" width="120" height="120">
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
+      <div class="header-bayram">
+        <div class="header-bayram-message">🎉 Hayırlı Bayramlar 🎉</div>
+      </div>
       <div class="language-buttons">
         <button class="lang-option active" data-lang="tr">TR</button>
         <button class="lang-option" data-lang="en">EN</button>
         <button class="lang-option" data-lang="de">DE</button>
+      </div>
+      <div class="header-bayram">
+        <a href="https://www.shopier.com/36493666" target="_blank" rel="noopener noreferrer" class="header-bayram-button" aria-label="Furkan'a bayram harçlığı gönder">
+          <i class="fas fa-gift"></i>
+          <span>Bayram Harçlığı (Kredi Kartı ile)</span>
+        </a>
       </div>
       <div class="quick-buttons">
         <button id="quickIbanButton" class="quick-iban-button" aria-label="IBAN bilgilerine hızlı erişim">
@@ -365,6 +334,8 @@
           thankYouMessage: "Yapacağınız bağışlar için teşekkür ederiz. Furkan'a umut oldunuz 💙",
           copyError: "Kopyalama işlemi başarısız oldu. Lütfen manuel olarak kopyalayın.",
           title: "DMD Kas Hastası Furkan Elmas'a Umut Ol",
+          bayramMessage: "🎉 Hayırlı Bayramlar 🎉",
+          bayramButton: "Bayram Harçlığı (Kredi Kartı ile)",
           dmdTitle: "DMD Nedir?",
           dmdContent: "Duchenne Musküler Distrofi (DMD), çoğunlukla erkek çocuklarda görülen <strong>genetik, ilerleyici ve ölümcül bir kas hastalığıdır</strong>. Bu hastalıkta, kasların onarımı ve gücü için gerekli olan <strong>\"distrofin\" proteini</strong> ya hiç üretilemez ya da hatalı üretilir. Sonuç olarak kaslar zamanla zayıflar ve görevlerini yerine getiremez hâle gelir.\n\nBelirtiler genellikle <strong>2-5 yaş arasında</strong> ortaya çıkar. Çocuklar yürümekte, koşmakta ve merdiven çıkmakta zorlanmaya başlar. İlerleyen yıllarda kas erimesi hızlanır, <strong>tekerlekli sandalyeye bağımlılık</strong> ve solunum ile kalp kaslarının etkilenmesi görülür. Genellikle <strong>genç yaşta</strong> hayati organların işlev kaybı nedeniyle kayıplar yaşanabilir.",
           storyTitle: "Furkan'ın DMD ile Yaşam Mücadelesi",
@@ -397,7 +368,7 @@
           copySwiftButton: "SWIFT Kodunu Kopyala",
           socialTitle: "Sosyal Medya Hesaplarımız",
           copyright: "© 2025 Furkan Elmas. Tüm hakları saklıdır.",
-          bankRecipient: "Kuveyt Türk Bankası | <strong>Alıcı: Furkan Elmas</strong>",
+          bankRecipient: "Kuveyt Türk Bank | <strong>Alıcı: Furkan Elmas</strong>",
           howToHelpTitle: "Furkan'a Nasıl Destek Olabilirim?",
           donationExamplesTitle: "Bağış Yaparak Destek Olabilirsiniz",
           awarenessTitle: "Takip Edip Farkındalık Oluşturarak Destek Olabilirsiniz",
@@ -440,6 +411,8 @@
           thankYouMessage: "Thank you for your donations. You've given hope to Furkan 💙",
           copyError: "Copy operation failed. Please copy manually.",
           title: "Be Hope for Furkan Elmas with DMD",
+          bayramMessage: "🎉 Happy Eid al-Adha 🎉",
+          bayramButton: "Eid Gift (Credit Card)",
           dmdTitle: "What is DMD?",
           dmdContent: "Duchenne Muscular Dystrophy (DMD) is a <strong>genetic, progressive, and fatal muscle disease</strong> that primarily affects boys. In this disease, the <strong>\"dystrophin\" protein</strong>, which is essential for muscle repair and strength, is either not produced or produced incorrectly. As a result, muscles gradually weaken and lose their function.\n\nSymptoms typically appear between <strong>ages 2-5</strong>. Children begin to have difficulty walking, running, and climbing stairs. In later years, muscle wasting accelerates, leading to <strong>wheelchair dependency</strong> and affecting respiratory and heart muscles. Loss of life can occur at a <strong>young age</strong> due to vital organ failure.",
           storyTitle: "Furkan's Life Struggle with DMD",
@@ -515,6 +488,8 @@
           thankYouMessage: "Vielen Dank für Ihre Spenden. Sie haben Furkan Hoffnung gegeben 💙",
           copyError: "Kopieroperation fehlgeschlagen. Bitte manuell kopieren.",
           title: "Seien Sie Hoffnung für Furkan Elmas mit DMD",
+          bayramMessage: "🎉 Frohes Opferfest 🎉",
+          bayramButton: "Opferfest-Geschenk (Kreditkarte)",
           dmdTitle: "Was ist DMD?",
           dmdContent: "Die Duchenne-Muskeldystrophie (DMD) ist eine <strong>genetische, fortschreitende und tödliche Muskelerkrankung</strong>, die hauptsächlich Jungen betrifft. Bei dieser Krankheit wird das für die Muskelreparatur und -stärke essentielle <strong>\"Dystrophin\"-Protein</strong> entweder nicht produziert oder fehlerhaft produziert. Infolgedessen schwächen sich die Muskeln allmählich ab und verlieren ihre Funktion.\n\nDie Symptome treten typischerweise im Alter von <strong>2-5 Jahren</strong> auf. Kinder zeigen zunehmend Schwierigkeiten beim Gehen, Laufen und Treppensteigen. In späteren Jahren beschleunigt sich der Muskelschwund, was zu <strong>Rollstuhlabhängigkeit</strong> und Beeinträchtigung der Atmungs- und Herzmuskulatur führt. Der Verlust des Lebens kann in <strong>jungen Jahren</strong> aufgrund von Versagen lebenswichtiger Organe auftreten.",
           storyTitle: "Furkans Lebenskampf mit DMD",
@@ -705,6 +680,18 @@
             <span class="example-result">${example.result}</span>
           </li>
         `).join('');
+
+        // Update header bayram elements
+        const headerBayramMessage = document.querySelector('.header-bayram-message');
+        const headerBayramButton = document.querySelector('.header-bayram-button');
+        
+        if (headerBayramMessage) {
+          headerBayramMessage.textContent = t.bayramMessage;
+        }
+        
+        if (headerBayramButton) {
+          headerBayramButton.querySelector('span').textContent = t.bayramButton;
+        }
       }
 
       // Kopyalama işlevselliği
