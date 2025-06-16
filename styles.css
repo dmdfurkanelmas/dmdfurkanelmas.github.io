@@ -182,9 +182,11 @@ body {
   margin: 0 0 12px 0;
 }
 
-.goal-text strong {
-  color: #3182ce;
-  font-size: 1.6rem;
+.goal-amount {
+  color: #2980e6;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
 }
 
 .slogan {
@@ -536,7 +538,7 @@ body {
     font-size: 1.2rem;
   }
 
-  .goal-text strong {
+  .goal-amount {
     font-size: 1.4rem;
   }
 
@@ -1470,5 +1472,99 @@ footer {
 
   .quick-iban-button {
     width: 100%;
+  }
+}
+
+.donation-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+  padding: 0 15px;
+}
+
+.donation-box {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #e2e8f0;
+}
+
+.donation-box.collected::before {
+  background: #48bb78;
+}
+
+.donation-box.remaining::before {
+  background: #f56565;
+}
+
+.donation-box:hover {
+  transform: translateY(-5px);
+}
+
+.donation-box h3 {
+  color: #1a365d;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.donation-box .amount {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.donation-box.collected .amount {
+  color: #48bb78;
+}
+
+.donation-box.remaining .amount {
+  color: #f56565;
+}
+
+.donation-box .percentage {
+  font-size: 1.6rem;
+  color: #4a5568;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .donation-status {
+    flex-direction: column;
+  }
+  
+  .donation-box {
+    margin-bottom: 15px;
+  }
+
+  .donation-box h3 {
+    font-size: 1rem;
+  }
+
+  .donation-box .amount {
+    font-size: 1.2rem;
+  }
+
+  .donation-box .percentage {
+    font-size: 1.4rem;
   }
 } 

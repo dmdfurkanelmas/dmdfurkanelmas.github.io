@@ -39,46 +39,6 @@
   <title>DMD Kas Hastası Furkan Elmas'a Umut Ol</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    .quick-iban-button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 15px auto;
-      padding: 12px 24px;
-      background-color: #1a365d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .quick-iban-button:hover {
-      background-color: #2a4a7d;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .quick-iban-button:active {
-      transform: translateY(0);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .quick-iban-button i {
-      font-size: 18px;
-    }
-
-    @media (max-width: 768px) {
-      .quick-iban-button {
-        width: 90%;
-        justify-content: center;
-      }
-    }
-  </style>
 </head>
 <body>
   <header role="banner">
@@ -216,12 +176,23 @@
       <section class="donation-section" aria-labelledby="donation-title">
         <h2 id="donation-title">Bağış Yap</h2>
         <div class="donation-goal" role="status" aria-live="polite">
-          <p class="goal-text">Hedefimiz: <strong>2.899.907 USD</strong></p>
+          <p class="goal-text">Hedefimiz: <span class="goal-amount">2.899.907 USD</span></p>
           <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
             <div class="progress" style="width: 15%"></div>
           </div>
-          <p class="progress-text">Şu ana kadar toplanan: <strong>434.986 USD</strong> (%15)</p>
           <p class="slogan">Her bağış bir umut, her umut bir hayat...</p>
+        </div>
+        <div class="donation-status">
+          <div class="donation-box collected">
+            <h3>Toplanan Bağış</h3>
+            <div class="amount">434.986 USD</div>
+            <div class="percentage">%15</div>
+          </div>
+          <div class="donation-box remaining">
+            <h3>İhtiyaç Duyulan Bağış</h3>
+            <div class="amount">2.464.921 USD</div>
+            <div class="percentage">%85</div>
+          </div>
         </div>
         <div class="valilik-izin">
           <p>Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.</p>
@@ -428,12 +399,17 @@
               result: "→ <strong>5.000.000 TL</strong> toplanır → Hedefin yaklaşık <strong>%4,4'ü</strong> tamamlanır"
             }
           ],
-          quickIbanButton: "IBAN'a Hızlı Erişim",
-          quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
-          quickButtonsDescription: "Kredi kartınızla hızlı ve güvenli bir şekilde bağış yaparak Furkan'ın tedavi yolculuğuna destek olabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
+          collectedDonation: "Toplanan Bağış",
+          remainingDonation: "İhtiyaç Duyulan Bağış",
+          goalText: "Hedefimiz:",
+          goalAmount: "2.899.907 USD",
+          collectedAmount: "434.986 USD",
+          remainingAmount: "2.464.921 USD",
           creditCardTitle: "Kredi Kartı ile Bağış",
           creditCardDesc: "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
           creditCardButton: "Kredi Kartı ile Bağış Yap",
+          quickIbanButton: "IBAN'a Hızlı Erişim",
+          quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
         },
         en: {
           copiedText: "Copied!",
@@ -447,7 +423,7 @@
           treatmentTitle: "Is There a Treatment?",
           treatmentContent: "In recent years, <strong>great hope has emerged</strong> for Duchenne Muscular Dystrophy (DMD). The gene therapy Elevidys, approved by the FDA in 2023, represents a <strong>revolutionary development</strong> in DMD treatment. This treatment is administered through a virus carrying the missing <strong>\"micro-dystrophin\" gene</strong>. This helps preserve muscle tissue and slow disease progression.\n\nCurrently being implemented in the <strong>USA</strong>, this treatment offers a powerful option that can change the course of the disease. However, due to its <strong>high cost</strong>, families are seeking support through donation campaigns.",
           donationTitle: "Make a Donation",
-          goalText: "Our Goal:",
+          goalText: "Our Target:",
           goalAmount: "2,899,907 USD",
           progressText: "Raised so far:",
           currentAmount: "434.986 USD",
@@ -503,12 +479,17 @@
               result: "→ <strong>$5,000,000</strong> raised → About <strong>4.4%</strong> of the goal completed"
             }
           ],
+          collectedDonation: "Collected Donation",
+          remainingDonation: "Needed Donation",
+          goalText: "Our Target:",
+          goalAmount: "2,899,907 USD",
+          collectedAmount: "434,986 USD",
+          remainingAmount: "2,464,921 USD",
+          creditCardTitle: "Donate by Credit Card",
+          creditCardDesc: "You can make a secure donation with your credit card. All payments are processed via Shopier with SSL certificate protection.",
+          creditCardButton: "Donate with Credit Card",
           quickIbanButton: "Quick Access to IBAN",
           quickCreditCardButton: "Donate with Credit Card",
-          quickButtonsDescription: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure and SSL certificate protection.",
-          creditCardTitle: "Donate by Credit Card",
-          creditCardDesc: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure and SSL certificate protection.",
-          creditCardButton: "Donate with Credit Card",
         },
         de: {
           copiedText: "Kopiert!",
@@ -578,12 +559,17 @@
               result: "→ <strong>5.000.000 TL</strong> gesammelt → Etwa <strong>4,4%</strong> des Ziels erreicht"
             }
           ],
+          collectedDonation: "Gesammelte Spende",
+          remainingDonation: "Benötigte Spende",
+          goalText: "Unser Ziel:",
+          goalAmount: "2.899.907 USD",
+          collectedAmount: "434.986 USD",
+          remainingAmount: "2.464.921 USD",
+          creditCardTitle: "Mit Kreditkarte spenden",
+          creditCardDesc: "Sie können sicher mit Ihrer Kreditkarte spenden. Alle Zahlungen werden über Shopier mit SSL-Zertifikat abgewickelt.",
+          creditCardButton: "Mit Kreditkarte spenden",
           quickIbanButton: "Schnellzugriff auf IBAN",
           quickCreditCardButton: "Mit Kreditkarte spenden",
-          quickButtonsDescription: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur und SSL-Zertifikatsschutz sicher.",
-          creditCardTitle: "Mit Kreditkarte spenden",
-          creditCardDesc: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur und SSL-Zertifikatsschutz sicher.",
-          creditCardButton: "Mit Kreditkarte spenden",
         }
       };
 
@@ -598,6 +584,25 @@
             element.innerHTML = content.replace(/\n\n/g, '<br><br>');
           }
         };
+        
+        // Update donation status boxes
+        const donationBoxes = document.querySelectorAll('.donation-status .donation-box');
+        if (donationBoxes.length > 1) {
+          donationBoxes[0].querySelector('.amount').textContent = t.collectedAmount;
+          donationBoxes[1].querySelector('.amount').textContent = t.remainingAmount;
+        }
+        
+        // Update goal text
+        const goalText = document.querySelector('.goal-text');
+        if (goalText) {
+          goalText.innerHTML = `${t.goalText} <strong>${t.goalAmount}</strong>`;
+        }
+        
+        // Update slogan
+        const slogan = document.querySelector('.slogan');
+        if (slogan) {
+          slogan.textContent = t.goalMessage;
+        }
         
         // Update all text content
         document.querySelector('.main-title').textContent = t.title;
@@ -660,9 +665,6 @@
         
         // Update IBAN boxes and other elements
         document.querySelector('#donation-title').textContent = t.donationTitle;
-        document.querySelector('.goal-text').innerHTML = `${t.goalText} <strong>${t.goalAmount}</strong>`;
-        document.querySelector('.progress-text').innerHTML = `${t.progressText} <strong>${t.currentAmount}</strong> (${t.progressPercentage})`;
-        document.querySelector('.slogan').textContent = t.goalMessage;
         document.querySelector('.valilik-izin p:first-child').innerHTML = t.valilikText;
         document.querySelector('.valilik-izin p:last-child').innerHTML = 
           `${t.permissionNo} <a href="${t.permissionLink}" target="_blank" rel="noopener noreferrer">${t.permissionNumber} | Mustafa Elmas</a>`;
@@ -705,6 +707,21 @@
             <span class="example-result">${example.result}</span>
           </li>
         `).join('');
+
+        // Hedef metni ve sloganı güncelle
+        const goalTextElement = document.querySelector('.goal-text');
+        const goalAmountElement = document.querySelector('.goal-amount');
+        const goalMessageElement = document.querySelector('.goal-message');
+        
+        if (goalTextElement) goalTextElement.innerHTML = translations[lang].goalText + ' <span class="goal-amount">' + translations[lang].goalAmount + '</span>';
+        if (goalAmountElement) goalAmountElement.textContent = translations[lang].goalAmount;
+        if (goalMessageElement) goalMessageElement.textContent = translations[lang].goalMessage;
+
+        // Bağış kutularını güncelle
+        const collectedBox = document.querySelector('.donation-box.collected h3');
+        const remainingBox = document.querySelector('.donation-box.remaining h3');
+        if (collectedBox) collectedBox.textContent = translations[lang].collectedDonation;
+        if (remainingBox) remainingBox.textContent = translations[lang].remainingDonation;
       }
 
       // Kopyalama işlevselliği
