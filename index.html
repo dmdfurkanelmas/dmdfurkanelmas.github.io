@@ -220,18 +220,7 @@
           <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
             <div class="progress" style="width: 15%"></div>
           </div>
-          <div class="donation-details">
-            <div class="donation-box collected">
-              <h4>Toplanan Bağış</h4>
-              <div class="amount">434.986 USD</div>
-              <div class="percentage">Hedefin <strong>%15</strong>'i</div>
-            </div>
-            <div class="donation-box remaining">
-              <h4>İhtiyaç Duyulan Bağış</h4>
-              <div class="amount">2.464.921 USD</div>
-              <div class="percentage">Hedefin <strong>%85</strong>'i</div>
-            </div>
-          </div>
+          <p class="progress-text">Şu ana kadar toplanan: <strong>434.986 USD</strong> (%15)</p>
           <p class="slogan">Her bağış bir umut, her umut bir hayat...</p>
         </div>
         <div class="valilik-izin">
@@ -445,15 +434,6 @@
           creditCardTitle: "Kredi Kartı ile Bağış",
           creditCardDesc: "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
           creditCardButton: "Kredi Kartı ile Bağış Yap",
-          collectedTitle: "Toplanan Bağış",
-          remainingTitle: "İhtiyaç Duyulan Bağış",
-          collectedPercentage: "Hedefin <strong>%15</strong>'i",
-          remainingPercentage: "Hedefin <strong>%85</strong>'i",
-          goalText: "Hedefimiz:",
-          progressText: "Şu ana kadar toplanan:",
-          currentAmount: "434.986 USD",
-          progressPercentage: "%15",
-          goalMessage: "Her bağış bir umut, her umut bir hayat...",
         },
         en: {
           copiedText: "Copied!",
@@ -470,8 +450,8 @@
           goalText: "Our Goal:",
           goalAmount: "2,899,907 USD",
           progressText: "Raised so far:",
-          currentAmount: "434,986 USD",
-          progressPercentage: "15%",
+          currentAmount: "434.986 USD",
+          progressPercentage: "%15",
           goalMessage: "Every donation is a hope, every hope is a life...",
           valilikText: "This campaign is approved by the <strong>Tokat Governorship</strong>.",
           permissionNo: "Permission No:",
@@ -529,15 +509,6 @@
           creditCardTitle: "Donate by Credit Card",
           creditCardDesc: "You can make a secure donation with your credit card. Your payments are safe with Shopier infrastructure and SSL certificate protection.",
           creditCardButton: "Donate with Credit Card",
-          collectedTitle: "Total Donations",
-          remainingTitle: "Donations Needed",
-          collectedPercentage: "<strong>15%</strong> of Target",
-          remainingPercentage: "<strong>85%</strong> of Target",
-          goalText: "Our Goal:",
-          progressText: "Total Raised:",
-          currentAmount: "434,986 USD",
-          progressPercentage: "15%",
-          goalMessage: "Every donation is a hope, every hope is a life...",
         },
         de: {
           copiedText: "Kopiert!",
@@ -555,7 +526,7 @@
           goalAmount: "2.899.907 USD",
           progressText: "Bisher gesammelt:",
           currentAmount: "434.986 USD",
-          progressPercentage: "15%",
+          progressPercentage: "%15",
           goalMessage: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
           valilikText: "Diese Kampagne wird von der <strong>Provinzverwaltung Tokat</strong> genehmigt.",
           permissionNo: "Genehmigungsnummer:",
@@ -613,15 +584,6 @@
           creditCardTitle: "Mit Kreditkarte spenden",
           creditCardDesc: "Sie können sicher mit Ihrer Kreditkarte spenden. Ihre Zahlungen sind mit der Shopier-Infrastruktur und SSL-Zertifikatsschutz sicher.",
           creditCardButton: "Mit Kreditkarte spenden",
-          collectedTitle: "Gesammelte Spenden",
-          remainingTitle: "Benötigte Spenden",
-          collectedPercentage: "<strong>15%</strong> des Ziels",
-          remainingPercentage: "<strong>85%</strong> des Ziels",
-          goalText: "Unser Ziel:",
-          progressText: "Gesammelt:",
-          currentAmount: "434.986 USD",
-          progressPercentage: "15%",
-          goalMessage: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
         }
       };
 
@@ -743,15 +705,6 @@
             <span class="example-result">${example.result}</span>
           </li>
         `).join('');
-
-        // Update donation boxes
-        const donationBoxes = document.querySelectorAll('.donation-box');
-        if (donationBoxes.length === 2) {
-          donationBoxes[0].querySelector('h4').textContent = t.collectedTitle;
-          donationBoxes[1].querySelector('h4').textContent = t.remainingTitle;
-          donationBoxes[0].querySelector('.percentage').textContent = t.collectedPercentage;
-          donationBoxes[1].querySelector('.percentage').textContent = t.remainingPercentage;
-        }
       }
 
       // Kopyalama işlevselliği
