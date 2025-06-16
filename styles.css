@@ -272,15 +272,13 @@ body {
 }
 
 .iban-box h3::before {
-  content: '';
+  content: '\1F30D'; /* 🌍 emoji */
   display: inline-block;
   width: 24px;
   height: 24px;
   margin-right: 8px;
   vertical-align: middle;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  font-size: 1.2em;
 }
 
 .iban-box .iban-description {
@@ -1472,6 +1470,19 @@ footer {
 
   .quick-iban-button {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-buttons {
+    gap: 8px;
+  }
+  .quick-iban-button,
+  .quick-credit-card-button {
+    padding: 8px 10px;
+    font-size: 13px;
+    min-width: 0;
+    border-radius: 6px;
   }
 }
 

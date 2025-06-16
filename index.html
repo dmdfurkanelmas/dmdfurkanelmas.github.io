@@ -53,7 +53,11 @@
       <div class="quick-buttons">
         <button id="quickIbanButton" class="quick-iban-button" aria-label="IBAN bilgilerine hızlı erişim">
           <i class="fas fa-university"></i>
-          <span>IBAN'a Hızlı Erişim</span>
+          <span id="quickIbanButtonText">IBAN'a Hızlı Erişim</span>
+        </button>
+        <button id="quickForeignIbanButton" class="quick-iban-button" aria-label="Yurtdışı IBAN bilgilerine hızlı erişim">
+          <i class="fas fa-globe"></i>
+          <span id="quickForeignIbanButtonText">Yurtdışı IBAN'a Hızlı Erişim</span>
         </button>
         <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-credit-card-button" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
           <i class="fas fa-credit-card"></i>
@@ -246,6 +250,15 @@
             <p id="iban-chf">TR97 0020 5000 0913 3755 1001 04</p>
             <button onclick="copyToClipboard('iban-chf')" aria-label="CHF IBAN'ı kopyala">IBAN'ı Kopyala</button>
           </div>
+          <div class="iban-box iban-foreign">
+            <h3 id="foreignIbanTitle"><span id="foreignIbanTitleText">YURT DIŞI HESAP BİLGİLERİ</span></h3>
+            <div class="iban-description" id="foreignIbanDesc">Yurt dışından bağış yapmak için bu hesap bilgilerini kullanabilirsiniz.</div>
+            <p><strong id="foreignRecipientLabel">Alıcı:</strong> First Care e.V.</p>
+            <p><strong id="foreignReferenceLabel">Açıklama:</strong> Furkan Elmas</p>
+            <p><strong>IBAN:</strong> <span id="foreignIban">DE46 6039 1310 0385 8820 76</span></p>
+            <p><strong>BIC:</strong> GENODES1VBH</p>
+            <button onclick="copyToClipboard('foreignIban')" aria-label="Yurt dışı IBAN'ı kopyala" id="copyForeignIbanButton">IBAN'ı Kopyala</button>
+          </div>
         </div>
       </section>
 
@@ -410,6 +423,12 @@
           creditCardButton: "Kredi Kartı ile Bağış Yap",
           quickIbanButton: "IBAN'a Hızlı Erişim",
           quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
+          foreignIbanTitle: "YURT DIŞI HESAP BİLGİLERİ",
+          foreignIbanDesc: "Yurt dışından bağış yapmak için bu hesap bilgilerini kullanabilirsiniz.",
+          quickForeignIbanButton: "Yurtdışı IBAN'a Hızlı Erişim",
+          copyForeignIbanButton: "IBAN'ı Kopyala",
+          recipientLabel: "Alıcı",
+          referenceLabel: "Açıklama",
         },
         en: {
           copiedText: "Copied!",
@@ -490,6 +509,12 @@
           creditCardButton: "Donate with Credit Card",
           quickIbanButton: "Quick Access to IBAN",
           quickCreditCardButton: "Donate with Credit Card",
+          foreignIbanTitle: "INTERNATIONAL ACCOUNT INFORMATION",
+          foreignIbanDesc: "You can use this account information to donate from abroad.",
+          quickForeignIbanButton: "Quick Access to International IBAN",
+          copyForeignIbanButton: "Copy IBAN",
+          recipientLabel: "Recipient",
+          referenceLabel: "Reference",
         },
         de: {
           copiedText: "Kopiert!",
@@ -570,6 +595,12 @@
           creditCardButton: "Mit Kreditkarte spenden",
           quickIbanButton: "Schnellzugriff auf IBAN",
           quickCreditCardButton: "Mit Kreditkarte spenden",
+          foreignIbanTitle: "AUSLANDSÜBERWEISUNG KONTOANGABEN",
+          foreignIbanDesc: "Für Spenden aus dem Ausland nutzen Sie bitte diese Kontoinformationen.",
+          quickForeignIbanButton: "Schnellzugriff auf Auslands-IBAN",
+          copyForeignIbanButton: "IBAN kopieren",
+          recipientLabel: "Empfänger",
+          referenceLabel: "Verwendungszweck",
         }
       };
 
@@ -722,6 +753,24 @@
         const remainingBox = document.querySelector('.donation-box.remaining h3');
         if (collectedBox) collectedBox.textContent = translations[lang].collectedDonation;
         if (remainingBox) remainingBox.textContent = translations[lang].remainingDonation;
+
+        // Yurtdışı IBAN kutularını güncelle
+        const foreignIbanTitle = document.getElementById('foreignIbanTitle');
+        const foreignIbanDesc = document.getElementById('foreignIbanDesc');
+        const quickForeignIbanButtonText = document.getElementById('quickForeignIbanButtonText');
+        const copyForeignIbanButton = document.getElementById('copyForeignIbanButton');
+        if (foreignIbanTitle) {
+          foreignIbanTitle.innerHTML = '<span id="foreignIbanTitleText">' + translations[lang].foreignIbanTitle + '</span>';
+        }
+        if (foreignIbanDesc) foreignIbanDesc.textContent = translations[lang].foreignIbanDesc;
+        if (quickForeignIbanButtonText) quickForeignIbanButtonText.textContent = translations[lang].quickForeignIbanButton;
+        if (copyForeignIbanButton) copyForeignIbanButton.textContent = translations[lang].copyForeignIbanButton;
+
+        // Yurtdışı kutusunda label'ları dinamik yap
+        const foreignRecipientLabel = document.getElementById('foreignRecipientLabel');
+        const foreignReferenceLabel = document.getElementById('foreignReferenceLabel');
+        if (foreignRecipientLabel) foreignRecipientLabel.textContent = translations[lang].recipientLabel + ":";
+        if (foreignReferenceLabel) foreignReferenceLabel.textContent = translations[lang].referenceLabel + ":";
       }
 
       // Kopyalama işlevselliği
@@ -845,6 +894,16 @@
               behavior: 'smooth'
             });
           }
+        });
+      }
+
+      // Yurtdışı IBAN butonu için event listener
+      const quickForeignIbanButton = document.getElementById('quickForeignIbanButton');
+      if (quickForeignIbanButton) {
+        quickForeignIbanButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          const foreignBox = document.querySelector('.iban-foreign');
+          if (foreignBox) foreignBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
 
