@@ -59,6 +59,14 @@
           <i class="fas fa-globe"></i>
           <span id="quickForeignIbanButtonText">Yurtdışı IBAN'a Hızlı Erişim</span>
         </button>
+        <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-gofundme-button" id="quickGofundmeButton" aria-label="GoFundMe ile bağış yap">
+          <i class="fab fa-gofundme"></i>
+          <span id="quickGofundmeButtonText">GoFundMe ile Bağış Yap</span>
+        </a>
+        <a href="https://www.paypal.com/donate?campaign_id=KECHK34WGS3KG" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-paypal-button" id="quickPaypalButton" aria-label="PayPal ile bağış yap">
+          <i class="fab fa-paypal"></i>
+          <span id="quickPaypalButtonText">PayPal ile Bağış Yap</span>
+        </a>
         <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-credit-card-button" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
           <i class="fas fa-credit-card"></i>
           <span>Kredi Kartı ile Bağış Yap</span>
@@ -258,6 +266,18 @@
             <p><strong>IBAN:</strong> <span id="foreignIban">DE46 6039 1310 0385 8820 76</span></p>
             <p><strong>BIC:</strong> GENODES1VBH</p>
             <button onclick="copyToClipboard('foreignIban')" aria-label="Yurt dışı IBAN'ı kopyala" id="copyForeignIbanButton">IBAN'ı Kopyala</button>
+            <div class="foreign-donate-info" id="foreignDonateInfo">
+              PayPal ve GoFundMe ile dünyanın her yerinden güvenle bağış yapabilirsiniz. Bağış yapmak için aşağıdaki butonları kullanabilirsiniz. Tüm işlemler First Care e.V. güvencesiyle gerçekleşmektedir.
+            </div>
+            <div class="foreign-donate-buttons">
+              <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="credit-card-button foreign-donate-button" id="gofundmeButton">
+                <span id="gofundmeButtonText">${t.gofundmeButton}</span>
+              </a>
+              <a href="https://www.paypal.com/donate?campaign_id=KECHK34WGS3KG" target="_blank" rel="noopener noreferrer" class="credit-card-button foreign-donate-button" id="paypalButton">
+                <i class="fab fa-paypal"></i>
+                <span id="paypalButtonText">${t.paypalButton}</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -429,6 +449,11 @@
           copyForeignIbanButton: "IBAN'ı Kopyala",
           recipientLabel: "Alıcı",
           referenceLabel: "Açıklama",
+          gofundmeButton: "GoFundMe ile Bağış Yap",
+          paypalButton: "PayPal ile Bağış Yap",
+          foreignDonateInfo: "PayPal ve GoFundMe ile dünyanın her yerinden güvenle bağış yapabilirsiniz. Bağış yapmak için aşağıdaki butonları kullanabilirsiniz. Tüm işlemler First Care e.V. güvencesiyle gerçekleşmektedir.",
+          quickGofundmeButton: "GoFundMe ile Bağış Yap",
+          quickPaypalButton: "PayPal ile Bağış Yap",
         },
         en: {
           copiedText: "Copied!",
@@ -515,6 +540,11 @@
           copyForeignIbanButton: "Copy IBAN",
           recipientLabel: "Recipient",
           referenceLabel: "Reference",
+          gofundmeButton: "Donate via GoFundMe",
+          paypalButton: "Donate via PayPal",
+          foreignDonateInfo: "You can safely donate from anywhere in the world via PayPal and GoFundMe. Click the buttons below to make a donation. All transactions are secured by First Care e.V.",
+          quickGofundmeButton: "Donate via GoFundMe",
+          quickPaypalButton: "Donate via PayPal",
         },
         de: {
           copiedText: "Kopiert!",
@@ -601,6 +631,11 @@
           copyForeignIbanButton: "IBAN kopieren",
           recipientLabel: "Empfänger",
           referenceLabel: "Verwendungszweck",
+          gofundmeButton: "Über GoFundMe spenden",
+          paypalButton: "Über PayPal spenden",
+          foreignDonateInfo: "Mit PayPal und GoFundMe können Sie von überall auf der Welt sicher spenden. Klicken Sie auf die untenstehenden Buttons, um zu spenden. Alle Transaktionen erfolgen unter der Sicherheit von First Care e.V.",
+          quickGofundmeButton: "Über GoFundMe spenden",
+          quickPaypalButton: "Über PayPal spenden",
         }
       };
 
@@ -771,6 +806,44 @@
         const foreignReferenceLabel = document.getElementById('foreignReferenceLabel');
         if (foreignRecipientLabel) foreignRecipientLabel.textContent = translations[lang].recipientLabel + ":";
         if (foreignReferenceLabel) foreignReferenceLabel.textContent = translations[lang].referenceLabel + ":";
+
+        // Yurtdışı butonlarını güncelle
+        const gofundmeButton = document.getElementById('gofundmeButton');
+        const paypalButton = document.getElementById('paypalButton');
+        const gofundmeButtonText = document.getElementById('gofundmeButtonText');
+        const paypalButtonText = document.getElementById('paypalButtonText');
+        if (gofundmeButton) {
+          gofundmeButton.href = t.gofundmeButton;
+        }
+        if (paypalButton) {
+          paypalButton.href = t.paypalButton;
+        }
+        if (gofundmeButtonText) gofundmeButtonText.textContent = t.gofundmeButton;
+        if (paypalButtonText) paypalButtonText.textContent = t.paypalButton;
+
+        // Yurtdışı açıklama metni güncelle
+        const foreignDonateInfo = document.getElementById('foreignDonateInfo');
+        if (foreignDonateInfo) foreignDonateInfo.textContent = translations[lang].foreignDonateInfo;
+
+        // Yurtdışı butonları eşit genişlikte ve düzenli olsun:
+        const foreignDonateButtons = document.querySelector('.foreign-donate-buttons');
+        if (foreignDonateButtons) {
+          foreignDonateButtons.innerHTML = `
+            <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="credit-card-button foreign-donate-button" id="gofundmeButton">
+              <span id="gofundmeButtonText">${t.gofundmeButton}</span>
+            </a>
+            <a href="https://www.paypal.com/donate?campaign_id=KECHK34WGS3KG" target="_blank" rel="noopener noreferrer" class="credit-card-button foreign-donate-button" id="paypalButton">
+              <i class="fab fa-paypal"></i>
+              <span id="paypalButtonText">${t.paypalButton}</span>
+            </a>
+          `;
+        }
+
+        // Yurtdışı buton metinlerini güncelle:
+        const quickGofundmeButtonText = document.getElementById('quickGofundmeButtonText');
+        const quickPaypalButtonText = document.getElementById('quickPaypalButtonText');
+        if (quickGofundmeButtonText) quickGofundmeButtonText.textContent = translations[lang].quickGofundmeButton;
+        if (quickPaypalButtonText) quickPaypalButtonText.textContent = translations[lang].quickPaypalButton;
       }
 
       // Kopyalama işlevselliği

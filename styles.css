@@ -1578,4 +1578,89 @@ footer {
   .donation-box .percentage {
     font-size: 1.4rem;
   }
+}
+
+.foreign-donate-info {
+  background: #f8fafc;
+  color: #2d3748;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 18px 0 14px 0;
+  box-shadow: 0 1px 4px rgba(26,54,93,0.06);
+  font-weight: 500;
+  text-align: left;
+}
+
+.foreign-donate-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.foreign-donate-button {
+  flex: 1 1 0;
+  min-width: 140px;
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.quick-gofundme-button, .quick-paypal-button, .foreign-donate-button {
+  background: #fff;
+  color: #1a365d;
+  border: 2px solid #1a365d;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.quick-gofundme-button:hover, .foreign-donate-button:hover {
+  background: #00b964;
+  color: #fff;
+  border-color: #00b964;
+}
+
+.quick-paypal-button:hover, .foreign-donate-button:hover {
+  background: #003087;
+  color: #fff;
+  border-color: #003087;
+}
+
+.quick-gofundme-button i, .foreign-donate-button i {
+  color: #00b964;
+}
+
+.gofundme-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.quick-gofundme-button:hover .gofundme-icon,
+.foreign-donate-button:hover .gofundme-icon {
+  color: #fff;
+}
+
+.quick-paypal-button i, .foreign-donate-button i {
+  color: #003087;
+}
+
+@media (max-width: 480px) {
+  .foreign-donate-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .foreign-donate-button {
+    min-width: 0;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+  .quick-gofundme-button, .quick-paypal-button {
+    font-size: 13px;
+    padding: 8px 10px;
+    min-width: 0;
+  }
 } 
