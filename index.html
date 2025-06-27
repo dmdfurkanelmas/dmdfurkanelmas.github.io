@@ -1070,23 +1070,23 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
-
-      // SMS gönderme fonksiyonu
-      function sendSMS() {
-        const phoneNumber = '5924';
-        const message = 'FURKAN';
-        
-        // Mobil cihaz kontrolü
-        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-          // SMS uygulamasını aç ve mesajı hazırla
-          const smsUrl = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
-          window.location.href = smsUrl;
-        } else {
-          // Masaüstü için bilgilendirme mesajı
-          alert('SMS ile bağış yapmak için mobil cihazınızı kullanın.\n\nMesajınıza "FURKAN" yazıp 5924 numarasına gönderin.');
-        }
-      }
     });
+
+    // SMS gönderme fonksiyonu (global scope)
+    function sendSMS() {
+      const phoneNumber = '5924';
+      const message = 'FURKAN';
+      
+      // Mobil cihaz kontrolü
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // SMS uygulamasını aç ve mesajı hazırla
+        const smsUrl = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+        window.location.href = smsUrl;
+      } else {
+        // Masaüstü için bilgilendirme mesajı
+        alert('SMS ile bağış yapmak için mobil cihazınızı kullanın.\n\nMesajınıza "FURKAN" yazıp 5924 numarasına gönderin.');
+      }
+    }
   </script>
 </body>
 </html>
