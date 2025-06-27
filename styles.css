@@ -289,34 +289,29 @@ body {
   width: 100%;
 }
 
-.iban-box p, .iban-foreign p {
+.iban-box p {
   font-family: 'Montserrat', monospace;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.1rem;
   margin: 0 0 16px 0;
   color: #2d3748;
   word-break: break-all;
-  white-space: nowrap;
-  overflow-x: auto;
+  white-space: normal;
+  overflow-x: visible;
   background: #f8fafc;
-  padding: 8px 2px;
+  padding: 12px;
   border-radius: 6px;
   width: 100%;
   box-sizing: border-box;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.5px;
   -webkit-user-select: all;
   user-select: all;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
   line-height: 1.4;
-  hyphens: none;
-  -webkit-hyphens: none;
-  -ms-hyphens: none;
-}
-
-.iban-box::-webkit-scrollbar, .iban-foreign::-webkit-scrollbar {
-  height: 4px;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 .iban-box p::before {
@@ -559,10 +554,13 @@ body {
     padding: 15px;
   }
 
-  .iban-box p, .iban-foreign p {
-    font-size: 1.1rem;
-    padding: 6px 1px;
-    letter-spacing: 0.06em;
+  .iban-box p {
+    font-size: 0.85rem;
+    word-break: break-all;
+    white-space: normal;
+    letter-spacing: 0.3px;
+    padding: 10px 8px;
+    line-height: 1.3;
   }
 
   .iban-box h3 {
@@ -630,10 +628,14 @@ body {
     margin-bottom: 12px;
   }
 
-  .iban-box p, .iban-foreign p {
-    font-size: 1rem;
-    padding: 4px 0;
-    letter-spacing: 0.04em;
+  .iban-box p {
+    font-size: 0.75rem;
+    word-break: break-all;
+    white-space: normal;
+    letter-spacing: 0.2px;
+    padding: 8px 6px;
+    line-height: 1.2;
+    min-height: auto;
   }
 
   .iban-box h3 {
@@ -688,12 +690,14 @@ body {
 
   .foreign-donate-buttons {
     flex-direction: column;
-    gap: 14px;
+    gap: 8px;
   }
 
   .foreign-donate-button {
-    font-size: 1rem;
-    padding: 14px 0;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .quick-gofundme-button, .quick-paypal-button {
@@ -705,7 +709,7 @@ body {
 }
 
 @media (max-width: 360px) {
-  .iban-box p, .iban-foreign p {
+  .iban-box p {
     font-size: 0.7rem;
     letter-spacing: 0.1px;
     padding: 6px 4px;
@@ -1745,35 +1749,21 @@ footer {
 
 .foreign-donate-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 12px;
-}
-
-.foreign-donate-button {
-  font-size: 1.1rem;
-  font-weight: 700;
-  padding: 16px 0;
-  min-width: 100%;
-  max-width: 100%;
-  border-radius: 8px;
-  margin: 0 auto;
-  text-align: center;
-  background: #fff;
-  color: #1a365d;
-  border: 2px solid #1a365d;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(26,54,93,0.07);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.foreign-donate-button:hover {
-  background: #3182ce;
-  color: #fff;
-  border-color: #3182ce;
+.foreign-donate-button {
+  flex: 1 1 0;
+  min-width: 140px;
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .quick-gofundme-button, .quick-paypal-button, .foreign-donate-button {
@@ -1819,12 +1809,14 @@ footer {
 @media (max-width: 480px) {
   .foreign-donate-buttons {
     flex-direction: column;
-    gap: 14px;
+    gap: 8px;
   }
 
   .foreign-donate-button {
-    font-size: 1rem;
-    padding: 14px 0;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
   }
 
   .quick-gofundme-button, .quick-paypal-button {
