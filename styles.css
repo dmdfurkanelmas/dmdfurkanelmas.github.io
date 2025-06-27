@@ -553,6 +553,37 @@ body {
   .iban-box p {
     font-size: 0.9rem;
     word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+    letter-spacing: 0.3px;
+    line-height: 1.4;
+  }
+
+  .swift-box {
+    padding: 15px;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .swift-box p {
+    font-size: 0.9rem;
+    word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+  }
+
+  .iban-foreign p {
+    font-size: 0.9rem;
+    word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+    line-height: 1.4;
+  }
+
+  .foreign-donate-info {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 }
 
@@ -584,6 +615,104 @@ body {
   .social-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .iban-box {
+    padding: 12px;
+  }
+
+  .iban-box p {
+    font-size: 0.85rem;
+    word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+    padding: 10px 8px;
+  }
+
+  .iban-box h3 {
+    font-size: 1rem;
+  }
+
+  .iban-box .iban-description {
+    font-size: 0.8rem;
+  }
+
+  .swift-box {
+    padding: 12px;
+  }
+
+  .swift-box h3 {
+    font-size: 0.95rem;
+  }
+
+  .swift-box p {
+    font-size: 0.85rem;
+    word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+  }
+
+  .iban-foreign p {
+    font-size: 0.85rem;
+    word-break: break-all;
+    white-space: normal;
+    overflow-x: visible;
+    line-height: 1.3;
+    padding: 8px 6px;
+  }
+
+  .foreign-donate-info {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    padding: 10px 8px;
+  }
+
+  .foreign-donate-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .foreign-donate-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .iban-box p {
+    font-size: 0.8rem;
+    letter-spacing: 0.1px;
+    padding: 8px 6px;
+  }
+
+  .iban-box h3 {
+    font-size: 0.95rem;
+  }
+
+  .iban-box .iban-description {
+    font-size: 0.75rem;
+  }
+
+  .swift-box h3 {
+    font-size: 0.9rem;
+  }
+
+  .swift-box p {
+    font-size: 0.8rem;
+  }
+
+  .iban-foreign p {
+    font-size: 0.8rem;
+    letter-spacing: 0.1px;
+    padding: 6px 4px;
+  }
+
+  .foreign-donate-info {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    padding: 8px 6px;
   }
 }
 
