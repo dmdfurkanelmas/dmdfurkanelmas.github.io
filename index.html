@@ -59,6 +59,10 @@
           <i class="fas fa-globe"></i>
           <span id="quickForeignIbanButtonText">Yurtdışı IBAN'a Hızlı Erişim</span>
         </button>
+        <button id="quickSmsButton" class="quick-iban-button quick-sms-button" aria-label="SMS ile bağış yap" onclick="sendSMS()">
+          <i class="fas fa-sms"></i>
+          <span id="quickSmsButtonText">SMS ile Bağış Yap</span>
+        </button>
         <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-gofundme-button" id="quickGofundmeButton" aria-label="GoFundMe ile bağış yap">
           <i class="fab fa-gofundme"></i>
           <span id="quickGofundmeButtonText">GoFundMe ile Bağış Yap</span>
@@ -224,6 +228,39 @@
             <i class="fas fa-credit-card"></i>
             <span>Kredi Kartı ile Bağış Yap</span>
           </a>
+        </div>
+        
+        <div class="sms-donation-box" id="smsDonationBox">
+          <h3>SMS ile Bağış</h3>
+          <div class="sms-description">
+            <p>Telefonunuzdan SMS ile hızlıca bağış yapabilirsiniz:</p>
+            <div class="sms-instructions">
+              <div class="sms-step">
+                <span class="step-number">1</span>
+                <span class="step-text">Mesajınıza <strong>FURKAN</strong> yazın</span>
+              </div>
+              <div class="sms-step">
+                <span class="step-number">2</span>
+                <span class="step-text"><strong>5924</strong> numarasına gönderin</span>
+              </div>
+            </div>
+            <div class="operator-prices">
+              <div class="operator-price">
+                <i class="fas fa-mobile-alt"></i>
+                <span class="operator-name">Turkcell & Türk Telekom</span>
+                <span class="price">100 TL</span>
+              </div>
+              <div class="operator-price">
+                <i class="fas fa-mobile-alt"></i>
+                <span class="operator-name">Vodafone</span>
+                <span class="price">50 TL</span>
+              </div>
+            </div>
+          </div>
+          <button class="sms-button" onclick="sendSMS()" aria-label="SMS ile bağış yapmak için tıklayın">
+            <i class="fas fa-sms"></i>
+            <span>SMS ile Bağış Yap</span>
+          </button>
         </div>
         <div class="bank-header" id="bankInfo">
           <img src="kuveyt.png" alt="Kuveyt Türk Bankası Logo" class="bank-logo">
@@ -883,6 +920,18 @@
         const quickPaypalButtonText = document.getElementById('quickPaypalButtonText');
         if (quickGofundmeButtonText) quickGofundmeButtonText.textContent = translations[lang].quickGofundmeButton;
         if (quickPaypalButtonText) quickPaypalButtonText.textContent = translations[lang].quickPaypalButton;
+
+        // SMS kutusunun görünürlüğünü kontrol et (sadece Türkçe'de görünsün)
+        const smsDonationBox = document.getElementById('smsDonationBox');
+        if (smsDonationBox) {
+          smsDonationBox.style.display = lang === 'tr' ? 'block' : 'none';
+        }
+
+        // Header'daki SMS butonunun görünürlüğünü kontrol et (sadece Türkçe'de görünsün)
+        const quickSmsButton = document.getElementById('quickSmsButton');
+        if (quickSmsButton) {
+          quickSmsButton.style.display = lang === 'tr' ? 'flex' : 'none';
+        }
       }
 
       // Kopyalama işlevselliği
@@ -1021,6 +1070,22 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
+
+      // SMS gönderme fonksiyonu
+      function sendSMS() {
+        const phoneNumber = '5924';
+        const message = 'FURKAN';
+        
+        // Mobil cihaz kontrolü
+        if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+          // SMS uygulamasını aç ve mesajı hazırla
+          const smsUrl = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+          window.location.href = smsUrl;
+        } else {
+          // Masaüstü için bilgilendirme mesajı
+          alert('SMS ile bağış yapmak için mobil cihazınızı kullanın.\n\nMesajınıza "FURKAN" yazıp 5924 numarasına gönderin.');
+        }
+      }
     });
   </script>
 </body>

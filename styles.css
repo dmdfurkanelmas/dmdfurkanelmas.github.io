@@ -1953,11 +1953,29 @@ footer {
 
 .quick-gofundme-button:hover .gofundme-icon,
 .foreign-donate-button:hover .gofundme-icon {
-  color: #fff;
+  transform: scale(1.1);
 }
 
 .quick-paypal-button i, .foreign-donate-button i {
   color: #003087;
+}
+
+/* Header SMS Butonu Stilleri */
+.quick-sms-button {
+  background: linear-gradient(135deg, #4a90e2 0%, #7bb3f0 100%) !important;
+  border-color: #4a90e2 !important;
+  color: white !important;
+}
+
+.quick-sms-button:hover {
+  background: linear-gradient(135deg, #3a7bc8 0%, #6ba2e0 100%) !important;
+  border-color: #3a7bc8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4) !important;
+}
+
+.quick-sms-button i {
+  color: white !important;
 }
 
 @media (max-width: 480px) {
@@ -1974,5 +1992,263 @@ footer {
     font-size: 13px;
     padding: 8px 10px;
     min-width: 0;
+  }
+}
+
+/* SMS Bağış Kutusu Stilleri */
+.sms-donation-box {
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border: 2px solid #4a90e2;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sms-donation-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4a90e2, #7bb3f0);
+}
+
+.sms-donation-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.2);
+}
+
+.sms-donation-box h3 {
+  color: #2c5aa0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.sms-donation-box h3::before {
+  content: '📱';
+  margin-right: 8px;
+  font-size: 1.2em;
+}
+
+.sms-description {
+  margin-bottom: 20px;
+}
+
+.sms-description p {
+  color: #2d3748;
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.sms-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sms-step {
+  display: flex;
+  align-items: center;
+  background: rgba(74, 144, 226, 0.1);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid #4a90e2;
+}
+
+.step-number {
+  background: #4a90e2;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.step-text {
+  color: #2d3748;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.step-text strong {
+  color: #2c5aa0;
+  font-weight: 700;
+}
+
+.operator-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.operator-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+.operator-price i {
+  color: #4a90e2;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.operator-name {
+  color: #2d3748;
+  font-weight: 500;
+  flex: 1;
+}
+
+.price {
+  color: #2c5aa0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: rgba(74, 144, 226, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.sms-button {
+  width: 100%;
+  background: linear-gradient(135deg, #4a90e2 0%, #7bb3f0 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.sms-button:hover {
+  background: linear-gradient(135deg, #3a7bc8 0%, #6ba2e0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
+}
+
+.sms-button:active {
+  transform: translateY(0);
+}
+
+.sms-button:focus {
+  outline: 3px solid rgba(74, 144, 226, 0.5);
+  outline-offset: 2px;
+}
+
+.sms-button i {
+  font-size: 1.2rem;
+}
+
+/* Mobil Responsive */
+@media (max-width: 768px) {
+  .sms-donation-box {
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .sms-button {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sms-donation-box {
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .sms-donation-box h3 {
+    font-size: 1.2rem;
+  }
+  
+  .sms-instructions {
+    gap: 10px;
+  }
+  
+  .sms-step {
+    padding: 10px 12px;
+  }
+  
+  .step-text {
+    font-size: 0.95rem;
+  }
+  
+  .operator-price {
+    padding: 10px 12px;
+  }
+  
+  .operator-name {
+    font-size: 0.9rem;
+  }
+  
+  .price {
+    font-size: 1rem;
+  }
+  
+  .sms-button {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .sms-donation-box {
+    padding: 12px;
+  }
+  
+  .sms-step {
+    padding: 8px 10px;
+  }
+  
+  .step-number {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    margin-right: 8px;
+  }
+  
+  .step-text {
+    font-size: 0.9rem;
+  }
+  
+  .operator-price {
+    padding: 8px 10px;
+  }
+  
+  .operator-name {
+    font-size: 0.85rem;
+  }
+  
+  .price {
+    font-size: 0.9rem;
   }
 } 
