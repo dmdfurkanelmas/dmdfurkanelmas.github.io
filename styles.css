@@ -294,9 +294,9 @@ body {
   font-size: 1.1rem;
   margin: 0 0 16px 0;
   color: #2d3748;
-  word-break: keep-all;
-  white-space: nowrap;
-  overflow-x: auto;
+  word-break: break-all;
+  white-space: normal;
+  overflow-x: visible;
   background: #f8fafc;
   padding: 12px;
   border-radius: 6px;
@@ -308,6 +308,10 @@ body {
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
   text-align: center;
+  line-height: 1.4;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
 }
 
 .iban-box p::before {
@@ -551,8 +555,41 @@ body {
   }
 
   .iban-box p {
+    font-size: 0.85rem;
+    word-break: break-all;
+    white-space: normal;
+    letter-spacing: 0.3px;
+    padding: 10px 8px;
+    line-height: 1.3;
+  }
+
+  .iban-box h3 {
+    font-size: 1rem;
+  }
+
+  .iban-box .iban-description {
+    font-size: 0.8rem;
+  }
+
+  .iban-foreign p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .iban-foreign .iban-description {
+    font-size: 0.75rem;
+  }
+
+  .swift-box {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .swift-box p {
     font-size: 0.9rem;
     word-break: break-all;
+    white-space: normal;
   }
 }
 
@@ -584,6 +621,123 @@ body {
   .social-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .iban-box {
+    padding: 12px 10px;
+    margin-bottom: 12px;
+  }
+
+  .iban-box p {
+    font-size: 0.75rem;
+    word-break: break-all;
+    white-space: normal;
+    letter-spacing: 0.2px;
+    padding: 8px 6px;
+    line-height: 1.2;
+    min-height: auto;
+  }
+
+  .iban-box h3 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .iban-box .iban-description {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+  }
+
+  .iban-foreign p {
+    font-size: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .iban-foreign .iban-description {
+    font-size: 0.7rem;
+  }
+
+  .iban-box button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    min-width: 120px;
+  }
+
+  .swift-box {
+    padding: 15px 12px;
+  }
+
+  .swift-box h3 {
+    font-size: 0.9rem;
+  }
+
+  .swift-box p {
+    font-size: 0.8rem;
+    word-break: break-all;
+    white-space: normal;
+  }
+
+  .swift-box button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .foreign-donate-info {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    padding: 12px 14px;
+  }
+
+  .foreign-donate-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .foreign-donate-button {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .quick-gofundme-button, .quick-paypal-button {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .iban-box p {
+    font-size: 0.7rem;
+    letter-spacing: 0.1px;
+    padding: 6px 4px;
+  }
+
+  .iban-box h3 {
+    font-size: 0.85rem;
+  }
+
+  .iban-box .iban-description {
+    font-size: 0.7rem;
+  }
+
+  .iban-foreign p {
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+
+  .iban-foreign .iban-description {
+    font-size: 0.65rem;
+  }
+
+  .swift-box p {
+    font-size: 0.75rem;
+  }
+
+  .foreign-donate-info {
+    font-size: 0.75rem;
   }
 }
 
@@ -1598,6 +1752,7 @@ footer {
   gap: 12px;
   margin-top: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .foreign-donate-button {
@@ -1606,6 +1761,9 @@ footer {
   max-width: 100%;
   justify-content: center;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .quick-gofundme-button, .quick-paypal-button, .foreign-donate-button {
@@ -1653,14 +1811,51 @@ footer {
     flex-direction: column;
     gap: 8px;
   }
+
   .foreign-donate-button {
-    min-width: 0;
-    font-size: 13px;
-    padding: 8px 10px;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
   }
+
   .quick-gofundme-button, .quick-paypal-button {
-    font-size: 13px;
-    padding: 8px 10px;
-    min-width: 0;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    min-width: 100%;
+    max-width: 100%;
   }
+}
+
+@media (max-width: 360px) {
+  .foreign-donate-button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .quick-gofundme-button, .quick-paypal-button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+.iban-foreign {
+  border-left: 4px solid #38a169;
+  background: linear-gradient(90deg, #f0fff4 0%, #fff 100%);
+}
+
+.iban-foreign h3 {
+  color: #2f855a;
+}
+
+.iban-foreign p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.iban-foreign .iban-description {
+  color: #4a5568;
+  font-size: 0.85rem;
 } 
