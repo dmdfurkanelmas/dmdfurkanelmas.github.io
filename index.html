@@ -208,7 +208,14 @@
         </div>
         <div class="valilik-izin">
           <p>Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.</p>
-          <p>İzin No: <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer">60.2025.3153 | Mustafa Elmas</a></p>
+          <div class="permission-details">
+            <p><strong>E-Devlet Faaliyet No:</strong> 60.2025.3153</p>
+            <p><strong>Ad Soyad:</strong> Mustafa Elmas</p>
+          </div>
+          <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer" class="edevlet-button" id="edevletButton">
+            <i class="fas fa-search"></i>
+            <span id="edevletButtonText">E-Devlet Sorgu Sayfasına Git</span>
+          </a>
         </div>
         <div class="credit-card-box">
           <h3>Kredi Kartı ile Bağış</h3>
@@ -383,6 +390,11 @@
           progressPercentage: "%18",
           goalMessage: "Her bağış bir umut, her umut bir hayat...",
           valilikText: "Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.",
+          edevletActivityNo: "E-Devlet Faaliyet No:",
+          edevletActivityNumber: "60.2025.3153",
+          edevletNameSurname: "Ad Soyad:",
+          edevletNameSurnameValue: "Mustafa Elmas",
+          edevletButtonText: "E-Devlet Sorgu Sayfasına Git",
           permissionNo: "İzin No:",
           permissionNumber: "60.2025.3153",
           permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
@@ -474,6 +486,11 @@
           progressPercentage: "18%",
           goalMessage: "Every donation is a hope, every hope is a life...",
           valilikText: "This campaign is approved by the <strong>Tokat Governorship</strong>.",
+          edevletActivityNo: "E-Government Activity No:",
+          edevletActivityNumber: "60.2025.3153",
+          edevletNameSurname: "Name Surname:",
+          edevletNameSurnameValue: "Mustafa Elmas",
+          edevletButtonText: "Go to E-Government Query Page",
           permissionNo: "Permission No:",
           permissionNumber: "60.2025.3153",
           permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
@@ -565,7 +582,12 @@
           progressPercentage: "18%",
           goalMessage: "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben...",
           valilikText: "Diese Kampagne wird von der <strong>Provinzverwaltung Tokat</strong> genehmigt.",
-          permissionNo: "Genehmigungsnummer:",
+          edevletActivityNo: "E-Government Activity No:",
+          edevletActivityNumber: "60.2025.3153",
+          edevletNameSurname: "Name Surname:",
+          edevletNameSurnameValue: "Mustafa Elmas",
+          edevletButtonText: "Go to E-Government Query Page",
+          permissionNo: "Permission No:",
           permissionNumber: "60.2025.3153",
           permissionLink: "https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu",
           tlIbanTitle: "TRY IBAN",
@@ -732,8 +754,25 @@
         // Update IBAN boxes and other elements
         document.querySelector('#donation-title').textContent = t.donationTitle;
         document.querySelector('.valilik-izin p:first-child').innerHTML = t.valilikText;
-        document.querySelector('.valilik-izin p:last-child').innerHTML = 
-          `${t.permissionNo} <a href="${t.permissionLink}" target="_blank" rel="noopener noreferrer">${t.permissionNumber} | Mustafa Elmas</a>`;
+        
+        // Update permission details
+        const permissionDetails = document.querySelector('.permission-details');
+        if (permissionDetails) {
+          permissionDetails.innerHTML = `
+            <p><strong>${t.edevletActivityNo}</strong> ${t.edevletActivityNumber}</p>
+            <p><strong>${t.edevletNameSurname}</strong> ${t.edevletNameSurnameValue}</p>
+          `;
+        }
+        
+        // Update e-devlet button
+        const edevletButton = document.getElementById('edevletButton');
+        const edevletButtonText = document.getElementById('edevletButtonText');
+        if (edevletButton) {
+          edevletButton.href = t.permissionLink;
+        }
+        if (edevletButtonText) {
+          edevletButtonText.textContent = t.edevletButtonText;
+        }
         
         // Update IBAN boxes
         const ibanBoxes = document.querySelectorAll('.iban-box');

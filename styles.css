@@ -445,6 +445,58 @@ body {
   text-decoration: underline;
 }
 
+.permission-details {
+  margin: 16px 0;
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #3182ce;
+}
+
+.permission-details p {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.permission-details strong {
+  color: #1a365d;
+  font-weight: 700;
+}
+
+.edevlet-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #38a169;
+  color: #fff !important;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(56,161,105,0.15);
+  margin-top: 12px;
+}
+
+.edevlet-button:hover {
+  background: #2f855a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56,161,105,0.25);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.edevlet-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56,161,105,0.3);
+}
+
+.edevlet-button i {
+  font-size: 1rem;
+}
+
 .social-media-section {
   margin-top: 32px;
   background: #f7fafc;
@@ -588,6 +640,19 @@ body {
     font-size: 0.9rem;
     line-height: 1.4;
   }
+
+  .permission-details {
+    padding: 10px;
+  }
+
+  .permission-details p {
+    font-size: 0.95rem;
+  }
+
+  .edevlet-button {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -684,6 +749,21 @@ body {
     width: 100%;
     justify-content: center;
   }
+
+  .permission-details {
+    padding: 8px;
+  }
+
+  .permission-details p {
+    font-size: 0.9rem;
+  }
+
+  .edevlet-button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 360px) {
@@ -722,6 +802,15 @@ body {
     font-size: 0.75rem;
     line-height: 1.2;
     padding: 8px 6px;
+  }
+
+  .permission-details p {
+    font-size: 0.85rem;
+  }
+
+  .edevlet-button {
+    font-size: 0.75rem;
+    padding: 6px 10px;
   }
 }
 
@@ -794,6 +883,19 @@ body {
 
   .goal-amount {
     font-size: 1.1rem;
+  }
+
+  .permission-details {
+    padding: 6px;
+  }
+
+  .permission-details p {
+    font-size: 0.8rem;
+  }
+
+  .edevlet-button {
+    font-size: 0.7rem;
+    padding: 6px 8px;
   }
 }
 
