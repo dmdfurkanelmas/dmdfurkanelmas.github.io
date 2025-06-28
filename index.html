@@ -53,7 +53,11 @@
       <div class="quick-buttons">
         <button id="quickIbanButton" class="quick-iban-button" aria-label="IBAN bilgilerine hızlı erişim">
           <i class="fas fa-university"></i>
-          <span id="quickIbanButtonText">IBAN'a Hızlı Erişim</span>
+          <span id="quickIbanButtonText">Tüm IBAN'lara Hızlı Erişim</span>
+        </button>
+        <button id="quickTlIbanButton" class="quick-iban-button quick-tl-iban-button" aria-label="TL IBAN'ı kopyala" onclick="copyToClipboard('iban-tl')">
+          <i class="fas fa-copy"></i>
+          <span id="quickTlIbanButtonText">TL IBAN'ı Kopyala</span>
         </button>
         <button id="quickForeignIbanButton" class="quick-iban-button" aria-label="Yurtdışı IBAN bilgilerine hızlı erişim">
           <i class="fas fa-globe"></i>
@@ -75,6 +79,9 @@
           <i class="fas fa-credit-card"></i>
           <span>Kredi Kartı ile Bağış Yap</span>
         </a>
+      </div>
+      <div class="header-permission-info">
+        <span class="permission-text">Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas</span>
       </div>
     </div>
   </header>
@@ -116,7 +123,7 @@
           <p>
             Duchenne Musküler Distrofi (DMD) için son yıllarda <strong>büyük bir umut doğdu</strong>. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys,
             DMD tedavisinde <strong>devrim niteliğinde bir gelişme</strong> oldu. Bu tedavi, vücuda eksik olan <strong>"mikro-distrofin" genini</strong> taşıyan bir virüs aracılığıyla
-            uygulanıyor. Böylece kas dokusu korunabiliyor ve hastalığın ilerleyişi yavaşlatılabiliyor. Şu anda <strong>ABD'de uygulanmaya başlanan</strong> bu tedavi,
+            uygulanıyor. Böylece kas dokusu korunabiliyor ve <strong>çocuklar kaslarını kaybetmeyecek, diğer çocuklar gibi özgürce koşabilecek</strong>. Şu anda <strong>ABD'de uygulanmaya başlanan</strong> bu tedavi,
             hastalığın seyrini değiştirebilecek güçlü bir seçenek sunuyor. Ancak <strong>oldukça maliyetli</strong> olduğu için aileler bağış kampanyaları ile destek arıyor.
           </p>
         </div>
@@ -418,7 +425,7 @@
           storyTitle: "Furkan'ın DMD ile Yaşam Mücadelesi",
           storyContent: "Merhaba, ben Furkan.\n\n3 aylıkken soğuk algınlığı şikayetiyle gittiğim hastanede yapılan kan tahlilinde <strong>ALT, AST ve CK değerlerimin yüksek</strong> olduğunu öğrendik. 9 aylıkken yapılan genetik kan testi sonucunda <strong>ilerleyici ve ölümcül bir kas hastalığı olan DMD (Duchenne Musküler Distrofi)</strong> teşhisi aldım.\n\nTeşhis sonrasında yaşam kalitemi arttırmak için <strong>beslenme düzenime dikkat ettik, fizik tedavi ve yüzme ile tedavimi destekledik</strong>. Çünkü kaslarıma ve eklemlerime iyi gelen tek şey bunlardı.\n\n2023 yılının Haziran ayında DMD için geliştirilen <strong>Elevidys</strong> adlı Gen tedavisi FDA tarafından onaylandı. Ancak bu tedavinin <strong>maliyeti oldukça yüksek</strong>. Bu yüzden sizlerin desteklerinize ve yardımınıza ihtiyacım var.\n\nSizlerin desteğiyle <strong>Gen tedavisine ulaşarak diğer çocuklar gibi yürümeye devam edebilir, onlarla koşabilir, çocukluğumu yaşabilirim.</strong>. Bu zorlu savaşımda beni yalnız bırakmayın. <strong>Sizlere ihtiyacım var</strong>.",
           treatmentTitle: "Tedavisi Var Mı?",
-          treatmentContent: "Duchenne Musküler Distrofi (DMD) için son yıllarda <strong>büyük bir umut doğdu</strong>. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys, DMD tedavisinde <strong>devrim niteliğinde bir gelişme</strong> oldu. Bu tedavi, vücuda eksik olan <strong>\"mikro-distrofin\" genini</strong> taşıyan bir virüs aracılığıyla uygulanıyor. Böylece kas dokusu korunabiliyor ve hastalığın ilerleyişi yavaşlatılabiliyor.\n\nŞu anda <strong>ABD'de uygulanmaya başlanan</strong> bu tedavi, hastalığın seyrini değiştirebilecek güçlü bir seçenek sunuyor. Ancak <strong>oldukça maliyetli</strong> olduğu için aileler bağış kampanyaları ile destek arıyor.",
+          treatmentContent: "Duchenne Musküler Distrofi (DMD) için son yıllarda <strong>büyük bir umut doğdu</strong>. 2023 yılında FDA tarafından onaylanan gen terapisi Elevidys, DMD tedavisinde <strong>devrim niteliğinde bir gelişme</strong> oldu. Bu tedavi, vücuda eksik olan <strong>\"mikro-distrofin\" genini</strong> taşıyan bir virüs aracılığıyla uygulanıyor. Böylece kas dokusu korunabiliyor ve <strong>çocuklar kaslarını kaybetmeyecek, diğer çocuklar gibi özgürce koşabilecek</strong>. Şu anda <strong>ABD'de uygulanmaya başlanan</strong> bu tedavi, hastalığın seyrini değiştirebilecek güçlü bir seçenek sunuyor. Ancak <strong>oldukça maliyetli</strong> olduğu için aileler bağış kampanyaları ile destek arıyor.",
           donationTitle: "Bağış Yap",
           goalText: "Hedefimiz:",
           goalAmount: "2.899.907 USD",
@@ -490,7 +497,7 @@
           creditCardTitle: "Kredi Kartı ile Bağış",
           creditCardDesc: "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
           creditCardButton: "Kredi Kartı ile Bağış Yap",
-          quickIbanButton: "IBAN'a Hızlı Erişim",
+          quickIbanButton: "Tüm IBAN'lara Hızlı Erişim",
           quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
           foreignIbanTitle: "YURT DIŞI HESAP BİLGİLERİ",
           foreignIbanDesc: "Yurt dışından bağış yapmak için bu hesap bilgilerini kullanabilirsiniz.",
@@ -514,7 +521,7 @@
           storyTitle: "Furkan's Life Struggle with DMD",
           storyContent: "Hello, I'm Furkan.\n\nAt 3 months old, during a hospital visit for a cold, blood tests revealed <strong>elevated ALT, AST, and CK-levels</strong>. At 9 months, genetic blood testing confirmed a diagnosis of <strong>DMD (Duchenne Muscular Dystrophy), a progressive and fatal muscle disease</strong>.\n\nAfter diagnosis, we focused on improving my quality of life through <strong>careful nutrition, physical therapy, and swimming</strong>. These were the only things that helped my muscles and joints.\n\nIn June 2023, <strong>Elevidys</strong>, a gene therapy developed for DMD, was approved by the FDA. However, this treatment is <strong>quite expensive</strong>. That's why I need your support and help.\n\nWith your support, I can <strong>continue walking like other children, run with them, and live my childhood to the fullest</strong>. Please don't leave me alone in this difficult battle. <strong>I need you</strong>.",
           treatmentTitle: "Is There a Treatment?",
-          treatmentContent: "In recent years, <strong>great hope has emerged</strong> for Duchenne Muscular Dystrophy (DMD). The gene therapy Elevidys, approved by the FDA in 2023, represents a <strong>revolutionary development</strong> in DMD treatment. This treatment is administered through a virus carrying the missing <strong>\"micro-dystrophin\" gene</strong>. This helps preserve muscle tissue and slow disease progression.\n\nCurrently being implemented in the <strong>USA</strong>, this treatment offers a powerful option that can change the course of the disease. However, due to its <strong>high cost</strong>, families are seeking support through donation campaigns.",
+          treatmentContent: "In recent years, <strong>great hope has emerged</strong> for Duchenne Muscular Dystrophy (DMD). The gene therapy Elevidys, approved by the FDA in 2023, represents a <strong>revolutionary development</strong> in DMD treatment. This treatment is administered through a virus carrying the missing <strong>\"micro-dystrophin\" gene</strong>. This helps preserve muscle tissue and <strong>children will not lose their muscles, they will be able to run freely like other children</strong>.\n\nCurrently being implemented in the <strong>USA</strong>, this treatment offers a powerful option that can change the course of the disease. However, due to its <strong>high cost</strong>, families are seeking support through donation campaigns.",
           donationTitle: "Make a Donation",
           goalText: "Our Target:",
           goalAmount: "2,899,907 USD",
@@ -610,7 +617,7 @@
           storyTitle: "Furkans Lebenskampf mit DMD",
           storyContent: "Hallo, ich bin Furkan.\n\nMit 3 Monaten wurden bei einem Krankenhausbesuch wegen einer Erkältung <strong>erhöhte ALT-, AST- und CK-Werte</strong> festgestellt. Mit 9 Monaten bestätigte ein genetischer Bluttest die Diagnose <strong>DMD (Duchenne-Muskeldystrophie), eine fortschreitende und tödliche Muskelerkrankung</strong>.\n\nNach der Diagnose konzentrierten wir uns darauf, meine Lebensqualität durch <strong>sorgfältige Ernährung, Physiotherapie und Schwimmen</strong> zu verbessern. Dies waren die einzigen Dinge, die meinen Muskeln und Gelenken halfen.\n\n2023 yılının Haziran ayında DMD için geliştirilen <strong>Elevidys</strong> adlı Gen tedavisi FDA tarafından onaylandı. Diese Behandlung ist jedoch <strong>sehr teuer</strong>. Deshalb brauche ich Ihre Unterstützung und Hilfe.\n\nMit Ihrer Unterstützung kann ich <strong>wie andere Kinder weiterlaufen, mit ihnen rennen und meine Kindheit voll ausleben</strong>. Bitte lassen Sie mich in diesem schwierigen Kampf nicht allein. <strong>Ich brauche Sie</strong>.",
           treatmentTitle: "Gibt es eine Behandlung?",
-          treatmentContent: "In den letzten Jahren ist <strong>große Hoffnung</strong> für die Duchenne-Muskeldystrophie (DMD) entstanden. Die Gentherapie Elevidys, die 2023 von der FDA zugelassen wurde, stellt eine <strong>revolutionäre Entwicklung</strong> in der DMD-Behandlung dar. Diese Behandlung wird durch ein Virus verabreicht, das das fehlende <strong>\"Mikro-Dystrophin\"-Gen</strong> trägt. Dies hilft, Muskelgewebe zu erhalten und das Fortschreiten der Krankheit zu verlangsamen.\n\nDerzeit in den <strong>USA</strong> implementiert, bietet diese Behandlung eine starke Option, die den Krankheitsverlauf verändern kann. Aufgrund der <strong>hohen Kosten</strong> suchen Familien jedoch Unterstützung durch Spendenkampagnen.",
+          treatmentContent: "In den letzten Jahren ist <strong>große Hoffnung</strong> für die Duchenne-Muskeldystrophie (DMD) entstanden. Die Gentherapie Elevidys, die 2023 von der FDA zugelassen wurde, stellt eine <strong>revolutionäre Entwicklung</strong> in der DMD-Behandlung dar. Diese Behandlung wird durch ein Virus verabreicht, das das fehlende <strong>\"Mikro-Dystrophin\"-Gen</strong> trägt. Dies hilft, Muskelgewebe zu erhalten und <strong>Kinder werden ihre Muskeln nicht verlieren, sie werden wie andere Kinder frei laufen können</strong>.\n\nDerzeit in den <strong>USA</strong> implementiert, bietet diese Behandlung eine starke Option, die den Krankheitsverlauf verändern kann. Aufgrund der <strong>hohen Kosten</strong> suchen Familien jedoch Unterstützung durch Spendenkampagnen.",
           donationTitle: "Spenden",
           goalText: "Unser Ziel:",
           goalAmount: "2.899.907 USD",
@@ -931,6 +938,12 @@
         const quickSmsButton = document.getElementById('quickSmsButton');
         if (quickSmsButton) {
           quickSmsButton.style.display = lang === 'tr' ? 'flex' : 'none';
+        }
+
+        // Header'daki TL IBAN butonunun görünürlüğünü kontrol et (sadece Türkçe'de görünsün)
+        const quickTlIbanButton = document.getElementById('quickTlIbanButton');
+        if (quickTlIbanButton) {
+          quickTlIbanButton.style.display = lang === 'tr' ? 'flex' : 'none';
         }
       }
 
