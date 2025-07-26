@@ -2543,3 +2543,13 @@ footer {
   color: #fff !important;
   box-shadow: 0 4px 8px rgba(0,168,149,0.25) !important;
 } 
+
+@media (max-width: 480px) {
+  .button-content span:first-child {
+    font-size: 15px;
+  }
+  .flag {
+    width: 9px;
+    height: 6px;
+  }
+}
