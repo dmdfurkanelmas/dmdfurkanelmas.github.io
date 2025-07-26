@@ -127,7 +127,7 @@
         </div>
       </div>
       <div class="header-permission-info">
-        <span class="permission-text">Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas</span>
+        <span class="permission-text" id="permissionText">Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas</span>
       </div>
     </div>
   </header>
@@ -562,6 +562,7 @@
           allIbansWithDonation: "Tüm IBAN'ları Görmek için Tıkla",
           foreignIbanWithDonation: "Yurt Dışı IBAN'ı Görmek için Tıkla",
           creditCardWithDonation: "Kredi Kartı ile Bağış Yapmak için Tıkla",
+          permissionText: "Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas"
         },
         en: {
           copiedText: "Copied!",
@@ -663,6 +664,7 @@
           allIbansWithDonation: "Click to See All IBANs",
           foreignIbanWithDonation: "Click to See Foreign IBAN",
           creditCardWithDonation: "Click to Donate with Credit Card",
+          permissionText: "Our campaign is authorized by the governorship. E-Government Activity No: 60.2025.3153 | Mustafa Elmas"
         },
         de: {
           copiedText: "Kopiert!",
@@ -764,6 +766,7 @@
           allIbansWithDonation: "Klicken Sie um alle IBANs zu sehen",
           foreignIbanWithDonation: "Klicken Sie um Auslands-IBAN zu sehen",
           creditCardWithDonation: "Mit Kreditkarte spenden (klicken)",
+          permissionText: "Unsere Kampagne ist von der Provinzverwaltung genehmigt. E-Government Aktivitätsnummer: 60.2025.3153 | Mustafa Elmas"
         }
       };
 
@@ -1081,6 +1084,10 @@
         if (gofundmeButtonNew) {
           gofundmeButtonNew.querySelector('.button-content span:first-child').textContent = t.quickGofundmeButtonText || "GoFundMe ile Bağış Yapmak için Tıkla";
         }
+
+        // Update permission text
+        const permissionText = document.getElementById('permissionText');
+        if (permissionText) permissionText.textContent = t.permissionText;
       }
 
       // Kopyalama işlevselliği
@@ -1095,8 +1102,33 @@
           await navigator.clipboard.writeText(text);
           
           const button = document.querySelector(`button[onclick="copyToClipboard('${id}')"]`);
-          const originalText = button.innerText;
           const t = translations[currentLang];
+          
+          // Header butonları için özel kontrol
+          if (button.classList.contains('quick-iban-button')) {
+            // Header butonları için sadece span içeriğini değiştir
+            const buttonTextSpan = button.querySelector('.button-content span:first-child');
+            if (buttonTextSpan) {
+              const originalText = buttonTextSpan.textContent;
+              buttonTextSpan.textContent = t.copiedText;
+              button.classList.add('copied');
+              
+              setTimeout(() => {
+                buttonTextSpan.textContent = originalText;
+                button.classList.remove('copied');
+              }, 3000);
+            }
+          } else {
+            // Normal butonlar için eski yöntem
+            const originalText = button.innerText;
+            button.innerText = t.copiedText;
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+              button.innerText = originalText;
+              button.classList.remove('copied');
+            }, 3000);
+          }
           
           // Teşekkür mesajı ve kalp emojisi
           const thankYouMessage = document.createElement('div');
@@ -1115,9 +1147,6 @@
           // Yeni mesajı ekle
           document.querySelector('.donation-section').appendChild(thankYouMessage);
           
-          button.innerText = t.copiedText;
-          button.classList.add('copied');
-          
           // Mesajı göster
           setTimeout(() => {
             thankYouMessage.style.display = 'block';
@@ -1125,8 +1154,6 @@
           }, 100);
           
           setTimeout(() => {
-            button.innerText = originalText;
-            button.classList.remove('copied');
             thankYouMessage.classList.remove('show');
             setTimeout(() => {
               thankYouMessage.remove();
