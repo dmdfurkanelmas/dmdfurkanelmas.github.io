@@ -1300,6 +1300,9 @@ footer {
 }
 
 .lang-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   background: #e3eafc;
   color: #1a365d;
   border: none;
@@ -1329,85 +1332,25 @@ footer {
   box-shadow: 0 0 0 3px rgba(49,130,206,0.3);
 }
 
-/* Mobil cihazlar için düzenleme */
+.flag {
+  width: 12px;
+  height: 8px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .flag {
+    width: 10px;
+    height: 7px;
+  }
+}
+
 @media (max-width: 480px) {
-  .language-buttons {
-    gap: 6px;
+  .flag {
+    width: 9px;
+    height: 6px;
   }
-
-  .lang-option {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-}
-
-/* Çok küçük ekranlar için ek düzenleme */
-@media (max-width: 360px) {
-  .language-buttons {
-    gap: 4px;
-  }
-
-  .lang-option {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-}
-
-/* Yüksek kontrast modu için düzenleme */
-@media (prefers-contrast: high) {
-  .lang-option {
-    border: 2px solid #1a365d;
-  }
-  
-  .lang-option.active {
-    border-color: white;
-  }
-}
-
-/* Reduced motion tercihi için düzenleme */
-@media (prefers-reduced-motion: reduce) {
-  .lang-option {
-    transition: none;
-  }
-  
-  .lang-option:hover {
-    transform: none;
-  }
-}
-
-.iban-tl h3::before {
-  content: '₺';
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #1a365d;
-}
-
-.iban-box:nth-of-type(3) h3::before {
-  content: '$';
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #1a365d;
-}
-
-.iban-box:nth-of-type(4) h3::before {
-  content: '€';
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #1a365d;
-}
-
-.iban-box:nth-of-type(5) h3::before {
-  content: '£';
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #1a365d;
-}
-
-.iban-box:nth-of-type(6) h3::before {
-  content: '₣';
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #1a365d;
 }
 
 .help-content {
@@ -1729,72 +1672,216 @@ footer {
 
 .quick-buttons {
   display: flex;
+  flex-direction: column;
   gap: 16px;
   justify-content: center;
-  margin: 15px auto;
-  flex-wrap: wrap;
+  margin: 20px auto;
   max-width: 600px;
 }
 
-.quick-iban-button {
+.donation-group {
+  background: #f8fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(26,54,93,0.06);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.donation-group-button {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background-color: #1a365d;
-  color: white;
+  justify-content: space-between;
+  padding: 16px 20px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  text-decoration: none;
-  flex: 1;
-  min-width: 200px;
-  justify-content: center;
 }
 
-.quick-iban-button:hover {
-  background-color: #2a4a7d;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+/* Yurt İçi Buton Rengi - Yeşil tonları */
+.donation-group:first-child .donation-group-button {
+  background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
   color: white;
-  text-decoration: none;
 }
 
-.quick-iban-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.donation-group:first-child .donation-group-button:hover {
+  background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(56,161,105,0.25);
 }
 
-.quick-iban-button i {
-  font-size: 18px;
+/* Yurt Dışı Buton Rengi - Mavi tonları */
+.donation-group:last-child .donation-group-button {
+  background: linear-gradient(135deg, #3182ce 0%, #4299e1 100%);
+  color: white;
+}
+
+.donation-group:last-child .donation-group-button:hover {
+  background: linear-gradient(135deg, #2c5aa0 0%, #3182ce 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(49,130,206,0.25);
+}
+
+.donation-group-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49,130,206,0.3);
+}
+
+.donation-group-button .group-button-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.donation-group-button i:first-child {
+  font-size: 1.2rem;
+}
+
+.group-arrow {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.donation-group-button[aria-expanded="true"] .group-arrow {
+  transform: rotate(180deg);
+}
+
+.donation-options {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  background: #fff;
+}
+
+.donation-options.show {
+  max-height: 500px;
+}
+
+.donation-options .button-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.donation-options .button-row .quick-iban-button {
+  flex: 1;
+  min-width: 180px;
+  max-width: 250px;
+}
+
+/* Yurt İçi Butonları - Yeşil tonları */
+.donation-group:first-child .quick-iban-button {
+  background: linear-gradient(135deg, #48bb78 0%, #68d391 100%);
+  border: 1px solid #38a169;
+}
+
+.donation-group:first-child .quick-iban-button:hover {
+  background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(56,161,105,0.3);
+}
+
+/* Yurt Dışı Butonları - Mavi tonları */
+.donation-group:last-child .quick-iban-button {
+  background: linear-gradient(135deg, #4299e1 0%, #63b3ed 100%);
+  border: 1px solid #3182ce;
+}
+
+.donation-group:last-child .quick-iban-button:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #4299e1 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(49,130,206,0.3);
+}
+
+/* Özel buton renkleri */
+.quick-sms-button {
+  background: linear-gradient(135deg, #ed8936 0%, #f6ad55 100%) !important;
+  border: 1px solid #dd6b20 !important;
+}
+
+.quick-sms-button:hover {
+  background: linear-gradient(135deg, #dd6b20 0%, #ed8936 100%) !important;
+  box-shadow: 0 4px 8px rgba(221,107,32,0.3) !important;
+}
+
+.quick-credit-card-button {
+  background: linear-gradient(135deg, #9f7aea 0%, #b794f4 100%) !important;
+  border: 1px solid #805ad5 !important;
+}
+
+.quick-credit-card-button:hover {
+  background: linear-gradient(135deg, #805ad5 0%, #9f7aea 100%) !important;
+  box-shadow: 0 4px 8px rgba(128,90,213,0.3) !important;
+}
+
+.quick-paypal-button {
+  background: linear-gradient(135deg, #00457c 0%, #0070ba 100%) !important;
+  border: 1px solid #003087 !important;
+}
+
+.quick-paypal-button:hover {
+  background: linear-gradient(135deg, #003087 0%, #00457c 100%) !important;
+  box-shadow: 0 4px 8px rgba(0,48,135,0.3) !important;
+}
+
+.quick-gofundme-button {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%) !important;
+  border: 1px solid #00a085 !important;
+}
+
+.quick-gofundme-button:hover {
+  background: linear-gradient(135deg, #00a085 0%, #00b894 100%) !important;
+  box-shadow: 0 4px 8px rgba(0,168,149,0.3) !important;
 }
 
 @media (max-width: 768px) {
   .quick-buttons {
-    flex-direction: column;
-    width: 90%;
     gap: 12px;
+    margin: 15px auto;
   }
-
-  .quick-iban-button {
+  
+  .donation-group-button {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  
+  .donation-options .button-row {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  .donation-options .button-row .quick-iban-button {
     width: 100%;
+    max-width: none;
   }
 }
 
 @media (max-width: 480px) {
-  .quick-buttons {
+  .donation-group-button {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+  
+  .donation-group-button .group-button-text {
     gap: 8px;
   }
-  .quick-iban-button,
-  .quick-credit-card-button {
+  
+  .donation-options .button-row {
+    padding: 12px;
+    gap: 6px;
+  }
+  
+  .donation-options .button-row .quick-iban-button {
     padding: 8px 10px;
     font-size: 13px;
     min-width: 0;
-    border-radius: 6px;
   }
 }
 
@@ -2296,4 +2383,161 @@ footer {
   .price {
     font-size: 0.9rem;
   }
+} 
+
+.quick-iban-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: #1a365d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-decoration: none;
+  justify-content: flex-start;
+  min-height: 48px;
+}
+
+.button-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.button-content span:first-child {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.iban-preview {
+  font-size: 11px;
+  opacity: 0.8;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.donation-group-button {
+  font-size: 15px;
+  padding: 12px 16px;
+}
+
+@media (max-width: 768px) {
+  .quick-iban-button {
+    padding: 8px 12px;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .button-content span:first-child {
+    font-size: 12px;
+  }
+  .iban-preview {
+    font-size: 10px;
+  }
+  .donation-group-button {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-iban-button {
+    padding: 8px 10px;
+    min-height: 42px;
+    font-size: 12px;
+  }
+  .button-content span:first-child {
+    font-size: 11px;
+  }
+  .iban-preview {
+    font-size: 9px;
+  }
+  .donation-group-button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+} 
+
+.btn-tl-iban {
+  background: linear-gradient(135deg, #276749 0%, #38a169 100%) !important;
+  border: 1px solid #276749 !important;
+}
+.btn-tl-iban:hover {
+  background: linear-gradient(135deg, #22543d 0%, #276749 100%) !important;
+  box-shadow: 0 4px 8px rgba(39,103,73,0.25) !important;
+}
+
+.btn-all-iban {
+  background: linear-gradient(135deg, #68d391 0%, #c6f6d5 100%) !important;
+  color: #22543d !important;
+  border: 1px solid #38a169 !important;
+}
+.btn-all-iban:hover {
+  background: linear-gradient(135deg, #38a169 0%, #68d391 100%) !important;
+  color: #22543d !important;
+  box-shadow: 0 4px 8px rgba(104,211,145,0.25) !important;
+}
+
+.btn-sms {
+  background: linear-gradient(135deg, #ed8936 0%, #f6ad55 100%) !important;
+  border: 1px solid #dd6b20 !important;
+  color: #7b341e !important;
+}
+.btn-sms:hover {
+  background: linear-gradient(135deg, #dd6b20 0%, #ed8936 100%) !important;
+  color: #7b341e !important;
+  box-shadow: 0 4px 8px rgba(221,107,32,0.25) !important;
+}
+
+.btn-shopier {
+  background: linear-gradient(135deg, #9f7aea 0%, #b794f4 100%) !important;
+  border: 1px solid #805ad5 !important;
+  color: #44337a !important;
+}
+.btn-shopier:hover {
+  background: linear-gradient(135deg, #805ad5 0%, #9f7aea 100%) !important;
+  color: #44337a !important;
+  box-shadow: 0 4px 8px rgba(128,90,213,0.25) !important;
+}
+
+.btn-foreign-iban {
+  background: linear-gradient(135deg, #63b3ed 0%, #bee3f8 100%) !important;
+  color: #2a4365 !important;
+  border: 1px solid #3182ce !important;
+}
+.btn-foreign-iban:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%) !important;
+  color: #2a4365 !important;
+  box-shadow: 0 4px 8px rgba(99,179,237,0.25) !important;
+}
+
+.btn-paypal {
+  background: linear-gradient(135deg, #00457c 0%, #0070ba 100%) !important;
+  border: 1px solid #003087 !important;
+  color: #fff !important;
+}
+.btn-paypal:hover {
+  background: linear-gradient(135deg, #003087 0%, #00457c 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 8px rgba(0,48,135,0.25) !important;
+}
+
+.btn-gofundme {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%) !important;
+  border: 1px solid #00a085 !important;
+  color: #fff !important;
+}
+.btn-gofundme:hover {
+  background: linear-gradient(135deg, #00a085 0%, #00b894 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 8px rgba(0,168,149,0.25) !important;
 } 

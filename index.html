@@ -46,39 +46,85 @@
       <img src="furkan.jpg" alt="Furkan Elmas - DMD Kas Hastası" class="profile-pic" loading="lazy" width="120" height="120">
       <h1 class="main-title">DMD Kas Hastası Furkan Elmas'a Umut Ol</h1>
       <div class="language-buttons">
-        <button class="lang-option active" data-lang="tr">TR</button>
-        <button class="lang-option" data-lang="en">EN</button>
-        <button class="lang-option" data-lang="de">DE</button>
+        <button class="lang-option active" data-lang="tr"><img src="flags/tr.png" class="flag" alt="TR"> TR</button>
+        <button class="lang-option" data-lang="en"><img src="flags/gb.png" class="flag" alt="EN"> EN</button>
+        <button class="lang-option" data-lang="de"><img src="flags/de.png" class="flag" alt="DE"> DE</button>
       </div>
       <div class="quick-buttons">
-        <button id="quickTlIbanButton" class="quick-iban-button quick-tl-iban-button" aria-label="TL IBAN'ı kopyala" onclick="copyToClipboard('iban-tl')">
-          <i class="fas fa-copy"></i>
-          <span id="quickTlIbanButtonText">TL IBAN'ı Kopyala</span>
-        </button>
-        <button id="quickIbanButton" class="quick-iban-button" aria-label="IBAN bilgilerine hızlı erişim">
-          <i class="fas fa-university"></i>
-          <span id="quickIbanButtonText">Tüm IBAN'lara Hızlı Erişim</span>
-        </button>
-        <button id="quickForeignIbanButton" class="quick-iban-button" aria-label="Yurtdışı IBAN bilgilerine hızlı erişim">
-          <i class="fas fa-globe"></i>
-          <span id="quickForeignIbanButtonText">Yurtdışı IBAN'a Hızlı Erişim</span>
-        </button>
-        <button id="quickSmsButton" class="quick-iban-button quick-sms-button" aria-label="SMS ile bağış yap" onclick="sendSMS()">
-          <i class="fas fa-sms"></i>
-          <span id="quickSmsButtonText">SMS ile Bağış Yap</span>
-        </button>
-        <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-gofundme-button" id="quickGofundmeButton" aria-label="GoFundMe ile bağış yap">
-          <i class="fab fa-gofundme"></i>
-          <span id="quickGofundmeButtonText">GoFundMe ile Bağış Yap</span>
-        </a>
-        <a href="https://www.paypal.com/donate?campaign_id=KECHK34WGS3KG" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-paypal-button" id="quickPaypalButton" aria-label="PayPal ile bağış yap">
-          <i class="fab fa-paypal"></i>
-          <span id="quickPaypalButtonText">PayPal ile Bağış Yap</span>
-        </a>
-        <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button quick-credit-card-button" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
-          <i class="fas fa-credit-card"></i>
-          <span>Kredi Kartı ile Bağış Yap</span>
-        </a>
+        <!-- Yurt İçi Bağış Seçenekleri -->
+        <div class="donation-group">
+          <button class="donation-group-button" aria-expanded="false" aria-controls="domestic-options">
+            <i class="fas fa-home"></i>
+            <span class="group-button-text">Yurt İçi Bağış Seçenekleri için Tıklayınız</span>
+            <i class="fas fa-chevron-down group-arrow"></i>
+          </button>
+          <div class="donation-options" id="domestic-options">
+            <div class="button-row">
+              <button id="quickTlIbanButton" class="quick-iban-button btn-tl-iban" aria-label="TL IBAN'ı kopyala" onclick="copyToClipboard('iban-tl')">
+                <i class="fas fa-copy"></i>
+                <div class="button-content">
+                  <span id="quickTlIbanButtonText">TL IBAN'ı Kopyalamak için Tıkla</span>
+                  <span class="iban-preview">TR65 0020 5000 0913 3755 1000 01</span>
+                </div>
+              </button>
+              <button id="quickIbanButton" class="quick-iban-button btn-all-iban" aria-label="Tüm IBAN bilgilerine hızlı erişim">
+                <i class="fas fa-university"></i>
+                <div class="button-content">
+                  <span id="quickIbanButtonText">Tüm IBAN'ları Görmek için Tıkla</span>
+                  <span class="iban-preview">USD, EUR, GBP, CHF IBAN'ları</span>
+                </div>
+              </button>
+              <button id="quickSmsButton" class="quick-iban-button btn-sms" aria-label="SMS ile bağış yap" onclick="sendSMS()">
+                <i class="fas fa-sms"></i>
+                <div class="button-content">
+                  <span id="quickSmsButtonText">SMS ile Bağış Yapmak için Tıkla</span>
+                  <span class="iban-preview">FURKAN yazıp 5924'e gönder</span>
+                </div>
+              </button>
+              <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button btn-shopier" id="quickCreditCardButton" aria-label="Kredi kartı ile bağış yap">
+                <i class="fas fa-credit-card"></i>
+                <div class="button-content">
+                  <span id="quickCreditCardButtonText">Kredi Kartı ile Bağış Yapmak için Tıkla</span>
+                  <span class="iban-preview">Güvenli ödeme ile Shopier</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yurt Dışı Bağış Seçenekleri -->
+        <div class="donation-group">
+          <button class="donation-group-button" aria-expanded="false" aria-controls="international-options">
+            <i class="fas fa-globe"></i>
+            <span class="group-button-text">Yurt Dışı Bağış Seçenekleri için Tıklayınız</span>
+            <i class="fas fa-chevron-down group-arrow"></i>
+          </button>
+          <div class="donation-options" id="international-options">
+            <div class="button-row">
+              <button id="quickForeignIbanButton" class="quick-iban-button btn-foreign-iban" aria-label="Yurtdışı IBAN bilgilerine hızlı erişim">
+                <i class="fas fa-globe"></i>
+                <div class="button-content">
+                  <span id="quickForeignIbanButtonText">Yurt Dışı IBAN'ı Görmek için Tıkla</span>
+                  <span class="iban-preview">First Care e.V. hesabı</span>
+                </div>
+              </button>
+              <a href="https://www.paypal.com/donate?campaign_id=KECHK34WGS3KG" target="_blank" rel="noopener noreferrer" class="quick-iban-button btn-paypal" id="quickPaypalButton" aria-label="PayPal ile bağış yap">
+                <i class="fab fa-paypal"></i>
+                <div class="button-content">
+                  <span id="quickPaypalButtonText">PayPal ile Bağış Yapmak için Tıkla</span>
+                  <span class="iban-preview">Dünya çapında güvenli ödeme</span>
+                </div>
+              </a>
+              <a href="https://www.gofundme.com/f/furkan-elmas" target="_blank" rel="noopener noreferrer" class="quick-iban-button btn-gofundme" id="quickGofundmeButton" aria-label="GoFundMe ile bağış yap">
+                <i class="fab fa-gofundme"></i>
+                <div class="button-content">
+                  <span id="quickGofundmeButtonText">GoFundMe ile Bağış Yapmak için Tıkla</span>
+                  <span class="iban-preview">Uluslararası bağış platformu</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="header-permission-info">
         <span class="permission-text">Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas</span>
@@ -496,7 +542,7 @@
           creditCardDesc: "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.",
           creditCardButton: "Kredi Kartı ile Bağış Yap",
           quickIbanButton: "Tüm IBAN'lara Hızlı Erişim",
-          quickCreditCardButton: "Kredi Kartı ile Bağış Yap",
+
           foreignIbanTitle: "YURT DIŞI HESAP BİLGİLERİ",
           foreignIbanDesc: "Yurt dışından bağış yapmak için bu hesap bilgilerini kullanabilirsiniz.",
           quickForeignIbanButton: "Yurtdışı IBAN'a Hızlı Erişim",
@@ -510,6 +556,12 @@
           quickPaypalButton: "PayPal ile Bağış Yap",
           collectedAmount: "956.969 USD",
           remainingAmount: "1.942.938 USD",
+          domesticDonationsTitle: "Yurt İçi Bağış Seçenekleri için Tıklayınız",
+          internationalDonationsTitle: "Yurt Dışı Bağış Seçenekleri için Tıklayınız",
+          tlIbanWithDonation: "TL IBAN'ı Kopyalamak için Tıkla",
+          allIbansWithDonation: "Tüm IBAN'ları Görmek için Tıkla",
+          foreignIbanWithDonation: "Yurt Dışı IBAN'ı Görmek için Tıkla",
+          creditCardWithDonation: "Kredi Kartı ile Bağış Yapmak için Tıkla",
         },
         en: {
           copiedText: "Copied!",
@@ -591,7 +643,7 @@
           creditCardDesc: "You can make a secure donation with your credit card. All payments are processed via Shopier with SSL certificate protection.",
           creditCardButton: "Donate with Credit Card",
           quickIbanButton: "Quick Access to IBAN",
-          quickCreditCardButton: "Donate with Credit Card",
+
           foreignIbanTitle: "INTERNATIONAL ACCOUNT INFORMATION",
           foreignIbanDesc: "You can use this account information to donate from abroad.",
           quickForeignIbanButton: "Quick Access to International IBAN",
@@ -603,8 +655,14 @@
           foreignDonateInfo: "You can safely donate from anywhere in the world via PayPal and GoFundMe. Click the buttons below to make a donation. All transactions are secured by First Care e.V.",
           quickGofundmeButton: "Donate via GoFundMe",
           quickPaypalButton: "Donate via PayPal",
-          collectedAmount: "956.969 USD",
-          remainingAmount: "1.942.938 USD",
+          collectedAmount: "956,969 USD",
+          remainingAmount: "1,942,938 USD",
+          domesticDonationsTitle: "Click for Domestic Donations",
+          internationalDonationsTitle: "Click for International Donations",
+          tlIbanWithDonation: "Click to Copy TL IBAN",
+          allIbansWithDonation: "Click to See All IBANs",
+          foreignIbanWithDonation: "Click to See Foreign IBAN",
+          creditCardWithDonation: "Click to Donate with Credit Card",
         },
         de: {
           copiedText: "Kopiert!",
@@ -686,7 +744,7 @@
           creditCardDesc: "Sie können sicher mit Ihrer Kreditkarte spenden. Alle Zahlungen werden über Shopier mit SSL-Zertifikat abgewickelt.",
           creditCardButton: "Mit Kreditkarte spenden",
           quickIbanButton: "Schnellzugriff auf IBAN",
-          quickCreditCardButton: "Mit Kreditkarte spenden",
+
           foreignIbanTitle: "AUSLANDSÜBERWEISUNG KONTOANGABEN",
           foreignIbanDesc: "Für Spenden aus dem Ausland nutzen Sie bitte diese Kontoinformationen.",
           quickForeignIbanButton: "Schnellzugriff auf Auslands-IBAN",
@@ -700,6 +758,12 @@
           quickPaypalButton: "Über PayPal spenden",
           collectedAmount: "956.969 USD",
           remainingAmount: "1.942.938 USD",
+          domesticDonationsTitle: "Klicken Sie für Inländische Spenden",
+          internationalDonationsTitle: "Klicken Sie für Ausländische Spenden",
+          tlIbanWithDonation: "Klicken Sie zum Kopieren der TRY IBAN",
+          allIbansWithDonation: "Klicken Sie um alle IBANs zu sehen",
+          foreignIbanWithDonation: "Klicken Sie um Auslands-IBAN zu sehen",
+          creditCardWithDonation: "Mit Kreditkarte spenden (klicken)",
         }
       };
 
@@ -743,15 +807,13 @@
         
         // Update quick access buttons
         const quickIbanButton = document.getElementById('quickIbanButton');
-        const quickCreditCardButton = document.querySelector('.quick-credit-card-button');
+        const quickCreditCardButton = document.getElementById('quickCreditCardButton');
         
         if (quickIbanButton) {
           quickIbanButton.querySelector('span').textContent = t.quickIbanButton;
         }
         
-        if (quickCreditCardButton) {
-          quickCreditCardButton.querySelector('span').textContent = t.quickCreditCardButton;
-        }
+
         
         // Update help section content
         document.querySelector('.donation-examples h4').textContent = t.donationExamplesTitle;
@@ -943,6 +1005,82 @@
         if (quickTlIbanButton) {
           quickTlIbanButton.style.display = lang === 'tr' ? 'flex' : 'none';
         }
+
+        // Update group titles and button texts
+        const domesticTitle = document.querySelector('.domestic-donations .group-title');
+        const internationalTitle = document.querySelector('.international-donations .group-title');
+        const tlIbanButton = document.getElementById('quickTlIbanButton');
+        const allIbansButton = document.getElementById('quickIbanButton');
+        const foreignIbanButton = document.getElementById('quickForeignIbanButton');
+        
+        if (domesticTitle) {
+          domesticTitle.textContent = t.domesticDonationsTitle;
+        }
+        
+        if (internationalTitle) {
+          internationalTitle.textContent = t.internationalDonationsTitle;
+        }
+        
+        if (tlIbanButton) {
+          tlIbanButton.querySelector('span').textContent = t.tlIbanWithDonation;
+        }
+        
+        if (allIbansButton) {
+          allIbansButton.querySelector('span').textContent = t.allIbansWithDonation;
+        }
+        
+        if (foreignIbanButton) {
+          foreignIbanButton.querySelector('span').textContent = t.foreignIbanWithDonation;
+        }
+        
+        // Update group button texts
+        const domesticButton = document.querySelector('.donation-group:first-child .group-button-text');
+        const internationalButton = document.querySelector('.donation-group:last-child .group-button-text');
+        
+        if (domesticButton) {
+          domesticButton.textContent = t.domesticDonationsTitle;
+        }
+        
+        if (internationalButton) {
+          internationalButton.textContent = t.internationalDonationsTitle;
+        }
+        
+        // Update button texts with new structure
+        const tlIbanButtonNew = document.getElementById('quickTlIbanButton');
+        const allIbansButtonNew = document.getElementById('quickIbanButton');
+        const foreignIbanButtonNew = document.getElementById('quickForeignIbanButton');
+        const smsButtonNew = document.getElementById('quickSmsButton');
+        const creditCardButtonNew = document.getElementById('quickCreditCardButton');
+        const paypalButtonNew = document.getElementById('quickPaypalButton');
+        const gofundmeButtonNew = document.getElementById('quickGofundmeButton');
+        
+        if (tlIbanButtonNew) {
+          tlIbanButtonNew.querySelector('.button-content span:first-child').textContent = t.tlIbanWithDonation;
+        }
+        
+        if (allIbansButtonNew) {
+          allIbansButtonNew.querySelector('.button-content span:first-child').textContent = t.allIbansWithDonation;
+        }
+        
+        if (foreignIbanButtonNew) {
+          foreignIbanButtonNew.querySelector('.button-content span:first-child').textContent = t.foreignIbanWithDonation;
+        }
+        
+        if (smsButtonNew) {
+          smsButtonNew.querySelector('.button-content span:first-child').textContent = t.quickSmsButtonText || "SMS ile Bağış Yapmak için Tıkla";
+        }
+        
+        if (creditCardButtonNew) {
+          creditCardButtonNew.querySelector('.button-content span:first-child').textContent = t.creditCardWithDonation || "Kredi Kartı ile Bağış Yapmak için Tıkla";
+        }
+        
+        if (paypalButtonNew) {
+          paypalButtonNew.querySelector('.button-content span:first-child').textContent = t.quickPaypalButtonText || "PayPal ile Bağış Yapmak için Tıkla";
+        }
+        
+        if (gofundmeButtonNew) {
+          gofundmeButtonNew.querySelector('.button-content span:first-child').textContent = t.quickGofundmeButtonText || "GoFundMe ile Bağış Yapmak için Tıkla";
+        }
       }
 
       // Kopyalama işlevselliği
@@ -1081,6 +1219,31 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
+
+      // Accordion functionality for donation groups
+      const donationGroupButtons = document.querySelectorAll('.donation-group-button');
+      
+      donationGroupButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          const targetId = this.getAttribute('aria-controls');
+          const targetOptions = document.getElementById(targetId);
+          
+          // Toggle current button
+          this.setAttribute('aria-expanded', !isExpanded);
+          targetOptions.classList.toggle('show');
+          
+          // Close other open groups
+          donationGroupButtons.forEach(otherButton => {
+            if (otherButton !== this) {
+              const otherId = otherButton.getAttribute('aria-controls');
+              const otherOptions = document.getElementById(otherId);
+              otherButton.setAttribute('aria-expanded', 'false');
+              otherOptions.classList.remove('show');
+            }
+          });
+        });
+      });
     });
 
     // SMS gönderme fonksiyonu (global scope)
