@@ -42,6 +42,13 @@ body {
   pointer-events: auto;
 }
 
+/* Mobilde daha düşük z-index */
+@media (max-width: 768px) {
+  .fixed-social-buttons {
+    z-index: 100;
+  }
+}
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -131,36 +138,40 @@ body {
 
 @media (max-width: 480px) {
   .fixed-social-buttons {
-    bottom: 15px;
-    right: 10px;
-    gap: 8px;
+    top: 10px;
+    right: 5px;
+    gap: 3px;
     animation: none;
+    z-index: 50;
+    flex-direction: row;
   }
   
   .fixed-social-button {
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     animation: none;
   }
   
   .fixed-social-button:hover {
-    transform: translateY(-1px) scale(1.02);
+    transform: none;
   }
 }
 
 @media (max-width: 360px) {
   .fixed-social-buttons {
-    bottom: 10px;
-    right: 8px;
-    gap: 6px;
+    top: 5px;
+    right: 3px;
+    gap: 2px;
+    z-index: 25;
+    flex-direction: row;
   }
   
   .fixed-social-button {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
 }
 
