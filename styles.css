@@ -29,6 +29,112 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Sabit Sosyal Medya Butonları */
+.fixed-social-buttons {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mobil için daha iyi konumlandırma */
+@media (max-width: 768px) {
+  .fixed-social-buttons {
+    top: 20px;
+    left: 20px;
+    gap: 15px;
+  }
+}
+
+.fixed-social-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.fixed-social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.fixed-social-button.instagram-button {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.fixed-social-button.instagram-button:hover {
+  background: linear-gradient(45deg, #e6683c 0%, #dc2743 25%, #cc2366 50%, #bc1888 75%, #f09433 100%);
+}
+
+.fixed-social-button.contact-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.fixed-social-button.contact-button:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Mobil Responsive */
+@media (max-width: 768px) {
+  .fixed-social-buttons {
+    top: 15px;
+    left: 15px;
+  }
+  
+  .fixed-social-button {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fixed-social-buttons {
+    top: 15px;
+    left: 15px;
+    gap: 10px;
+  }
+  
+  .fixed-social-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .fixed-social-button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 360px) {
+  .fixed-social-buttons {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .fixed-social-button {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
 .container {
   max-width: 700px;
   margin: 40px auto;
