@@ -86,13 +86,13 @@
         <button class="lang-option" data-lang="de"><img src="flags/de.png" class="flag" alt="DE"> DE</button>
       </div>
       <div class="quick-buttons">
-        <!-- Doğum Günü Kartı -->
+        <!-- Zafer Bayramı Kartı -->
         <div class="birthday-card-section">
-          <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="birthday-card-button" aria-label="Furkan'ın doğum günü kartını görüntüle">
-            <i class="fas fa-birthday-cake"></i>
+          <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="victory-card-button" aria-label="Furkan'ın zafer bayramı kartını görüntüle">
+            <img src="flags/tr.png" class="flag" alt="TR">
             <div class="button-content">
-              <span class="birthday-text">🎂 Furkan'ın Doğum Günü Kartı</span>
-              <span class="birthday-subtitle">Küçük bir hediye, büyük bir umut: Furkan'ın sağlıklı yarınları için.</span>
+              <span class="victory-text">Zafer Bayramımız Kutlu Olsun!</span>
+              <span class="victory-subtitle">🎈 Bir Zafer Balonu da Siz Uçurun - Furkan'ın DMD ile savaşında kahramanı olun!</span>
             </div>
           </a>
         </div>
@@ -908,10 +908,8 @@
         const quickCreditCardButton = document.getElementById('quickCreditCardButton');
         
         if (quickIbanButton) {
-          quickIbanButton.querySelector('span').textContent = t.quickIbanButton;
+          quickIbanButton.querySelector('.button-content span:first-child').textContent = t.allIbansWithDonation;
         }
-        
-
         
         // Update help section content
         document.querySelector('.donation-examples h4').textContent = t.donationExamplesTitle;
@@ -1132,8 +1130,8 @@
         }
         
         // Update group button texts
-        const domesticButton = document.querySelector('.donation-group:first-child .group-button-text');
-        const internationalButton = document.querySelector('.donation-group:last-child .group-button-text');
+        const domesticButton = document.querySelector('.donation-group:nth-child(2) .group-button-text');
+        const internationalButton = document.querySelector('.donation-group:nth-child(3) .group-button-text');
         
         if (domesticButton) {
           domesticButton.textContent = t.domesticDonationsTitle;
