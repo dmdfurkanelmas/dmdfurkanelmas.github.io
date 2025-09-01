@@ -2681,116 +2681,9 @@ footer {
   box-shadow: 0 4px 8px rgba(0,168,149,0.25) !important;
 } 
 
-/* Zafer Bayramı Kartı Butonu */
-.birthday-card-section {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.victory-card-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 28px;
-  background: linear-gradient(135deg, #f7fafc 0%, #f56565 50%, #e53e3e 100%);
-  color: white;
-  border: 2px solid #c53030;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
-  text-decoration: none;
-  justify-content: center;
-  min-height: 70px;
-  min-width: 320px;
-  position: relative;
-  overflow: hidden;
-  animation: victoryGlow 2s ease-in-out infinite alternate;
-}
-
-.victory-card-button .flag {
-  width: 24px;
-  height: 16px;
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.victory-card-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.victory-card-button:hover::before {
-  left: 100%;
-}
-
-.victory-card-button:hover {
-  background: linear-gradient(135deg, #edf2f7 0%, #e53e3e 50%, #c53030 100%);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4);
-  border-color: #a53030;
-}
 
 
 
-.victory-text {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.3;
-  white-space: normal;
-  word-break: break-word;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.victory-subtitle {
-  font-size: 11px;
-  opacity: 0.9;
-  font-weight: 500;
-  line-height: 1.3;
-  margin-top: 3px;
-  max-width: 100%;
-  text-align: center;
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-@keyframes victoryGlow {
-  0% {
-    box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
-  }
-  100% {
-    box-shadow: 0 4px 20px rgba(229, 62, 62, 0.5), 0 0 30px rgba(229, 62, 62, 0.2);
-  }
-}
-
-/* Mobil için zafer bayramı butonu */
-@media (max-width: 768px) {
-  .victory-card-button {
-    padding: 16px 24px;
-    font-size: 15px;
-    min-height: 65px;
-    min-width: 300px;
-  }
-  
-
-  
-  .victory-text {
-    font-size: 15px;
-  }
-  
-  .victory-subtitle {
-    font-size: 10px;
-    max-width: 100%;
-  }
-}
 
 @media (max-width: 480px) {
   .button-content span:first-child {
@@ -2801,21 +2694,5 @@ footer {
     height: 6px;
   }
   
-  .victory-card-button {
-    padding: 14px 20px;
-    font-size: 14px;
-    min-height: 60px;
-    min-width: 260px;
-  }
-  
 
-  
-  .victory-text {
-    font-size: 14px;
-  }
-  
-  .victory-subtitle {
-    font-size: 9px;
-    max-width: 100%;
-  }
 }
