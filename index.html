@@ -178,11 +178,18 @@
       <div class="detail-row">
         <div class="detail-item location-item">
           <i class="fas fa-map-marker-alt"></i>
-          <a href="https://maps.google.com/?q=26+Haziran+Kültür+Sarayı+Tokat" target="_blank" rel="noopener noreferrer" class="location-link">
-            <span id="concertLocationValue">26 Haziran Kültür Sarayı</span>
-            <br>
-            <span class="location-subtitle" id="locationSubtitle">Tokat Merkez</span>
-          </a>
+          <div class="location-links">
+            <a href="https://maps.google.com/?q=26+Haziran+Kültür+Sarayı+Tokat" target="_blank" rel="noopener noreferrer" class="location-link">
+              <span id="concertLocationValue">26 Haziran Kültür Sarayı</span>
+              <br>
+              <span class="location-subtitle" id="locationSubtitle">Tokat Merkez</span>
+            </a>
+            <div class="map-buttons">
+              <button onclick="openSmartMaps('26+Haziran+Kültür+Sarayı+Tokat')" class="map-btn smart-map-btn">
+                <i class="fas fa-map-marker-alt"></i> Konumu Aç
+              </button>
+            </div>
+          </div>
         </div>
         <div class="detail-item">
           <i class="fas fa-calendar-alt"></i>
@@ -200,12 +207,28 @@
       <div class="ticket-info-compact">
         <div class="ticket-locations-row">
           <span class="ticket-label">🎫 Bilet Satış Noktaları:</span>
-          <a href="https://maps.google.com/?q=TKM+Kitap+Kırtasiye+Tokat" target="_blank" rel="noopener noreferrer" class="ticket-location-link">
-            <span id="ticketLocation1">TKM Kitap Kırtasiye</span>
-          </a> • 
-          <a href="https://maps.google.com/?q=Doremi+Müzik+Tokat" target="_blank" rel="noopener noreferrer" class="ticket-location-link">
-            <span id="ticketLocation2">Doremi Sanat Merkezi</span>
-          </a>
+          <div class="ticket-locations">
+            <div class="ticket-location-item">
+              <a href="https://maps.google.com/?q=TKM+Kitap+Kırtasiye+Tokat" target="_blank" rel="noopener noreferrer" class="ticket-location-link">
+                <span id="ticketLocation1">TKM Kitap Kırtasiye</span>
+              </a>
+              <div class="ticket-map-buttons">
+                <button onclick="openSmartMaps('TKM+Kitap+Kırtasiye+Tokat')" class="ticket-map-btn smart-map-btn">
+                  <i class="fas fa-map-marker-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="ticket-location-item">
+              <a href="https://maps.google.com/?q=Doremi+Müzik+Tokat" target="_blank" rel="noopener noreferrer" class="ticket-location-link">
+                <span id="ticketLocation2">Doremi Sanat Merkezi</span>
+              </a>
+              <div class="ticket-map-buttons">
+                <button onclick="openSmartMaps('Doremi+Müzik+Tokat')" class="ticket-map-btn smart-map-btn">
+                  <i class="fas fa-map-marker-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="entrance-ticket-info">
           <strong id="ticketLocation3">Girişte'de bilet satışı olacaktır!</strong>
@@ -1328,6 +1351,31 @@
         const officialSupportMessage = document.getElementById('officialSupportMessage');
         if (officialSupportMessage) officialSupportMessage.textContent = t.officialSupportMessage;
       }
+
+      // Akıllı harita açma sistemi
+      window.openSmartMaps = function(query) {
+        const userAgent = navigator.userAgent.toLowerCase();
+        let mapUrl;
+        
+        // iOS cihazları tespit et
+        if (/iphone|ipad|ipod/.test(userAgent)) {
+          // iOS için Apple Maps
+          mapUrl = `http://maps.apple.com/?q=${query}`;
+        }
+        // Android cihazları tespit et
+        else if (/android/.test(userAgent)) {
+          // Android için Google Maps
+          mapUrl = `https://maps.google.com/?q=${query}`;
+        }
+        // Desktop veya diğer cihazlar
+        else {
+          // Desktop için varsayılan olarak Google Maps
+          mapUrl = `https://maps.google.com/?q=${query}`;
+        }
+        
+        // Haritayı yeni sekmede aç
+        window.open(mapUrl, '_blank', 'noopener,noreferrer');
+      };
 
       // Kopyalama işlevselliği
       window.copyToClipboard = async function(id) {
