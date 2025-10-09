@@ -133,6 +133,405 @@
   }
 }
 
+/* ===== HIZLI BAĞIŞ STICKY BUTON ===== */
+.quick-donate-sticky {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%) translateX(-100px);
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quick-donate-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  justify-content: center;
+  animation: pulse-glow 2s infinite;
+}
+
+.quick-donate-btn:hover {
+  background: linear-gradient(135deg, #ee5a52 0%, #ff6b6b 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+}
+
+.quick-donate-btn i {
+  font-size: 18px;
+  animation: heartbeat 1.5s infinite;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 107, 107, 0.6);
+  border-radius: 50px;
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.8);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Mobil için sticky buton düzenlemesi */
+@media (max-width: 768px) {
+  .quick-donate-sticky {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    right: auto;
+    opacity: 0;
+  }
+  
+  .quick-donate-btn {
+    min-width: 280px;
+    padding: 14px 20px;
+    font-size: 15px;
+    border-radius: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .quick-donate-btn {
+    min-width: 260px;
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+}
+
+/* ===== HIZLI BAĞIŞ MODAL ===== */
+.quick-donate-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.quick-donate-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.4s ease-out;
+  position: relative;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #1a365d 0%, #3182ce 100%);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.urgency-message {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+  border-left: 4px solid #f56565;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.urgency-message i {
+  color: #f56565;
+  font-size: 18px;
+}
+
+.urgency-message span {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.quick-iban-section {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  border: 2px solid #48bb78;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.quick-iban-section h4 {
+  color: #22543d;
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.iban-display {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+#quickIbanText {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a365d;
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.copy-iban-btn {
+  background: linear-gradient(135deg, #48bb78 0%, #68d391 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.copy-iban-btn:hover {
+  background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(72, 187, 120, 0.4);
+}
+
+.copy-iban-btn.copied {
+  background: linear-gradient(135deg, #38a169 0%, #48bb78 100%);
+  animation: successPulse 0.6s ease;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.iban-note {
+  color: #4a5568;
+  font-size: 14px;
+  margin: 0;
+}
+
+.other-options {
+  margin-top: 20px;
+}
+
+.other-options h5 {
+  color: #2d3748;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.option-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-btn {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #4a5568;
+}
+
+.option-btn:hover {
+  border-color: #3182ce;
+  background: #f7fafc;
+  color: #3182ce;
+  transform: translateX(4px);
+}
+
+.modal-footer {
+  background: #f7fafc;
+  padding: 20px 24px;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+}
+
+.thank-you-note {
+  color: #4a5568;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.thank-you-note i {
+  color: #ff6b6b;
+  font-size: 16px;
+}
+
+/* Mobil modal düzenlemeleri */
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 10px;
+    border-radius: 16px;
+  }
+  
+  .modal-header {
+    padding: 16px 20px;
+  }
+  
+  .modal-header h3 {
+    font-size: 18px;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .quick-iban-section {
+    padding: 16px;
+  }
+  
+  .quick-iban-section h4 {
+    font-size: 16px;
+  }
+  
+  #quickIbanText {
+    font-size: 16px;
+  }
+  
+  .copy-iban-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
 :root {
   --primary-color: #1a365d;
   --secondary-color: #3182ce;

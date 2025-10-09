@@ -64,9 +64,19 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script src="i18n.js" defer></script>
+  <script src="quick-donate.js" defer></script>
   
 </head>
 <body>
+
+  <!-- Hızlı Bağış Sticky Butonu -->
+  <div class="quick-donate-sticky">
+    <button class="quick-donate-btn" onclick="quickDonate()" aria-label="Hızlı bağış yap">
+      <i class="fas fa-heart"></i>
+      <span data-i18n="buttons.quickDonate">Furkan'a Umut Ol</span>
+      <div class="pulse-ring"></div>
+    </button>
+  </div>
 
   <!-- Sabit Sosyal Medya Butonları -->
   <div class="fixed-social-buttons">
@@ -76,6 +86,62 @@
     <a href="tel:+905071453955" class="fixed-social-button contact-button" aria-label="İletişim için telefon edin">
       <i class="fas fa-phone"></i>
     </a>
+  </div>
+
+  <!-- Hızlı Bağış Modal -->
+  <div id="quickDonateModal" class="quick-donate-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 data-i18n="buttons.quickDonate">Furkan'a Umut Ol</h3>
+        <button class="close-modal" onclick="closeQuickDonate()" aria-label="Kapat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="urgency-message">
+          <i class="fas fa-clock"></i>
+          <span data-i18n="urgency.message">Her gün çok değerli, zaman Furkan'ın aleyhine işliyor</span>
+        </div>
+        
+        <div class="quick-iban-section">
+          <h4>🇹🇷 TL IBAN (En Hızlı)</h4>
+          <div class="iban-display">
+            <span id="quickIbanText">TR65 0020 5000 0913 3755 1000 01</span>
+            <button class="copy-iban-btn" onclick="copyQuickIban()">
+              <i class="fas fa-copy"></i>
+              <span data-i18n="buttons.copyIban">IBAN'ı Kopyala</span>
+            </button>
+          </div>
+          <p class="iban-note">Alıcı: <strong>Furkan Elmas</strong></p>
+        </div>
+        
+        <div class="other-options">
+          <h5>Diğer Seçenekler:</h5>
+          <div class="option-buttons">
+            <button class="option-btn" onclick="showAllIbans()">
+              <i class="fas fa-university"></i>
+              Tüm IBAN'lar
+            </button>
+            <button class="option-btn" onclick="openCreditCard()">
+              <i class="fas fa-credit-card"></i>
+              Kredi Kartı
+            </button>
+            <button class="option-btn" onclick="sendSMS()">
+              <i class="fas fa-sms"></i>
+              SMS Bağış
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-footer">
+        <div class="thank-you-note">
+          <i class="fas fa-heart"></i>
+          <span>Bağışınız Furkan'ın hayatını değiştirecek 💙</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <header role="banner">

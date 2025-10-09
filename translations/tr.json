@@ -39,6 +39,17 @@
     "message": "Her gün çok değerli, zaman Furkan'ın aleyhine işliyor",
     "cta": "Hemen Destek Ol"
   },
+  "quickDonate": {
+    "title": "Furkan'a Umut Ol",
+    "urgencyMessage": "Her gün çok değerli, zaman Furkan'ın aleyhine işliyor",
+    "ibanTitle": "🇹🇷 TL IBAN (En Hızlı)",
+    "recipient": "Alıcı: Furkan Elmas",
+    "otherOptions": "Diğer Seçenekler:",
+    "allIbans": "Tüm IBAN'lar",
+    "creditCard": "Kredi Kartı",
+    "smsDonation": "SMS Bağış",
+    "thankYou": "Bağışınız Furkan'ın hayatını değiştirecek 💙"
+  },
   "social": {
     "instagram": "Instagram",
     "twitter": "X (Twitter)", 
