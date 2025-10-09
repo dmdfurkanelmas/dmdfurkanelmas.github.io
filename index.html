@@ -60,9 +60,10 @@
   <link rel="preload" href="styles.css" as="style">
   <link rel="preload" href="furkan.jpg" as="image">
   
-  <title>DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası Furkan Elmas Bağış Kampanyası</title>
+  <title data-i18n="hero.title">DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası Furkan Elmas Bağış Kampanyası</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="i18n.js" defer></script>
   
 </head>
 <body>
@@ -80,7 +81,7 @@
   <header role="banner">
     <div class="container">
       <img src="furkan.jpg" alt="DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası" class="profile-pic" loading="lazy" width="120" height="120">
-      <h1 class="main-title">DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası</h1>
+      <h1 class="main-title" data-i18n="hero.title">DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası</h1>
       <div class="language-buttons">
         <button class="lang-option active" data-lang="tr"><img src="flags/tr.png" class="flag" alt="TR"> TR</button>
         <button class="lang-option" data-lang="en"><img src="flags/gb.png" class="flag" alt="EN"> EN</button>
@@ -349,43 +350,43 @@
 
 
       <section class="donation-section" aria-labelledby="donation-title">
-        <h2 id="donation-title">Bağış Yap</h2>
+        <h2 id="donation-title" data-i18n="sections.donations">Bağış Yap</h2>
         <div class="donation-goal" role="status" aria-live="polite">
-          <p class="goal-text">Hedefimiz: <span class="goal-amount">2.899.907 USD</span></p>
-                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+          <p class="goal-text" data-i18n="donation.goal">Hedefimiz: <span class="goal-amount" data-i18n="donation.goalAmount">2.899.907 USD</span></p>
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
             <div class="progress" style="width: 60%"></div>
           </div>
-          <p class="slogan">Her bağış bir umut, her umut bir hayat...</p>
+          <p class="slogan" data-i18n="donation.slogan">Her bağış bir umut, her umut bir hayat...</p>
         </div>
         <div class="donation-status">
           <div class="donation-box collected">
-            <h3>Toplanan Bağış</h3>
-                        <div class="amount">1.739.944 USD</div>
-                           <div class="percentage">%60</div>
+            <h3 data-i18n="donation.collected">Toplanan Bağış</h3>
+            <div class="amount" data-i18n="donation.collectedAmount">1.739.944 USD</div>
+            <div class="percentage" data-i18n="donation.progress">%60</div>
           </div>
           <div class="donation-box remaining">
-            <h3>İhtiyaç Duyulan Bağış</h3>
-                        <div class="amount">1.159.963 USD</div>
-                           <div class="percentage">%40</div>
+            <h3 data-i18n="donation.remaining">İhtiyaç Duyulan Bağış</h3>
+            <div class="amount" data-i18n="donation.remainingAmount">1.159.963 USD</div>
+            <div class="percentage">%40</div>
           </div>
         </div>
         <div class="valilik-izin">
-          <p>Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.</p>
+          <p data-i18n="permission.valilikText">Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.</p>
           <div class="permission-details">
             <p><strong>E-Devlet Faaliyet No:</strong> 60.2025.3153</p>
             <p><strong>Ad Soyad:</strong> Mustafa Elmas</p>
           </div>
           <a href="https://www.turkiye.gov.tr/icisleri-ddb-yardim-toplama-yetki-sorgu" target="_blank" rel="noopener noreferrer" class="edevlet-button" id="edevletButton">
             <i class="fas fa-search"></i>
-            <span id="edevletButtonText">E-Devlet Sorgu Sayfasına Git</span>
+            <span id="edevletButtonText" data-i18n="permission.edevletButton">E-Devlet Sorgu Sayfasına Git</span>
           </a>
         </div>
         <div class="credit-card-box">
-          <h3>Kredi Kartı ile Bağış</h3>
-          <div class="credit-card-description">Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.</div>
+          <h3 data-i18n="buttons.creditCard">Kredi Kartı ile Bağış</h3>
+          <div class="credit-card-description" data-i18n="buttons.creditCardDesc">Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır.</div>
           <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="credit-card-button">
             <i class="fas fa-credit-card"></i>
-            <span>Kredi Kartı ile Bağış Yap</span>
+            <span data-i18n="buttons.donate">Kredi Kartı ile Bağış Yap</span>
           </a>
         </div>
         

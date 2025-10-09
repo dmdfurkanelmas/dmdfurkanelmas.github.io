@@ -18,7 +18,9 @@
     "copyIban": "IBAN kopieren",
     "copied": "Kopiert! 💚 Vielen Dank für Ihre Spende",
     "quickDonate": "Seien Sie Hoffnung für Furkan",
-    "share": "Teilen"
+    "share": "Teilen",
+    "creditCard": "Mit Kreditkarte spenden",
+    "creditCardDesc": "Sie können sicher mit Ihrer Kreditkarte spenden. Alle Zahlungen werden über Shopier mit SSL-Zertifikat abgewickelt."
   },
   "sections": {
     "dmdInfo": "DMD Furkan Elmas - Was ist Duchenne-Muskeldystrophie?",

@@ -18,7 +18,9 @@
     "copyIban": "IBAN'ı Kopyala",
     "copied": "Kopyalandı! 💚 Bağışınız için teşekkürler",
     "quickDonate": "Furkan'a Umut Ol",
-    "share": "Paylaş"
+    "share": "Paylaş",
+    "creditCard": "Kredi Kartı ile Bağış",
+    "creditCardDesc": "Kredi kartınızla güvenli bir şekilde bağış yapabilirsiniz. Tüm ödemeler Shopier altyapısı üzerinden, SSL sertifikası ile korunarak alınır."
   },
   "sections": {
     "dmdInfo": "DMD Furkan Elmas - Duchenne Musküler Distrofi Nedir?",

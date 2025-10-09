@@ -18,7 +18,9 @@
     "copyIban": "Copy IBAN",
     "copied": "Copied! 💚 Thank you for your donation",
     "quickDonate": "Be Hope for Furkan",
-    "share": "Share"
+    "share": "Share",
+    "creditCard": "Donate by Credit Card",
+    "creditCardDesc": "You can make a secure donation with your credit card. All payments are processed via Shopier with SSL certificate protection."
   },
   "sections": {
     "dmdInfo": "DMD Furkan Elmas - What is Duchenne Muscular Dystrophy?",
