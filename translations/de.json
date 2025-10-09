@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "DMD Furkan Elmas - Duchenne-Muskeldystrophie Patient Furkan Elmas Spendenkampagne",
+    "subtitle": "Seien Sie Hoffnung für Furkan"
+  },
+  "donation": {
+    "goal": "Unser Ziel",
+    "goalAmount": "2.899.907 USD",
+    "collected": "Gesammelte Spende",
+    "collectedAmount": "1.739.944 USD",
+    "remaining": "Benötigte Spende", 
+    "remainingAmount": "1.159.963 USD",
+    "progress": "60",
+    "slogan": "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben..."
+  },
+  "buttons": {
+    "donate": "Spenden",
+    "copyIban": "IBAN kopieren",
+    "copied": "Kopiert! 💚 Vielen Dank für Ihre Spende",
+    "quickDonate": "Seien Sie Hoffnung für Furkan",
+    "share": "Teilen"
+  },
+  "sections": {
+    "dmdInfo": "DMD Furkan Elmas - Was ist Duchenne-Muskeldystrophie?",
+    "furkanStory": "DMD Furkan Elmas - Furkans Geschichte",
+    "treatment": "Behandlung",
+    "howToHelp": "Wie kann ich Furkan unterstützen?",
+    "donations": "Spenden",
+    "socialMedia": "Unsere Social-Media-Konten"
+  },
+  "permission": {
+    "text": "Unsere Kampagne ist von der Provinzverwaltung genehmigt. E-Government Aktivitätsnummer: 60.2025.3153 | Mustafa Elmas",
+    "valilikText": "Diese Kampagne wird von der <strong>Provinzverwaltung Tokat</strong> genehmigt.",
+    "edevletButton": "Zur E-Government-Abfrageseite gehen"
+  },
+  "urgency": {
+    "message": "Jeder Tag ist kostbar, die Zeit arbeitet gegen Furkan",
+    "cta": "Jetzt unterstützen"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "twitter": "X (Twitter)", 
+    "facebook": "Facebook",
+    "tiktok": "TikTok"
+  },
+  "copyright": "© 2025 Furkan Elmas. Alle Rechte vorbehalten."
+}

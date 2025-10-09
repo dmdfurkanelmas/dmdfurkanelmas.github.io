@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "DMD Furkan Elmas - Duchenne Muscular Dystrophy Patient Furkan Elmas Donation Campaign",
+    "subtitle": "Be Hope for Furkan"
+  },
+  "donation": {
+    "goal": "Our Target",
+    "goalAmount": "2,899,907 USD",
+    "collected": "Collected Donation",
+    "collectedAmount": "1,739,944 USD",
+    "remaining": "Needed Donation", 
+    "remainingAmount": "1,159,963 USD",
+    "progress": "60",
+    "slogan": "Every donation is a hope, every hope is a life..."
+  },
+  "buttons": {
+    "donate": "Make a Donation",
+    "copyIban": "Copy IBAN",
+    "copied": "Copied! 💚 Thank you for your donation",
+    "quickDonate": "Be Hope for Furkan",
+    "share": "Share"
+  },
+  "sections": {
+    "dmdInfo": "DMD Furkan Elmas - What is Duchenne Muscular Dystrophy?",
+    "furkanStory": "DMD Furkan Elmas - Furkan's Story",
+    "treatment": "Treatment",
+    "howToHelp": "How Can I Support Furkan?",
+    "donations": "Make a Donation",
+    "socialMedia": "Our Social Media Accounts"
+  },
+  "permission": {
+    "text": "Our campaign is authorized by the governorship. E-Government Activity No: 60.2025.3153 | Mustafa Elmas",
+    "valilikText": "This campaign is approved by the <strong>Tokat Governorship</strong>.",
+    "edevletButton": "Go to E-Government Query Page"
+  },
+  "urgency": {
+    "message": "Every day is precious, time is against Furkan",
+    "cta": "Support Now"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "twitter": "X (Twitter)", 
+    "facebook": "Facebook",
+    "tiktok": "TikTok"
+  },
+  "copyright": "© 2025 Furkan Elmas. All rights reserved."
+}

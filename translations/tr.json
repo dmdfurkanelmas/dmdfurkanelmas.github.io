@@ -1,0 +1,47 @@
+{
+  "hero": {
+    "title": "DMD Furkan Elmas - Duchenne Musküler Distrofi Hastası Furkan Elmas Bağış Kampanyası",
+    "subtitle": "Furkan İçin Umut Ol"
+  },
+  "donation": {
+    "goal": "Hedefimiz",
+    "goalAmount": "2.899.907 USD",
+    "collected": "Toplanan Bağış",
+    "collectedAmount": "1.739.944 USD",
+    "remaining": "İhtiyaç Duyulan Bağış", 
+    "remainingAmount": "1.159.963 USD",
+    "progress": "60",
+    "slogan": "Her bağış bir umut, her umut bir hayat..."
+  },
+  "buttons": {
+    "donate": "Bağış Yap",
+    "copyIban": "IBAN'ı Kopyala",
+    "copied": "Kopyalandı! 💚 Bağışınız için teşekkürler",
+    "quickDonate": "Furkan'a Umut Ol",
+    "share": "Paylaş"
+  },
+  "sections": {
+    "dmdInfo": "DMD Furkan Elmas - Duchenne Musküler Distrofi Nedir?",
+    "furkanStory": "DMD Furkan Elmas - Furkan'ın Hikayesi",
+    "treatment": "Tedavi",
+    "howToHelp": "Furkan'a Nasıl Destek Olabilirim?",
+    "donations": "Bağış Yap",
+    "socialMedia": "Sosyal Medya Hesaplarımız"
+  },
+  "permission": {
+    "text": "Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas",
+    "valilikText": "Bu kampanya <strong>Tokat Valiliği</strong> tarafından onaylanmıştır.",
+    "edevletButton": "E-Devlet Sorgu Sayfasına Git"
+  },
+  "urgency": {
+    "message": "Her gün çok değerli, zaman Furkan'ın aleyhine işliyor",
+    "cta": "Hemen Destek Ol"
+  },
+  "social": {
+    "instagram": "Instagram",
+    "twitter": "X (Twitter)", 
+    "facebook": "Facebook",
+    "tiktok": "TikTok"
+  },
+  "copyright": "© 2025 Furkan Elmas. Tüm hakları saklıdır."
+}
