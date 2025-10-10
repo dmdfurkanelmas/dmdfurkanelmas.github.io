@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Furkan İçin Umut</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Sayfası</h1>
+        
+        <div class="test-section">
+            <h2>1. CSS Test</h2>
+            <p>Eğer bu metin stil almışsa CSS çalışıyor ✅</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>2. JavaScript Test</h2>
+            <button onclick="testJS()">JavaScript Test</button>
+            <p id="js-result"></p>
+        </div>
+        
+        <div class="test-section">
+            <h2>3. Çeviri Test</h2>
+            <button onclick="testTranslations()">Çeviri Test</button>
+            <p id="translation-result"></p>
+        </div>
+        
+        <div class="test-section">
+            <h2>4. Dosya Yolları Test</h2>
+            <ul>
+                <li><a href="css/main.css">CSS Dosyası</a></li>
+                <li><a href="js/main.js">Main JS</a></li>
+                <li><a href="js/i18n.js">i18n JS</a></li>
+                <li><a href="data/translations/tr.json">TR Çeviri</a></li>
+                <li><a href="data/translations/en.json">EN Çeviri</a></li>
+                <li><a href="data/translations/de.json">DE Çeviri</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function testJS() {
+            document.getElementById('js-result').textContent = 'JavaScript çalışıyor ✅';
+        }
+        
+        async function testTranslations() {
+            try {
+                const response = await fetch('data/translations/tr.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('translation-result').textContent = 
+                        `Çeviri dosyası yüklendi ✅ - ${Object.keys(data).length} bölüm`;
+                } else {
+                    document.getElementById('translation-result').textContent = 
+                        `Çeviri dosyası hatası ❌ - ${response.status}`;
+                }
+            } catch (error) {
+                document.getElementById('translation-result').textContent = 
+                    `Çeviri dosyası hatası ❌ - ${error.message}`;
+            }
+        }
+        
+        // Sayfa yüklendiğinde otomatik test
+        window.addEventListener('load', () => {
+            console.log('🧪 Test sayfası yüklendi');
+            testJS();
+            testTranslations();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Hope for Furkan",
+    "subtitle": "Elevidys gene therapy for 3-year-old Furkan's DMD disease",
+    "urgency": "Every day is precious, time is working against Furkan",
+    "description": "Elevidys gene therapy campaign for 3-year-old Furkan Elmas with DMD disease. Support for treatment in Dubai. Every donation is a hope, every hope is a life."
+  },
+  "progress": {
+    "title": "Our Goal",
+    "goal": "2,899,907 USD",
+    "collected": "Collected",
+    "collectedAmount": "1,739,944 USD",
+    "remaining": "Remaining",
+    "remainingAmount": "1,159,963 USD",
+    "slogan": "Every donation is a hope, every hope is a life..."
+  },
+  "donation": {
+    "title": "Quick Donation",
+    "quickBtn": "Give Hope to Furkan",
+    "stickyBtn": "Give Hope to Furkan",
+    "tlIban": "TL IBAN (Fastest)",
+    "usdIban": "USD IBAN",
+    "copyBtn": "Copy",
+    "otherOptions": "Other Donation Options",
+    "creditCard": "Credit Card",
+    "sms": "SMS Donation",
+    "allIbans": "All IBANs",
+    "recipient": "Recipient: Furkan Elmas",
+    "urgencyMessage": "Every day is precious, time is working against Furkan"
+  },
+  "story": {
+    "title": "Furkan's Story",
+    "paragraph1": "3-year-old Furkan is fighting Duchenne Muscular Dystrophy (DMD). This progressive muscle disease causes muscles to weaken over time.",
+    "paragraph2": "Elevidys gene therapy in Dubai is a ray of hope for Furkan. However, time is very critical for this treatment - there are age and weight criteria."
+  },
+  "supporters": {
+    "title": "Our Supporters",
+    "addMessage": "Leave a Message"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "contact": {
+    "title": "Contact",
+    "phone": "+90 507 145 39 55",
+    "email": "info@furkanicinumut.com",
+    "location": "Tokat, Turkey"
+  },
+  "footer": {
+    "permission": "This campaign is approved by the Governorship of Tokat.",
+    "activity": "E-Government Activity No: 60.2025.3153 | Mustafa Elmas",
+    "copyright": "© 2025 Hope for Furkan. All rights reserved."
+  },
+  "buttons": {
+    "donate": "Donate",
+    "copyIban": "Copy IBAN",
+    "copied": "Copied! 💚 Thank you for your donation",
+    "share": "Share",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "messages": {
+    "copySuccess": "IBAN copied! 💚 Your donation will change Furkan's life",
+    "copyError": "IBAN could not be copied. Please copy manually.",
+    "shareSuccess": "Thank you for sharing! 🙏",
+    "sharePrompt": "Thank you for your donation! 🙏 Would you like to share Furkan's story?",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again.",
+    "success": "Operation successful!",
+    "languageChanged": "Language changed"
+  },
+  "sms": {
+    "title": "SMS Donation",
+    "instructions": "To donate via SMS:",
+    "step1": "1. Send SMS from your phone",
+    "step2": "2. Message: \"FURKAN\"",
+    "step3": "3. Number: 4444",
+    "example": "Example: FURKAN 50 (donates 50 TL)"
+  },
+  "share": {
+    "title": "Share",
+    "whatsapp": "WhatsApp",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "copyLink": "Copy Link",
+    "text": "Hope for Furkan - Elevidys gene therapy campaign for 3-year-old Furkan with DMD. Support too!",
+    "linkCopied": "Link copied! 📋",
+    "linkCopyError": "Link could not be copied"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "languageSelector": "Language selection",
+    "closeModal": "Close modal",
+    "copyIban": "Copy IBAN",
+    "shareContent": "Share content",
+    "progressBar": "Donation progress"
+  }
+}

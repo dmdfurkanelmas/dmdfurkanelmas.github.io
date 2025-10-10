@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Hoffnung für Furkan",
+    "subtitle": "Elevidys-Gentherapie für 3-jährigen Furkans DMD-Krankheit",
+    "urgency": "Jeder Tag ist wertvoll, die Zeit arbeitet gegen Furkan",
+    "description": "Elevidys-Gentherapie-Kampagne für 3-jährigen Furkan Elmas mit DMD-Krankheit. Unterstützung für Behandlung in Dubai. Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben."
+  },
+  "progress": {
+    "title": "Unser Ziel",
+    "goal": "2.899.907 USD",
+    "collected": "Gesammelt",
+    "collectedAmount": "1.739.944 USD",
+    "remaining": "Verbleibend",
+    "remainingAmount": "1.159.963 USD",
+    "slogan": "Jede Spende ist eine Hoffnung, jede Hoffnung ist ein Leben..."
+  },
+  "donation": {
+    "title": "Schnelle Spende",
+    "quickBtn": "Gib Furkan Hoffnung",
+    "stickyBtn": "Gib Furkan Hoffnung",
+    "tlIban": "TL IBAN (Schnellste)",
+    "usdIban": "USD IBAN",
+    "copyBtn": "Kopieren",
+    "otherOptions": "Andere Spendenoptionen",
+    "creditCard": "Kreditkarte",
+    "sms": "SMS-Spende",
+    "allIbans": "Alle IBANs",
+    "recipient": "Empfänger: Furkan Elmas",
+    "urgencyMessage": "Jeder Tag ist wertvoll, die Zeit arbeitet gegen Furkan"
+  },
+  "story": {
+    "title": "Furkans Geschichte",
+    "paragraph1": "Der 3-jährige Furkan kämpft gegen Duchenne-Muskeldystrophie (DMD). Diese fortschreitende Muskelerkrankung führt dazu, dass Muskeln mit der Zeit schwächer werden.",
+    "paragraph2": "Die Elevidys-Gentherapie in Dubai ist ein Hoffnungsschimmer für Furkan. Die Zeit ist jedoch sehr kritisch für diese Behandlung - es gibt Alters- und Gewichtskriterien."
+  },
+  "supporters": {
+    "title": "Unsere Unterstützer",
+    "addMessage": "Nachricht hinterlassen"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "phone": "+90 507 145 39 55",
+    "email": "info@furkanicinumut.com",
+    "location": "Tokat, Türkei"
+  },
+  "footer": {
+    "permission": "Diese Kampagne ist vom Gouverneursamt von Tokat genehmigt.",
+    "activity": "E-Regierung Aktivitäts-Nr.: 60.2025.3153 | Mustafa Elmas",
+    "copyright": "© 2025 Hoffnung für Furkan. Alle Rechte vorbehalten."
+  },
+  "buttons": {
+    "donate": "Spenden",
+    "copyIban": "IBAN kopieren",
+    "copied": "Kopiert! 💚 Vielen Dank für Ihre Spende",
+    "share": "Teilen",
+    "close": "Schließen",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen"
+  },
+  "messages": {
+    "copySuccess": "IBAN kopiert! 💚 Ihre Spende wird Furkans Leben verändern",
+    "copyError": "IBAN konnte nicht kopiert werden. Bitte manuell kopieren.",
+    "shareSuccess": "Danke fürs Teilen! 🙏",
+    "sharePrompt": "Danke für Ihre Spende! 🙏 Möchten Sie Furkans Geschichte teilen?",
+    "loading": "Lädt...",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "success": "Vorgang erfolgreich!",
+    "languageChanged": "Sprache geändert"
+  },
+  "sms": {
+    "title": "SMS-Spende",
+    "instructions": "Um per SMS zu spenden:",
+    "step1": "1. SMS von Ihrem Telefon senden",
+    "step2": "2. Nachricht: \"FURKAN\"",
+    "step3": "3. Nummer: 4444",
+    "example": "Beispiel: FURKAN 50 (spendet 50 TL)"
+  },
+  "share": {
+    "title": "Teilen",
+    "whatsapp": "WhatsApp",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "copyLink": "Link kopieren",
+    "text": "Hoffnung für Furkan - Elevidys-Gentherapie-Kampagne für 3-jährigen Furkan mit DMD. Unterstützen Sie auch!",
+    "linkCopied": "Link kopiert! 📋",
+    "linkCopyError": "Link konnte nicht kopiert werden"
+  },
+  "accessibility": {
+    "skipToContent": "Zum Hauptinhalt springen",
+    "languageSelector": "Sprachauswahl",
+    "closeModal": "Modal schließen",
+    "copyIban": "IBAN kopieren",
+    "shareContent": "Inhalt teilen",
+    "progressBar": "Spendenfortschritt"
+  }
+}

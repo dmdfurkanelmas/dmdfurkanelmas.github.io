@@ -1,0 +1,35 @@
+{
+    "name": "Furkan İçin Umut",
+    "short_name": "Furkan Umut",
+    "description": "3 yaşındaki Furkan'ın DMD hastalığı için Elevidys gen tedavisi kampanyası",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a365d",
+    "theme_color": "#48bb78",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["health", "fundraising", "medical"],
+    "lang": "tr",
+    "dir": "ltr"
+}

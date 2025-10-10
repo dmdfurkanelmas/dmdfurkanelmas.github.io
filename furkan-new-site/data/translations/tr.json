@@ -1,0 +1,99 @@
+{
+  "hero": {
+    "title": "Furkan İçin Umut",
+    "subtitle": "3 yaşındaki Furkan'ın DMD hastalığı için Elevidys gen tedavisi",
+    "urgency": "Her gün çok değerli, zaman Furkan'ın aleyhine işliyor",
+    "description": "3 yaşındaki Furkan Elmas'ın DMD hastalığı için Elevidys gen tedavisi kampanyası. Dubai'de tedavi için destek olun. Her bağış bir umut, her umut bir hayat."
+  },
+  "progress": {
+    "title": "Hedefimiz",
+    "goal": "2.899.907 USD",
+    "collected": "Toplanan",
+    "collectedAmount": "1.739.944 USD",
+    "remaining": "Kalan",
+    "remainingAmount": "1.159.963 USD",
+    "slogan": "Her bağış bir umut, her umut bir hayat..."
+  },
+  "donation": {
+    "title": "Hızlı Bağış",
+    "quickBtn": "Furkan'a Umut Ol",
+    "stickyBtn": "Furkan'a Umut Ol",
+    "tlIban": "TL IBAN (En Hızlı)",
+    "usdIban": "USD IBAN",
+    "copyBtn": "Kopyala",
+    "otherOptions": "Diğer Bağış Seçenekleri",
+    "creditCard": "Kredi Kartı",
+    "sms": "SMS Bağış",
+    "allIbans": "Tüm IBAN'lar",
+    "recipient": "Alıcı: Furkan Elmas",
+    "urgencyMessage": "Her gün çok değerli, zaman Furkan'ın aleyhine işliyor"
+  },
+  "story": {
+    "title": "Furkan'ın Hikayesi",
+    "paragraph1": "3 yaşındaki Furkan, Duchenne Musküler Distrofi (DMD) hastalığı ile mücadele ediyor. Bu ilerleyici kas hastalığı, zamanla kasların güçsüzleşmesine neden oluyor.",
+    "paragraph2": "Dubai'de bulunan Elevidys gen tedavisi, Furkan için umut ışığı. Ancak bu tedavi için zaman çok kritik - yaş ve kilo kriterleri var."
+  },
+  "supporters": {
+    "title": "Destekçilerimiz",
+    "addMessage": "Mesaj Bırak"
+  },
+  "faq": {
+    "title": "Sıkça Sorulan Sorular"
+  },
+  "contact": {
+    "title": "İletişim",
+    "phone": "+90 507 145 39 55",
+    "email": "info@furkanicinumut.com",
+    "location": "Tokat, Türkiye"
+  },
+  "footer": {
+    "permission": "Bu kampanya Tokat Valiliği tarafından onaylanmıştır.",
+    "activity": "E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas",
+    "copyright": "© 2025 Furkan İçin Umut. Tüm hakları saklıdır."
+  },
+  "buttons": {
+    "donate": "Bağış Yap",
+    "copyIban": "IBAN'ı Kopyala",
+    "copied": "Kopyalandı! 💚 Bağışınız için teşekkürler",
+    "share": "Paylaş",
+    "close": "Kapat",
+    "cancel": "İptal",
+    "confirm": "Onayla"
+  },
+  "messages": {
+    "copySuccess": "IBAN kopyalandı! 💚 Bağışınız Furkan'ın hayatını değiştirecek",
+    "copyError": "IBAN kopyalanamadı. Lütfen manuel olarak kopyalayın.",
+    "shareSuccess": "Paylaşım için teşekkürler! 🙏",
+    "sharePrompt": "Bağışınız için teşekkürler! 🙏 Furkan'ın hikayesini paylaşmak ister misiniz?",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "success": "İşlem başarılı!",
+    "languageChanged": "Dil değiştirildi"
+  },
+  "sms": {
+    "title": "SMS ile Bağış",
+    "instructions": "SMS ile bağış yapmak için:",
+    "step1": "1. Telefonunuzdan SMS gönder",
+    "step2": "2. Mesaj: \"FURKAN\"",
+    "step3": "3. Numara: 4444",
+    "example": "Örnek: FURKAN 50 (50 TL bağış yapar)"
+  },
+  "share": {
+    "title": "Paylaş",
+    "whatsapp": "WhatsApp",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "copyLink": "Link Kopyala",
+    "text": "Furkan İçin Umut - DMD hastası 3 yaşındaki Furkan'ın Elevidys gen tedavisi kampanyası. Sen de destek ol!",
+    "linkCopied": "Link kopyalandı! 📋",
+    "linkCopyError": "Link kopyalanamadı"
+  },
+  "accessibility": {
+    "skipToContent": "Ana içeriğe geç",
+    "languageSelector": "Dil seçimi",
+    "closeModal": "Modal'ı kapat",
+    "copyIban": "IBAN'ı kopyala",
+    "shareContent": "İçeriği paylaş",
+    "progressBar": "Bağış ilerlemesi"
+  }
+}
