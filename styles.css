@@ -1099,6 +1099,65 @@ body {
   overflow: hidden;
 }
 
+/* Mobil için daha büyük progress bar */
+@media (max-width: 480px) {
+  .progress-bar {
+    height: 12px; /* Daha kalın */
+    border-radius: 6px; /* Daha yumuşak köşeler */
+    margin: 16px 0; /* Daha fazla boşluk */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* İç gölge */
+  }
+  
+  /* Yatay scroll'u engelle */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Tüm container'lar tam genişlik kullan */
+  .container,
+  .donation-section,
+  .donation-status,
+  .donation-options,
+  .credit-card-box,
+  .sms-donation-box {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Donation options'ta yatay scroll engelle */
+  .donation-options {
+    padding: 12px; /* Padding azalt */
+  }
+  
+  .donation-options .button-row {
+    flex-wrap: wrap; /* Satır kaydırma */
+    gap: 8px; /* Daha az gap */
+    padding: 8px; /* Padding azalt */
+  }
+  
+  /* Tüm butonlar için minimum touch target */
+  .quick-iban-button,
+  .donation-group-button,
+  .credit-card-button,
+  .lang-option,
+  .fixed-social-button,
+  .quick-donate-btn {
+    min-height: 44px; /* WCAG AA standardı */
+    min-width: 44px; /* WCAG AA standardı */
+  }
+  
+  /* Dil butonları için özel düzenleme */
+  .language-buttons {
+    gap: 12px; /* Butonlar arası daha fazla boşluk */
+  }
+  
+  .lang-option {
+    padding: 12px 16px; /* Daha büyük padding */
+    font-size: 16px; /* Daha büyük font */
+    min-height: 48px; /* Biraz daha büyük */
+  }
+}
+
 .progress {
   height: 100%;
   background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
@@ -1193,12 +1252,15 @@ body {
 
 @media (max-width: 480px) {
   .container {
-    margin: 10px auto;
-    padding: 15px 10px;
+    margin: 8px auto;
+    padding: 20px 16px; /* Daha fazla padding */
+    max-width: 100%; /* Tam genişlik kullan */
   }
 
   .main-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Daha büyük başlık */
+    line-height: 1.3; /* Daha iyi satır aralığı */
+    margin-bottom: 20px; /* Daha fazla boşluk */
   }
 
   .accordion {
@@ -2842,11 +2904,30 @@ footer {
 
 @media (max-width: 768px) {
   .credit-card-box {
-    padding: 15px;
+    padding: 20px; /* Daha fazla padding */
   }
 
   .credit-card-button {
     width: 100%;
+    padding: 16px 24px; /* Daha büyük padding */
+    font-size: 16px; /* Daha büyük font */
+    min-height: 56px; /* WCAG standardı */
+    border-radius: 12px; /* Daha yumuşak köşeler */
+  }
+}
+
+/* Mobil için ekstra büyütme */
+@media (max-width: 480px) {
+  .credit-card-box {
+    padding: 24px; /* Daha fazla padding */
+    margin: 24px 0; /* Daha fazla margin */
+  }
+  
+  .credit-card-button {
+    padding: 20px 28px; /* Daha büyük padding */
+    font-size: 18px; /* Daha büyük font */
+    min-height: 64px; /* Daha büyük yükseklik */
+    font-weight: 700; /* Daha kalın yazı */
   }
 }
 
@@ -3494,12 +3575,33 @@ footer {
 
 @media (max-width: 480px) {
   .sms-donation-box {
-    padding: 16px;
-    margin: 16px 0;
+    padding: 20px; /* Daha fazla padding */
+    margin: 20px 0; /* Daha fazla margin */
   }
   
   .sms-donation-box h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Daha büyük başlık */
+  }
+  
+  /* Donation box'ları mobil için büyüt */
+  .donation-box {
+    padding: 24px 20px; /* Daha fazla padding */
+    margin-bottom: 20px; /* Daha fazla boşluk */
+    border-radius: 16px; /* Daha yumuşak köşeler */
+  }
+
+  .donation-box h3 {
+    font-size: 1.2rem; /* Daha büyük başlık */
+    margin-bottom: 16px; /* Daha fazla boşluk */
+  }
+
+  .donation-box .amount {
+    font-size: 1.6rem; /* Daha büyük miktar */
+    margin-bottom: 12px;
+  }
+
+  .donation-box .percentage {
+    font-size: 1.8rem; /* Daha büyük yüzde */
   }
   
   .sms-instructions {
@@ -3633,19 +3735,27 @@ footer {
 
 @media (max-width: 480px) {
   .quick-iban-button {
-    padding: 8px 10px;
-    min-height: 42px;
-    font-size: 12px;
+    padding: 16px 20px;
+    min-height: 56px; /* WCAG AA standardı: minimum 44px, biz 56px */
+    font-size: 16px; /* Daha büyük font */
+    border-radius: 12px; /* Daha yumuşak köşeler */
+    margin: 8px 0; /* Butonlar arası boşluk */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
   }
   .button-content span:first-child {
-    font-size: 13px;
+    font-size: 16px; /* Büyük, okunabilir font */
+    font-weight: 600; /* Kalın yazı */
   }
   .iban-preview {
-    font-size: 9px;
+    font-size: 12px; /* Daha büyük IBAN preview */
   }
   .donation-group-button {
-    font-size: 13px;
-    padding: 8px 10px;
+    font-size: 16px; /* Büyük font */
+    padding: 16px 20px; /* Büyük padding */
+    min-height: 56px; /* WCAG standardı */
+    border-radius: 12px; /* Yumuşak köşeler */
+    margin: 12px 0; /* Daha fazla boşluk */
+    font-weight: 600; /* Kalın yazı */
   }
 } 
 
