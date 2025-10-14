@@ -1248,9 +1248,7 @@ body {
 }
 
 .location-link {
-  text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
   display: block;
   padding: 4px 8px;
   border-radius: 4px;
@@ -1258,20 +1256,8 @@ body {
   text-align: center;
 }
 
-.location-link:hover {
-  color: #d32f2f;
-  background: rgba(211,47,47,0.1);
-  text-decoration: none;
-}
-
-.location-link:active {
-  background: rgba(211,47,47,0.2);
-}
-
 .ticket-location-link {
-  text-decoration: none;
   color: inherit;
-  transition: all 0.3s ease;
   display: block;
   padding: 6px 10px;
   border-radius: 4px;
@@ -1281,19 +1267,6 @@ body {
   border: 1px solid rgba(211,47,47,0.2);
   font-weight: 500;
   font-size: 0.85rem;
-}
-
-.ticket-location-link:hover {
-  color: #d32f2f;
-  background: rgba(211,47,47,0.1);
-  text-decoration: none;
-  border-color: #d32f2f;
-  transform: translateY(-1px);
-}
-
-.ticket-location-link:active {
-  background: rgba(211,47,47,0.2);
-  transform: translateY(0);
 }
 
 
