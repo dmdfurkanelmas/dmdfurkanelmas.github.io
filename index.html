@@ -169,12 +169,16 @@
   </header>
 
   <!-- Kompakt Umut Konseri Duyurusu -->
-  <section class="concert-announcement">
+  <section class="concert-announcement" aria-labelledby="concert-toggle">
     <div class="announcement-header">
-      <i class="fas fa-bullhorn"></i>
-      <h2 id="concert-title">Furkan İçin Umut Konseri</h2>
+      <button id="concert-toggle" class="concert-toggle" aria-expanded="false" aria-controls="concert-content">
+        <i class="fas fa-bullhorn" aria-hidden="true"></i>
+        <span id="concert-title">Furkan İçin Umut Konserine Davetlisiniz</span>
+        <i class="fas fa-chevron-down chevron" aria-hidden="true"></i>
+      </button>
     </div>
-    <div class="concert-details-compact">
+    <div id="concert-content" class="concert-content" role="region" aria-labelledby="concert-toggle">
+      <div class="concert-details-compact">
       <div class="detail-row">
         <div class="detail-item location-item">
           <i class="fas fa-map-marker-alt"></i>
@@ -228,6 +232,7 @@
       </div>
       <div class="support-message-compact">
         <p id="supportMessage1">Konsere katılamasanız bile <strong>bilet alarak Furkan'a destek olabilirsiniz!</strong></p>
+      </div>
       </div>
     </div>
   </section>
@@ -696,6 +701,7 @@
           quickGofundmeButtonText: "GoFundMe ile Bağış Yapmak için Tıkla",
           permissionText: "Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas",
           concertTitle: "Furkan İçin Umut Konseri",
+          concertInviteTitle: "Furkan İçin Umut Konserine Davetlisiniz",
           concertDateValue: "21 Ekim 2025 Salı",
           concertTimeValue: "20:00",
           concertLocationValue: "26 Haziran Kültür Sarayı",
@@ -825,6 +831,7 @@
           quickGofundmeButtonText: "Click to Donate via GoFundMe",
           permissionText: "Our campaign is authorized by the governorship. E-Government Activity No: 60.2025.3153 | Mustafa Elmas",
           concertTitle: "Hope Concert For Furkan",
+          concertInviteTitle: "You Are Invited to Hope Concert for Furkan",
           concertDateValue: "October 21, 2025 Tuesday",
           concertTimeValue: "20:00",
           concertLocationValue: "26 June Culture Palace",
@@ -950,6 +957,7 @@
           creditCardWithDonation: "Mit Kreditkarte spenden (klicken)",
           permissionText: "Unsere Kampagne ist von der Provinzverwaltung genehmigt. E-Government Aktivitätsnummer: 60.2025.3153 | Mustafa Elmas",
           concertTitle: "Hoffnungskonzert Für Furkan",
+          concertInviteTitle: "Sie sind zum Hoffnungskonzert für Furkan eingeladen",
           concertDateValue: "21. Oktober 2025 Dienstag",
           concertTimeValue: "20:00",
           concertLocationValue: "26. Juni Kulturpalast",
@@ -1317,7 +1325,7 @@
 
         // Update concert section
         const concertTitle = document.getElementById('concert-title');
-        if (concertTitle) concertTitle.textContent = t.concertTitle;
+        if (concertTitle) concertTitle.textContent = t.concertInviteTitle || t.concertTitle;
         
         const concertDateValue = document.getElementById('concertDateValue');
         if (concertDateValue) concertDateValue.textContent = t.concertDateValue;
@@ -1535,6 +1543,17 @@
           });
         });
       });
+
+      // Konser duyurusu açılır-kapanır
+      const concertToggle = document.getElementById('concert-toggle');
+      const concertContent = document.getElementById('concert-content');
+      if (concertToggle && concertContent) {
+        concertToggle.addEventListener('click', () => {
+          const expanded = concertToggle.getAttribute('aria-expanded') === 'true';
+          concertToggle.setAttribute('aria-expanded', String(!expanded));
+          concertContent.classList.toggle('show');
+        });
+      }
     });
 
     // SMS gönderme fonksiyonu (global scope)
