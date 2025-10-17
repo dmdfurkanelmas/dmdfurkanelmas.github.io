@@ -1331,7 +1331,6 @@
         if (concertDateValue) concertDateValue.textContent = t.concertDateValue;
         
         const concertTimeValue = document.getElementById('concertTimeValue');
-        if (concertTimeValue) concertTimeValue.textContent = t.concertTimeValue;
         
         const concertLocationValue = document.getElementById('concertLocationValue');
         if (concertLocationValue) concertLocationValue.textContent = t.concertLocationValue;
@@ -1351,6 +1350,13 @@
         
         const doorTime = document.getElementById('doorTime');
         if (doorTime) doorTime.textContent = t.doorTime;
+        
+        // Saat bilgisini parantez içinde kapı açılış saatiyle birleştir
+        if (concertTimeValue) {
+          const inlineDoor = t.doorTime ? ` (${t.doorTime})` : '';
+          concertTimeValue.textContent = `${t.concertTimeValue}${inlineDoor}`;
+        }
+        if (doorTime) doorTime.style.display = 'none';
         
         const artistDescription = document.getElementById('artistDescription');
         if (artistDescription) artistDescription.textContent = t.artistDescription;
