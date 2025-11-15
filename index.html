@@ -171,6 +171,26 @@
 
   <main role="main">
     <div class="container">
+      <!-- Duyuru Alanı -->
+      <div class="announcement-banner" id="announcementBanner">
+        <div class="announcement-content">
+          <div class="announcement-icon">
+            <i class="fas fa-gift"></i>
+          </div>
+          <div class="announcement-text">
+            <strong id="announcementTitle">24 Kasım Öğretmenler Günü Kartı Satışta!</strong>
+            <span id="announcementDescription">Öğretmenlerinize hediye vermek için özel hazırlanan kartlarımızı satın alarak Furkan'a destek olabilirsiniz.</span>
+          </div>
+          <a href="https://www.shopier.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="announcement-button" id="announcementButton">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="announcementButtonText">Satın Al</span>
+          </a>
+          <button class="announcement-close" id="announcementClose" aria-label="Duyuruyu kapat">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
       <section class="section" aria-labelledby="dmd-info-title">
         <button class="accordion" aria-expanded="false" aria-controls="dmd-info" aria-label="DMD Furkan Elmas hakkında bilgi almak için tıklayın">
           <span id="dmd-info-title">DMD Furkan Elmas - Duchenne Musküler Distrofi Nedir?</span>
@@ -449,6 +469,31 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Duyuru banner kapatma işlevselliği
+      const announcementBanner = document.getElementById('announcementBanner');
+      const announcementClose = document.getElementById('announcementClose');
+      
+      // LocalStorage kontrolü - eğer daha önce kapatıldıysa gösterme
+      const announcementClosed = localStorage.getItem('announcementClosed');
+      if (announcementClosed === 'true') {
+        if (announcementBanner) {
+          announcementBanner.classList.add('hidden');
+        }
+      }
+      
+      // Kapat butonuna tıklama
+      if (announcementClose) {
+        announcementClose.addEventListener('click', function() {
+          if (announcementBanner) {
+            announcementBanner.style.animation = 'fadeOut 0.3s ease-out';
+            setTimeout(() => {
+              announcementBanner.classList.add('hidden');
+              localStorage.setItem('announcementClosed', 'true');
+            }, 300);
+          }
+        });
+      }
+
       // Accordion işlevselliği
       const accordionContainer = document.querySelector('.section');
       accordionContainer.addEventListener('click', function(e) {
@@ -632,6 +677,9 @@
           quickPaypalButtonText: "PayPal ile Bağış Yapmak için Tıkla",
           quickGofundmeButtonText: "GoFundMe ile Bağış Yapmak için Tıkla",
           permissionText: "Kampanyamız valilik izinlidir. E-Devlet Faaliyet No: 60.2025.3153 | Mustafa Elmas",
+          announcementTitle: "24 Kasım Öğretmenler Günü Kartı Satışta!",
+          announcementDescription: "Öğretmenlerinize hediye vermek için özel hazırlanan kartlarımızı satın alarak Furkan'a destek olabilirsiniz.",
+          announcementButtonText: "Satın Al",
         },
         en: {
           copiedText: "Copied!",
@@ -749,6 +797,9 @@
           quickPaypalButtonText: "Click to Donate via PayPal",
           quickGofundmeButtonText: "Click to Donate via GoFundMe",
           permissionText: "Our campaign is authorized by the governorship. E-Government Activity No: 60.2025.3153 | Mustafa Elmas",
+          announcementTitle: "November 24 Teachers' Day Card Now on Sale!",
+          announcementDescription: "You can support Furkan by purchasing our specially designed cards to give as gifts to your teachers.",
+          announcementButtonText: "Buy Now",
         },
         de: {
           copiedText: "Kopiert!",
@@ -862,6 +913,9 @@
           foreignIbanWithDonation: "Klicken Sie um Auslands-IBAN zu sehen",
           creditCardWithDonation: "Mit Kreditkarte spenden (klicken)",
           permissionText: "Unsere Kampagne ist von der Provinzverwaltung genehmigt. E-Government Aktivitätsnummer: 60.2025.3153 | Mustafa Elmas",
+          announcementTitle: "24. November Lehrertag Karte jetzt im Verkauf!",
+          announcementDescription: "Sie können Furkan unterstützen, indem Sie unsere speziell gestalteten Karten als Geschenk für Ihre Lehrer kaufen.",
+          announcementButtonText: "Jetzt Kaufen",
         }
       };
 
@@ -1215,6 +1269,15 @@
         // Update permission text
         const permissionText = document.getElementById('permissionText');
         if (permissionText) permissionText.textContent = t.permissionText;
+
+        // Update announcement banner
+        const announcementTitle = document.getElementById('announcementTitle');
+        const announcementDescription = document.getElementById('announcementDescription');
+        const announcementButtonText = document.getElementById('announcementButtonText');
+        
+        if (announcementTitle) announcementTitle.textContent = t.announcementTitle;
+        if (announcementDescription) announcementDescription.textContent = t.announcementDescription;
+        if (announcementButtonText) announcementButtonText.textContent = t.announcementButtonText;
 
       }
 
