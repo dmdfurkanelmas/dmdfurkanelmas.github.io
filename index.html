@@ -2,8 +2,11 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="description" content="DMD Furkan Elmas - Duchenne Musküler Distrofi hastası Furkan Elmas için bağış kampanyası. Gen tedavisi Elevidys için destek olun. DMD Furkan, DMD Furkan Elmas aramaları için resmi site.">
   <meta name="keywords" content="DMD Furkan, DMD Furkan Elmas, Duchenne Musküler Distrofi, Furkan Elmas, bağış kampanyası, gen tedavisi, Elevidys, DMD hastası, kas hastalığı, gen terapisi, DMD tedavisi">
   <meta name="author" content="Furkan Elmas">
@@ -86,7 +89,7 @@
         <button class="lang-option" data-lang="en"><img src="flags/gb.png" class="flag" alt="EN"> EN</button>
         <button class="lang-option" data-lang="de"><img src="flags/de.png" class="flag" alt="DE"> DE</button>
       </div>
-              <div class="quick-buttons">
+              <div class="quick-buttons" id="headerDonationButtons">
           <!-- Yurt İçi Bağış Seçenekleri -->
         <div class="donation-group">
           <button class="donation-group-button" aria-expanded="false" aria-controls="domestic-options">
@@ -300,7 +303,99 @@
       </section>
 
 
-      <section class="donation-section" aria-labelledby="donation-title">
+      <!-- Başarı Hikayesi Bölümü (Kampanya %100 olduğunda gösterilecek) -->
+      <section class="success-story-section" id="successStorySection" style="display: none;">
+        <div class="success-celebration">
+          <div class="success-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h2 id="successTitle" class="success-title">🎉 Kampanya Başarıyla Tamamlandı! 🎉</h2>
+          <p id="successSubtitle" class="success-subtitle">Hedefimize ulaştık! Furkan'ın tedavisi için gerekli tüm bağışlar toplandı.</p>
+          <div class="success-hashtag" role="button" tabindex="0" aria-label="Hashtag: furkankazandi" onclick="copyHashtag()" onkeypress="if(event.key==='Enter') copyHashtag()">
+            <span class="hashtag-icon" aria-hidden="true">#</span>
+            <span id="successHashtag" class="hashtag-text">furkankazandi</span>
+          </div>
+          <p id="successDreamText" class="success-dream-text">✨ Furkan'ın hayali gerçek oldu! ✨</p>
+        </div>
+
+        <div class="success-content">
+          <div class="success-message">
+            <h3 id="successMessageTitle">Teşekkürler!</h3>
+            <p id="successMessageText">
+              Sevgili destekçilerimiz,<br><br>
+              Sizlerin yardımları sayesinde <strong>2.899.907 USD</strong> hedefimize ulaştık! 
+              Her bir bağışınız, Furkan'ın tedavisine kavuşması için atılan önemli bir adımdı.<br><br>
+              Bu başarı, sizlerin kalbinizdeki sevgi ve merhametin bir yansımasıdır. 
+              Furkan ve ailesi adına tüm destekçilerimize sonsuz teşekkürlerimizi sunuyoruz.<br><br>
+              <strong>Furkan artık tedavisine kavuşabilir ve diğer çocuklar gibi hayatını sürdürebilir.</strong><br><br>
+              <em id="successDreamMessage">Furkan'ın hayali gerçek oldu! Sizlerin desteğiyle artık tedavisine kavuşuyor ve hayallerine adım adım yaklaşıyor. Bu başarı, sadece bir kampanyanın sonu değil, Furkan'ın yeni hayatının başlangıcıdır. 🎉</em>
+            </p>
+          </div>
+
+          <div class="success-stats">
+            <div class="stat-box">
+              <div class="stat-icon">💰</div>
+              <div class="stat-value" id="successTotalAmount"></div>
+              <div class="stat-label" id="successTotalLabel">Toplanan Bağış</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-value">%100</div>
+              <div class="stat-label" id="successProgressLabel">Hedef Tamamlandı</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon">❤️</div>
+              <div class="stat-value" id="successSupportersLabel">Binlerce</div>
+              <div class="stat-label" id="successSupportersText">Destekçi</div>
+            </div>
+          </div>
+
+          <div class="success-timeline">
+            <h3 id="successTimelineTitle">Kampanya Süreci</h3>
+            <div class="timeline-item">
+              <div class="timeline-icon">🚀</div>
+              <div class="timeline-content">
+                <h4 id="timelineStartTitle">Kampanya Başlangıcı</h4>
+                <p id="timelineStartText">Furkan'ın tedavisi için bağış kampanyası başlatıldı.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon">💙</div>
+              <div class="timeline-content">
+                <h4 id="timelineSupportTitle">Destekçilerin Katılımı</h4>
+                <p id="timelineSupportText">Binlerce kişi Furkan'a umut oldu ve bağışta bulundu.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-icon">🎉</div>
+              <div class="timeline-content">
+                <h4 id="timelineSuccessTitle">Hedefe Ulaşıldı</h4>
+                <p id="timelineSuccessText">Kampanya başarıyla tamamlandı! Furkan artık tedavisine kavuşabilir.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-cta">
+            <p id="successShareText">Bu başarı hikayesini paylaşarak daha fazla insana ilham olabilirsiniz:</p>
+            <div class="success-share-buttons">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="share-button share-facebook">
+                <i class="fab fa-facebook"></i>
+                <span id="shareFacebookText">Facebook'ta Paylaş</span>
+              </a>
+              <a href="https://twitter.com/intent/tweet?url=https://dmdfurkanelmas.github.io&text=Kampanya%20başarıyla%20tamamlandı!" target="_blank" rel="noopener noreferrer" class="share-button share-twitter">
+                <i class="fab fa-x-twitter"></i>
+                <span id="shareTwitterText">Twitter'da Paylaş</span>
+              </a>
+              <a href="https://wa.me/?text=Kampanya%20başarıyla%20tamamlandı!%20https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="share-button share-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span id="shareWhatsappText">WhatsApp'ta Paylaş</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="donation-section" aria-labelledby="donation-title" id="donationSection">
         <h2 id="donation-title">Bağış Yap</h2>
         <div class="donation-goal" role="status" aria-live="polite">
           <p class="goal-text">Hedefimiz: <span class="goal-amount">2.899.907 USD</span></p>
@@ -680,6 +775,28 @@
           announcementTitle: "24 Kasım Öğretmenler Günü Kartı Satışta!",
           announcementDescription: "Öğretmenlerinize hediye vermek için özel hazırlanan kartlarımızı satın alarak Furkan'a destek olabilirsiniz.",
           announcementButtonText: "Satın Al",
+          successTitle: "🎉 Kampanya Başarıyla Tamamlandı! 🎉",
+          successSubtitle: "Hedefimize ulaştık! Furkan'ın tedavisi için gerekli tüm bağışlar toplandı.",
+          successHashtag: "furkankazandi",
+          successDreamText: "✨ Furkan'ın hayali gerçek oldu! ✨",
+          successMessageTitle: "Teşekkürler!",
+          successMessageText: "Sevgili destekçilerimiz,<br><br>Sizlerin yardımları sayesinde <strong>2.899.907 USD</strong> hedefimize ulaştık! Her bir bağışınız, Furkan'ın tedavisine kavuşması için atılan önemli bir adımdı.<br><br>Bu başarı, sizlerin kalbinizdeki sevgi ve merhametin bir yansımasıdır. Furkan ve ailesi adına tüm destekçilerimize sonsuz teşekkürlerimizi sunuyoruz.<br><br><strong>Furkan artık tedavisine kavuşabilir ve diğer çocuklar gibi hayatını sürdürebilir.</strong>",
+          successDreamMessage: "Furkan'ın hayali gerçek oldu! Sizlerin desteğiyle artık tedavisine kavuşuyor ve hayallerine adım adım yaklaşıyor. Bu başarı, sadece bir kampanyanın sonu değil, Furkan'ın yeni hayatının başlangıcıdır. 🎉",
+          successTotalLabel: "Toplanan Bağış",
+          successProgressLabel: "Hedef Tamamlandı",
+          successSupportersLabel: "Binlerce",
+          successSupportersText: "Destekçi",
+          successTimelineTitle: "Kampanya Süreci",
+          timelineStartTitle: "Kampanya Başlangıcı",
+          timelineStartText: "Furkan'ın tedavisi için bağış kampanyası başlatıldı.",
+          timelineSupportTitle: "Destekçilerin Katılımı",
+          timelineSupportText: "Binlerce kişi Furkan'a umut oldu ve bağışta bulundu.",
+          timelineSuccessTitle: "Hedefe Ulaşıldı",
+          timelineSuccessText: "Kampanya başarıyla tamamlandı! Furkan artık tedavisine kavuşabilir.",
+          successShareText: "Bu başarı hikayesini paylaşarak daha fazla insana ilham olabilirsiniz:",
+          shareFacebookText: "Facebook'ta Paylaş",
+          shareTwitterText: "Twitter'da Paylaş",
+          shareWhatsappText: "WhatsApp'ta Paylaş",
         },
         en: {
           copiedText: "Copied!",
@@ -800,6 +917,28 @@
           announcementTitle: "November 24 Teachers' Day Card Now on Sale!",
           announcementDescription: "You can support Furkan by purchasing our specially designed cards to give as gifts to your teachers.",
           announcementButtonText: "Buy Now",
+          successTitle: "🎉 Campaign Successfully Completed! 🎉",
+          successSubtitle: "We reached our goal! All donations needed for Furkan's treatment have been collected.",
+          successHashtag: "furkankazandi",
+          successDreamText: "✨ Furkan's dream came true! ✨",
+          successMessageTitle: "Thank You!",
+          successMessageText: "Dear supporters,<br><br>Thanks to your help, we reached our goal of <strong>2,899,907 USD</strong>! Each donation was an important step towards Furkan's treatment.<br><br>This success is a reflection of the love and compassion in your hearts. On behalf of Furkan and his family, we extend our infinite gratitude to all supporters.<br><br><strong>Furkan can now receive his treatment and live his life like other children.</strong>",
+          successDreamMessage: "Furkan's dream came true! With your support, he is now receiving his treatment and getting closer to his dreams step by step. This success is not just the end of a campaign, but the beginning of Furkan's new life. 🎉",
+          successTotalLabel: "Total Donations",
+          successProgressLabel: "Goal Completed",
+          successSupportersLabel: "Thousands",
+          successSupportersText: "Supporters",
+          successTimelineTitle: "Campaign Timeline",
+          timelineStartTitle: "Campaign Launch",
+          timelineStartText: "Donation campaign for Furkan's treatment was launched.",
+          timelineSupportTitle: "Supporters' Participation",
+          timelineSupportText: "Thousands of people gave hope to Furkan and made donations.",
+          timelineSuccessTitle: "Goal Achieved",
+          timelineSuccessText: "Campaign successfully completed! Furkan can now receive his treatment.",
+          successShareText: "You can inspire more people by sharing this success story:",
+          shareFacebookText: "Share on Facebook",
+          shareTwitterText: "Share on Twitter",
+          shareWhatsappText: "Share on WhatsApp",
         },
         de: {
           copiedText: "Kopiert!",
@@ -916,8 +1055,66 @@
           announcementTitle: "24. November Lehrertag Karte jetzt im Verkauf!",
           announcementDescription: "Sie können Furkan unterstützen, indem Sie unsere speziell gestalteten Karten als Geschenk für Ihre Lehrer kaufen.",
           announcementButtonText: "Jetzt Kaufen",
+          successTitle: "🎉 Kampagne erfolgreich abgeschlossen! 🎉",
+          successSubtitle: "Wir haben unser Ziel erreicht! Alle Spenden für Furkans Behandlung wurden gesammelt.",
+          successHashtag: "furkankazandi",
+          successDreamText: "✨ Furkans Traum wurde wahr! ✨",
+          successMessageTitle: "Vielen Dank!",
+          successMessageText: "Liebe Unterstützer,<br><br>Dank Ihrer Hilfe haben wir unser Ziel von <strong>2.899.907 USD</strong> erreicht! Jede Spende war ein wichtiger Schritt auf dem Weg zu Furkans Behandlung.<br><br>Dieser Erfolg ist ein Spiegelbild der Liebe und des Mitgefühls in Ihren Herzen. Im Namen von Furkan und seiner Familie danken wir allen Unterstützern unendlich.<br><br><strong>Furkan kann nun seine Behandlung erhalten und wie andere Kinder leben.</strong>",
+          successDreamMessage: "Furkans Traum wurde wahr! Mit Ihrer Unterstützung erhält er nun seine Behandlung und kommt seinen Träumen Schritt für Schritt näher. Dieser Erfolg ist nicht nur das Ende einer Kampagne, sondern der Beginn von Furkans neuem Leben. 🎉",
+          successTotalLabel: "Gesammelte Spenden",
+          successProgressLabel: "Ziel erreicht",
+          successSupportersLabel: "Tausende",
+          successSupportersText: "Unterstützer",
+          successTimelineTitle: "Kampagnen-Verlauf",
+          timelineStartTitle: "Kampagnenstart",
+          timelineStartText: "Spendenkampagne für Furkans Behandlung wurde gestartet.",
+          timelineSupportTitle: "Beteiligung der Unterstützer",
+          timelineSupportText: "Tausende von Menschen gaben Furkan Hoffnung und spendeten.",
+          timelineSuccessTitle: "Ziel erreicht",
+          timelineSuccessText: "Kampagne erfolgreich abgeschlossen! Furkan kann nun seine Behandlung erhalten.",
+          successShareText: "Sie können mehr Menschen inspirieren, indem Sie diese Erfolgsgeschichte teilen:",
+          shareFacebookText: "Auf Facebook teilen",
+          shareTwitterText: "Auf Twitter teilen",
+          shareWhatsappText: "Auf WhatsApp teilen",
         }
       };
+
+      // Kampanya durumu kontrolü
+      function isCampaignComplete() {
+        const progressBar = document.querySelector('.progress-bar');
+        if (!progressBar) return false;
+        const progressValue = parseInt(progressBar.getAttribute('aria-valuenow') || '0', 10);
+        return progressValue >= 100;
+      }
+
+      // Bağış seçeneklerini gizle/göster
+      function toggleDonationOptions(show) {
+        const donationSection = document.getElementById('donationSection');
+        const headerDonationButtons = document.getElementById('headerDonationButtons');
+        const successStorySection = document.getElementById('successStorySection');
+        
+        if (show) {
+          // Bağış seçeneklerini göster
+          if (donationSection) donationSection.style.display = 'block';
+          if (headerDonationButtons) headerDonationButtons.style.display = 'flex';
+          if (successStorySection) successStorySection.style.display = 'none';
+        } else {
+          // Bağış seçeneklerini gizle, başarı hikayesini göster
+          if (donationSection) donationSection.style.display = 'none';
+          if (headerDonationButtons) headerDonationButtons.style.display = 'none';
+          if (successStorySection) successStorySection.style.display = 'block';
+        }
+      }
+
+      // Sayfa yüklendiğinde kampanya durumunu kontrol et
+      function checkCampaignStatus() {
+        if (isCampaignComplete()) {
+          toggleDonationOptions(false);
+        } else {
+          toggleDonationOptions(true);
+        }
+      }
 
       function updateLanguage(lang) {
         currentLang = lang;
@@ -960,6 +1157,9 @@
         const remainingPercentEl = document.querySelector('.donation-box.remaining .percentage');
         if (collectedPercentEl) collectedPercentEl.textContent = collectedPercentText;
         if (remainingPercentEl) remainingPercentEl.textContent = remainingPercentText;
+
+        // Progress güncellendiğinde kampanya durumunu kontrol et
+        checkCampaignStatus();
         
         // Update slogan
         const slogan = document.querySelector('.slogan');
@@ -1279,8 +1479,86 @@
         if (announcementDescription) announcementDescription.textContent = t.announcementDescription;
         if (announcementButtonText) announcementButtonText.textContent = t.announcementButtonText;
 
+        // Update success story section
+        const successTitle = document.getElementById('successTitle');
+        const successSubtitle = document.getElementById('successSubtitle');
+        const successMessageTitle = document.getElementById('successMessageTitle');
+        const successMessageText = document.getElementById('successMessageText');
+        const successTotalLabel = document.getElementById('successTotalLabel');
+        const successProgressLabel = document.getElementById('successProgressLabel');
+        const successSupportersLabel = document.getElementById('successSupportersLabel');
+        const successSupportersText = document.getElementById('successSupportersText');
+        const successTimelineTitle = document.getElementById('successTimelineTitle');
+        const timelineStartTitle = document.getElementById('timelineStartTitle');
+        const timelineStartText = document.getElementById('timelineStartText');
+        const timelineSupportTitle = document.getElementById('timelineSupportTitle');
+        const timelineSupportText = document.getElementById('timelineSupportText');
+        const timelineSuccessTitle = document.getElementById('timelineSuccessTitle');
+        const timelineSuccessText = document.getElementById('timelineSuccessText');
+        const successShareText = document.getElementById('successShareText');
+        const shareFacebookText = document.getElementById('shareFacebookText');
+        const shareTwitterText = document.getElementById('shareTwitterText');
+        const shareWhatsappText = document.getElementById('shareWhatsappText');
+
+        if (successTitle) successTitle.textContent = t.successTitle;
+        if (successSubtitle) successSubtitle.textContent = t.successSubtitle;
+        const successHashtag = document.getElementById('successHashtag');
+        const successDreamText = document.getElementById('successDreamText');
+        const successDreamMessage = document.getElementById('successDreamMessage');
+        if (successHashtag) successHashtag.textContent = t.successHashtag;
+        if (successDreamText) successDreamText.textContent = t.successDreamText;
+        if (successMessageTitle) successMessageTitle.textContent = t.successMessageTitle;
+        if (successMessageText) {
+          const baseMessage = t.successMessageText;
+          const dreamMessage = `<br><br><em>${t.successDreamMessage}</em>`;
+          successMessageText.innerHTML = baseMessage + dreamMessage;
+        }
+        if (successDreamMessage) successDreamMessage.textContent = t.successDreamMessage;
+        if (successTotalLabel) successTotalLabel.textContent = t.successTotalLabel;
+        const successTotalAmount = document.getElementById('successTotalAmount');
+        if (successTotalAmount) successTotalAmount.textContent = t.goalAmount;
+        if (successProgressLabel) successProgressLabel.textContent = t.successProgressLabel;
+        if (successSupportersLabel) successSupportersLabel.textContent = t.successSupportersLabel;
+        if (successSupportersText) successSupportersText.textContent = t.successSupportersText;
+        if (successTimelineTitle) successTimelineTitle.textContent = t.successTimelineTitle;
+        if (timelineStartTitle) timelineStartTitle.textContent = t.timelineStartTitle;
+        if (timelineStartText) timelineStartText.textContent = t.timelineStartText;
+        if (timelineSupportTitle) timelineSupportTitle.textContent = t.timelineSupportTitle;
+        if (timelineSupportText) timelineSupportText.textContent = t.timelineSupportText;
+        if (timelineSuccessTitle) timelineSuccessTitle.textContent = t.timelineSuccessTitle;
+        if (timelineSuccessText) timelineSuccessText.textContent = t.timelineSuccessText;
+        if (successShareText) successShareText.textContent = t.successShareText;
+        if (shareFacebookText) shareFacebookText.textContent = t.shareFacebookText;
+        if (shareTwitterText) shareTwitterText.textContent = t.shareTwitterText;
+        if (shareWhatsappText) shareWhatsappText.textContent = t.shareWhatsappText;
+
+        // Kampanya durumunu tekrar kontrol et (dil değiştiğinde)
+        checkCampaignStatus();
+
       }
 
+
+      // Hashtag kopyalama işlevselliği
+      window.copyHashtag = async function() {
+        try {
+          const hashtag = '#furkankazandi';
+          await navigator.clipboard.writeText(hashtag);
+          
+          const hashtagElement = document.querySelector('.success-hashtag');
+          if (hashtagElement) {
+            const originalText = hashtagElement.innerHTML;
+            hashtagElement.innerHTML = '<span style="color: #48bb78;">✓ Kopyalandı!</span>';
+            hashtagElement.style.background = 'linear-gradient(135deg, rgba(72, 187, 120, 0.3) 0%, rgba(49, 130, 206, 0.3) 100%)';
+            
+            setTimeout(() => {
+              hashtagElement.innerHTML = originalText;
+              hashtagElement.style.background = '';
+            }, 2000);
+          }
+        } catch (err) {
+          console.error('Hashtag kopyalanamadı:', err);
+        }
+      };
 
       // Kopyalama işlevselliği
       window.copyToClipboard = async function(id) {
@@ -1440,6 +1718,33 @@
 
       // Sayfa yüklendiğinde Türkçe metni göster
       updateLanguage('tr');
+      
+      // Kampanya durumunu kontrol et
+      checkCampaignStatus();
+      
+      // Test için: Browser console'dan testCampaignComplete() fonksiyonunu çağırabilirsiniz
+      window.testCampaignComplete = function() {
+        const progressBar = document.querySelector('.progress-bar');
+        const progressInner = document.querySelector('.progress-bar .progress');
+        if (progressBar) {
+          progressBar.setAttribute('aria-valuenow', '100');
+          if (progressInner) progressInner.style.width = '100%';
+        }
+        checkCampaignStatus();
+        console.log('✅ Test: Kampanya %100 olarak ayarlandı. Başarı hikayesi görünür olmalı.');
+      };
+      
+      // Test için: Browser console'dan testCampaignIncomplete() fonksiyonunu çağırabilirsiniz
+      window.testCampaignIncomplete = function() {
+        const progressBar = document.querySelector('.progress-bar');
+        const progressInner = document.querySelector('.progress-bar .progress');
+        if (progressBar) {
+          progressBar.setAttribute('aria-valuenow', '77');
+          if (progressInner) progressInner.style.width = '77%';
+        }
+        checkCampaignStatus();
+        console.log('✅ Test: Kampanya %77 olarak ayarlandı. Bağış seçenekleri görünür olmalı.');
+      };
 
       // Accordion functionality for donation groups
       const donationGroupButtons = document.querySelectorAll('.donation-group-button');
