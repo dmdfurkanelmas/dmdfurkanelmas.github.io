@@ -3,287 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furkan'ın Hayali Gerçek Oldu! - %100</title>
-    <meta name="description" content="DMD hastası Furkan Elmas'ın valilik izinli yardım kampanyası başarıyla tamamlandı. Destek olan herkese teşekkürler.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dmdfurkanelmas.github.io/">
-    <meta property="og:title" content="Furkan'ın Hayali Gerçek Oldu! - %100 Başarı">
-    <meta property="og:description" content="DMD hastası Furkan Elmas'ın valilik izinli yardım kampanyası başarıyla tamamlandı. Destek olan herkese teşekkürler.">
-    <meta property="og:image" content="https://dmdfurkanelmas.github.io/assets/img/2.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://dmdfurkanelmas.github.io/">
-    <meta property="twitter:title" content="Furkan'ın Hayali Gerçek Oldu! - %100 Başarı">
-    <meta property="twitter:description" content="DMD hastası Furkan Elmas'ın valilik izinli yardım kampanyası başarıyla tamamlandı.">
-    <meta property="twitter:image" content="https://dmdfurkanelmas.github.io/assets/img/2.png">
-    
-    <link rel="canonical" href="https://dmdfurkanelmas.github.io/">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"></noscript>
-    
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Yakında: Büyük Duyuru - Furkan İçin Umut</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 50%, #6c5ce7 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            font-weight: 800;
+        }
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 1;
+            }
+            50% { 
+                transform: scale(1.05); 
+                opacity: 0.9;
+            }
+        }
+        .emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 20px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        .loading {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 30px 0;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .info {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- SECTION: Header & Nav -->
-    <header id="main-header">
-        <div class="container">
-            <nav id="navbar">
-                <div class="logo">
-                    <img src="assets/img/pp.png" alt="Furkan Elmas" class="profile-image">
-                    <div class="brand-text">
-                        <div class="brand-name" data-i18n="brand_name">Furkan İçin Umut</div>
-                        <div class="brand-subtitle" data-i18n="brand_subtitle">DMD Hastası Tedavi Bağış Kampanyası</div>
-                    </div>
-                </div>
-                
-                <ul class="nav-links">
-                    <li><a href="#stats" data-i18n="nav_info">Bilgiler</a></li>
-                    <li><a href="#timeline" data-i18n="nav_process">Süreç</a></li>
-                    <li><a href="#thank-you" data-i18n="nav_thanks">Teşekkür</a></li>
-                    <li><a href="#footer" data-i18n="nav_contact">İletişim</a></li>
-                </ul>
-
-                <div class="header-actions">
-                    <div class="lang-switcher">
-                        <button onclick="setLanguage('tr')" data-lang="tr" class="lang-btn">
-                            <img src="assets/img/tr.png" alt="Türkçe" class="flag-icon">
-                            <span>TR</span>
-                        </button>
-                        <button onclick="setLanguage('en')" data-lang="en" class="lang-btn">
-                            <img src="assets/img/gb.png" alt="English" class="flag-icon">
-                            <span>EN</span>
-                        </button>
-                        <button onclick="setLanguage('de')" data-lang="de" class="lang-btn">
-                            <img src="assets/img/de.png" alt="Deutsch" class="flag-icon">
-                            <span>DE</span>
-                        </button>
-                    </div>
-                    <a href="#footer" class="btn btn-secondary" data-i18n="btn_social">Sosyal Medya</a>
-                </div>
-                <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
+    <div class="container">
+        <span class="emoji">🎉</span>
+        <div class="brand">Furkan İçin Umut</div>
+        <h1>Büyük Duyuru Yakında!</h1>
+        <p>Kampanyamızla ilgili önemli bir duyuru için hazırlık yapıyoruz.</p>
+        <p><strong>Çok yakında sizlerle olacağız...</strong></p>
+        <div class="loading"></div>
+        <div class="info">
+            Birkaç dakika içinde tekrar kontrol edin.<br>
+            Bu süreçte bize destek olan herkese teşekkür ederiz. 💙
         </div>
-    </header>
-
-    <!-- SECTION: Hero -->
-    <section id="hero">
-        <div class="container hero-content">
-            <h1 data-i18n="hero_title">Furkan'ın hayali gerçek oldu!</h1>
-            <p class="hero-subtitle" data-i18n="hero_subtitle">DMD değil, Furkan kazandı.</p>
-            
-            <!-- Hero Stats -->
-            <div class="hero-stats-container">
-                <div class="hero-stats">
-                    <div class="hero-stat-item">
-                        <div class="hero-stat-label" data-i18n="stat_target">Hedef</div>
-                        <div class="hero-stat-value">$2.899.907</div>
-                    </div>
-                    <div class="hero-stat-divider"></div>
-                    <div class="hero-stat-item">
-                        <div class="hero-stat-label" data-i18n="stat_raised">Toplanan</div>
-                        <div class="hero-stat-value" data-target="2899907">$2.899.907</div>
-                    </div>
-                </div>
-                
-                <!-- Hero Progress Bar -->
-                <div class="hero-progress-wrapper">
-                    <div class="hero-progress-header">
-                        <span class="hero-progress-label" data-i18n="progress_label">Kampanya Durumu</span>
-                        <div class="hero-progress-status">
-                            <span class="hero-progress-percentage">%100</span>
-                            <span class="hero-success-icon">✓</span>
-                        </div>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: 0%;">
-                            <div class="progress-shine"></div>
-                        </div>
-                    </div>
-                    <div class="hero-progress-success">
-                        <span data-i18n="campaign_completed">Kampanya Başarıyla Tamamlandı!</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="watermark">
-            <!-- Background watermark will be applied via CSS -->
-        </div>
-    </section>
-
-    <!-- SECTION: Stats & Slider -->
-    <section id="stats" class="fade-in-section">
-        <div class="container stats-wrapper">
-            <div class="slider-section">
-                <h2 class="section-title" data-i18n="gallery_title">Kampanya Görselleri</h2>
-                <div class="media-slider">
-                    <div class="slider-container">
-                        <!-- Slides will be injected or controlled by JS -->
-                        <div class="slide active">
-                            <video src="assets/video/1.mp4" autoplay loop muted playsinline poster="assets/img/2.png" preload="none" aria-label="Furkan Elmas kampanya videosu"></video>
-                        </div>
-                        <div class="slide">
-                            <img src="assets/img/2.png" alt="Furkan Elmas kampanya görseli" loading="lazy" decoding="async">
-                        </div>
-                        <div class="slide">
-                            <img src="assets/img/3.png" alt="Kampanya başarı görseli" loading="lazy" decoding="async">
-                        </div>
-                    </div>
-                    <div class="slider-controls">
-                        <button class="slider-arrow slider-prev" aria-label="Önceki slide">‹</button>
-                        <div class="slider-dots"></div>
-                        <button class="slider-arrow slider-next" aria-label="Sonraki slide">›</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: Thank You -->
-    <section id="thank-you" class="fade-in-section">
-        <div class="container thank-you-content">
-            <h2 data-i18n="thanks_title">Bu büyük dayanışma için teşekkür ederiz!</h2>
-            <p data-i18n="thanks_msg">6 ay gibi kısa bir sürede imkansızı başardık. Gönüllülere, destekçilere, paylaşanlara ve dua edenlere sonsuz teşekkürler.</p>
-            
-            <!-- Share Buttons -->
-            <div class="share-section">
-                <h3 data-i18n="share_title">Kampanyayı Paylaş</h3>
-                <p data-i18n="share_desc">Bu başarı hikayesini paylaşarak daha fazla insana ulaşalım.</p>
-                <div class="share-buttons">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="share-btn share-facebook" data-i18n="share_facebook" aria-label="Facebook'ta paylaş">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="https://twitter.com/intent/tweet?url=https://dmdfurkanelmas.github.io&text=Furkan'ın%20Hayali%20Gerçek%20Oldu!%20DMD%20hastası%20Furkan%20Elmas'ın%20tedavi%20bağış%20kampanyası%20%100%20başarıyla%20tamamlandı." target="_blank" rel="noopener noreferrer" class="share-btn share-twitter" data-i18n="share_twitter" aria-label="Twitter'da paylaş">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                        </svg>
-                        <span>Twitter</span>
-                    </a>
-                    <a href="https://wa.me/?text=Furkan'ın%20Hayali%20Gerçek%20Oldu!%20DMD%20hastası%20Furkan%20Elmas'ın%20tedavi%20bağış%20kampanyası%20%100%20başarıyla%20tamamlandı.%20https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="share-btn share-whatsapp" data-i18n="share_whatsapp" aria-label="WhatsApp'ta paylaş">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                        </svg>
-                        <span>WhatsApp</span>
-                    </a>
-                    <button class="share-btn share-copy" onclick="copyToClipboard()" data-i18n="share_copy" aria-label="Linki kopyala">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                        </svg>
-                        <span>Linki Kopyala</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="floating-balloons" aria-hidden="true">
-            <!-- Decorative balloons - CSS background olarak eklenecek -->
-        </div>
-    </section>
-
-    <!-- SECTION: Timeline -->
-    <section id="timeline" class="fade-in-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="timeline_title">Kampanya Süreci</h2>
-            <div class="timeline-wrapper">
-                
-                <!-- Step 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Mayıs 2025</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="timeline_step1_title">Başlangıç</h3>
-                        <p data-i18n="timeline_step1_desc">Zorlu ama umut dolu yolculuğumuz başladı. Furkan için tek yürek olduk.</p>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Temmuz 2025</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="timeline_step2_title">Sesimizi Duyurduk</h3>
-                        <p data-i18n="timeline_step2_desc">Binlerce gönüllünün desteğiyle hedefe hızla yaklaştık.</p>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-date">Eylül 2025</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="timeline_step3_title">Büyük Dayanışma</h3>
-                        <p data-i18n="timeline_step3_desc">Etkinlikler, bağışlar ve paylaşımlarla umut büyüdü.</p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="timeline-item completed">
-                    <div class="timeline-date">10 Aralık 2025</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="timeline_step4_title">Kampanya Tamamlandı</h3>
-                        <p data-i18n="timeline_step4_desc">Furkan’ın hayali gerçeğe dönüştü. DMD değil, Furkan kazandı.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: Footer -->
-    <footer id="footer">
-        <div class="container footer-content">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4 data-i18n="footer_contact">İletişim</h4>
-                    <div class="social-icons">
-                        <a href="https://instagram.com/dmdfurkanelmas" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram hesabımızı ziyaret edin">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="social-icon facebook" aria-label="Facebook'ta paylaş">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="https://twitter.com/intent/tweet?url=https://dmdfurkanelmas.github.io&text=Furkan'ın%20Hayali%20Gerçek%20Oldu!" target="_blank" rel="noopener noreferrer" class="social-icon twitter" aria-label="Twitter'da paylaş">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                        </a>
-                        <a href="https://wa.me/?text=Furkan'ın%20Hayali%20Gerçek%20Oldu!%20https://dmdfurkanelmas.github.io" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" aria-label="WhatsApp'ta paylaş">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4 data-i18n="footer_website">Web Sitesi</h4>
-                    <a href="https://dmdfurkanelmas.github.io" aria-label="Web sitemiz">dmdfurkanelmas.github.io</a>
-                </div>
-                <div class="footer-column">
-                    <h4 data-i18n="footer_legal">Yasal Bilgi</h4>
-                    <p class="legal-info">İzin No: 60.2025.3153 – Tokat Valiliği</p>
-                </div>
-            </div>
-            <div class="footer-credit">
-                <p data-i18n="footer_credit">Made with 💙 by Furkan's Uncle</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
+    </div>
 </body>
 </html>
+
