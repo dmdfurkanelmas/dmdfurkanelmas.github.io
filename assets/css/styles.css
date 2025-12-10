@@ -85,6 +85,9 @@ p {
     display: flex;
     align-items: center;
     gap: 18px;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .profile-image {
@@ -107,6 +110,8 @@ p {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
+    flex: 1 1 auto;
 }
 
 .brand-name {
@@ -115,6 +120,9 @@ p {
     font-weight: 800;
     color: var(--primary-blue);
     line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .brand-subtitle {
@@ -124,6 +132,9 @@ p {
     color: var(--text-muted);
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* UTILITY CLASSES */
@@ -224,6 +235,9 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 
@@ -263,12 +277,17 @@ p {
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .lang-switcher { 
     display: flex; 
-    gap: 8px; 
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .lang-btn {
@@ -998,40 +1017,157 @@ p {
     z-index: 1;
 }
 
-.floating-balloons::before,
-.floating-balloons::after {
-    content: '🎈';
+.balloon {
     position: absolute;
-    bottom: -100px;
-    font-size: 40px;
-    opacity: 0.4;
-    animation: floatUp 10s infinite linear;
+    bottom: -150px;
+    width: 50px;
+    height: 70px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 50%, #004085 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0.6;
     pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    animation: floatUpBalloon 14s infinite linear;
 }
 
-.floating-balloons::before {
-    left: 10%;
-    animation-delay: 0s;
+.balloon::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    width: 20%;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
 }
 
-.floating-balloons::after {
-    left: 80%;
-    animation-delay: 3s;
-    font-size: 50px;
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(0, 86, 179, 0.4), transparent);
 }
 
-@keyframes floatUp {
+@keyframes floatUpBalloon {
     0% { 
-        transform: translateY(0) translateX(0) rotate(0deg); 
-        opacity: 0.4;
+        transform: translateY(0) translateX(0) rotate(-5deg) scale(0.7); 
+        opacity: 0;
     }
-    50% {
-        transform: translateY(-500px) translateX(20px) rotate(10deg);
+    10% {
         opacity: 0.6;
     }
+    50% {
+        transform: translateY(-500px) translateX(40px) rotate(10deg) scale(1.1);
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.5;
+    }
     100% { 
-        transform: translateY(-1000px) translateX(-20px) rotate(20deg); 
+        transform: translateY(-1100px) translateX(-40px) rotate(20deg) scale(0.5); 
         opacity: 0;
+    }
+}
+
+/* Lightbox Modal */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    max-width: 95%;
+    max-height: 95%;
+    position: relative;
+    animation: lightboxZoom 0.3s ease;
+}
+
+@keyframes lightboxZoom {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lightbox-content img,
+.lightbox-content video {
+    max-width: 100%;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: var(--transition);
+    z-index: 10001;
+}
+
+.lightbox-close:hover {
+    background: var(--white);
+    transform: scale(1.1);
+}
+
+.slider-media {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.slider-media:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    .lightbox-content {
+        max-width: 98%;
+        max-height: 98%;
     }
 }
 
@@ -1227,15 +1363,10 @@ p {
 }
 
 .footer-credit p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
     margin: 0;
-    font-style: italic;
-}
-
-.footer-credit p:hover {
-    color: rgba(255, 255, 255, 0.9);
-    transition: var(--transition);
+    letter-spacing: 0.5px;
 }
 
 /* BACK TO TOP BUTTON */
@@ -1414,36 +1545,63 @@ p {
 
 @media (max-width: 768px) {
     .profile-image {
-        width: 70px;
-        height: 70px;
-        border-width: 3px;
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
     }
     
     .brand-name {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     
     .brand-subtitle {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
     
     .logo {
-        gap: 12px;
+        gap: 10px;
+        flex: 1 1 auto;
+        min-width: 0;
     }
     
     #main-header {
-        padding: 15px 0;
+        padding: 12px 0;
     }
     
-    .lang-btn {
-        padding: 5px 8px;
-        font-size: 0.75rem;
+    #navbar {
+        gap: 10px;
+    }
+    
+    .header-actions {
+        gap: 6px;
+        flex: 0 0 auto;
+    }
+    
+    .lang-switcher {
         gap: 4px;
     }
     
+    .lang-btn {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+        gap: 3px;
+        min-width: 0;
+    }
+    
+    .lang-btn span {
+        font-size: 0.7rem;
+    }
+    
     .lang-btn .flag-icon {
-        width: 16px;
-        height: 12px;
+        width: 14px;
+        height: 10px;
+        flex-shrink: 0;
+    }
+    
+    .btn-secondary {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
     }
     
     .hero-stats {
@@ -1488,6 +1646,25 @@ p {
     
     .header-actions .btn {
         display: none;
+    }
+    
+    /* Navbar için ekstra düzenleme - mobilde overflow önleme */
+    #navbar {
+        flex-wrap: wrap;
+    }
+    
+    .nav-links {
+        order: 3;
+        width: 100%;
+    }
+    
+    .mobile-menu-toggle {
+        order: 2;
+        margin-left: auto;
+    }
+    
+    .header-actions {
+        order: 1;
     }
     
     
@@ -1568,6 +1745,38 @@ p {
     
     h2 {
         font-size: 1.5rem;
+    }
+    
+    .profile-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .brand-name {
+        font-size: 1.1rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.55rem;
+    }
+    
+    .lang-btn {
+        padding: 3px 5px;
+        font-size: 0.65rem;
+    }
+    
+    .lang-btn span {
+        display: none; /* Çok küçük ekranlarda sadece bayrak göster */
+    }
+    
+    .lang-btn .flag-icon {
+        width: 16px;
+        height: 12px;
+    }
+    
+    .btn-secondary {
+        padding: 6px 10px;
+        font-size: 0.75rem;
     }
     
     .slider-controls {

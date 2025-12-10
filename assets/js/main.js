@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initBackToTop();
     initStatsCounter();
+    initBalloons();
+    initLightbox();
 });
 
 /* =========================================
@@ -519,4 +521,114 @@ function showCopyFeedback() {
         span.textContent = originalText;
         copyBtn.classList.remove('copied');
     }, 2000);
+}
+
+/* =========================================
+   FLOATING BALLOONS
+   ========================================= */
+function initBalloons() {
+    const balloonsContainer = document.querySelector('.floating-balloons');
+    if (!balloonsContainer) return;
+    
+    // 6-8 balon oluştur
+    const balloonCount = 8;
+    const positions = [5, 15, 25, 40, 55, 70, 85, 95]; // Yüzde pozisyonları
+    const delays = [0, 2, 4, 1.5, 3.5, 2.5, 5, 1];
+    const durations = [14, 16, 13, 15, 17, 14.5, 15.5, 13.5];
+    const sizes = [50, 60, 45, 55, 65, 50, 58, 48];
+    
+    for (let i = 0; i < balloonCount; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = `${positions[i]}%`;
+        balloon.style.width = `${sizes[i]}px`;
+        balloon.style.height = `${sizes[i] * 1.4}px`;
+        balloon.style.setProperty('--balloon-delay', `${delays[i]}s`);
+        balloon.style.setProperty('--balloon-duration', `${durations[i]}s`);
+        balloon.style.animationDelay = `${delays[i]}s`;
+        balloon.style.animationDuration = `${durations[i]}s`;
+        
+        balloonsContainer.appendChild(balloon);
+    }
+}
+
+/* =========================================
+   LIGHTBOX (Fullscreen Image Viewer)
+   ========================================= */
+function initLightbox() {
+    // Lightbox container oluştur
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.id = 'lightbox';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Kapat">&times;</button>
+            <img src="" alt="" id="lightbox-image">
+            <video id="lightbox-video" controls style="display: none;"></video>
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    
+    // Görsellere tıklama eventi ekle
+    document.querySelectorAll('.slider-media').forEach(media => {
+        if (media.tagName === 'IMG') {
+            media.addEventListener('click', () => {
+                const fullImage = media.getAttribute('data-fullscreen') || media.src;
+                lightboxImage.src = fullImage;
+                lightboxImage.alt = media.alt;
+                lightboxImage.style.display = 'block';
+                lightboxVideo.style.display = 'none';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        } else if (media.tagName === 'VIDEO') {
+            media.addEventListener('click', () => {
+                lightboxVideo.src = media.src;
+                lightboxVideo.poster = media.poster;
+                lightboxVideo.style.display = 'block';
+                lightboxImage.style.display = 'none';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                lightboxVideo.play();
+            });
+        }
+    });
+    
+    // Kapatma fonksiyonları
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxVideo.pause();
+        lightboxVideo.src = '';
+    }
+    
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+    });
+    
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // ESC tuşu ile kapatma
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+    
+    // Lightbox içeriğine tıklamada kapatma
+    const lightboxContent = lightbox.querySelector('.lightbox-content');
+    lightboxContent.addEventListener('click', (e) => {
+        if (e.target === lightboxContent) {
+            closeLightbox();
+        }
+    });
 }
