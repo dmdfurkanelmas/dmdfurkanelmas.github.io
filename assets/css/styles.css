@@ -909,6 +909,26 @@ p {
     z-index: 2; 
 }
 
+.thanks-msg {
+    text-align: left;
+    line-height: 1.9;
+}
+
+.thanks-msg p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+}
+
+.thanks-msg p:last-child {
+    margin-bottom: 0;
+}
+
+.thanks-msg p strong {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
 /* SHARE SECTION */
 .share-section {
     margin-top: 40px;

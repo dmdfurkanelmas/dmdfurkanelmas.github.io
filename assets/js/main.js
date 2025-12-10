@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initLanguageSwitcher();
+    initLanguageSwitcher(); 
     initSlider();
     initProgressBar();
     initSmoothScroll();
@@ -73,9 +73,16 @@ function applyTranslations() {
             if (span && (el.classList.contains('share-btn') || el.classList.contains('lang-btn'))) {
                 // For buttons with icons, only update the span text
                 span.textContent = translations[key];
+            } else if (el.classList.contains('thanks-msg')) {
+                // For thanks message with HTML content, use innerHTML
+                el.innerHTML = translations[key];
             } else {
-                // For regular elements, update the whole text
-                el.textContent = translations[key];
+                // For regular elements, check if content contains HTML tags
+                if (translations[key].includes('<')) {
+                    el.innerHTML = translations[key];
+                } else {
+                    el.textContent = translations[key];
+                }
             }
         }
     });
