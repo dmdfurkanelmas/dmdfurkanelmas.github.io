@@ -392,7 +392,13 @@ function toggleMobileMenu() {
         menuToggle.setAttribute('aria-expanded', 'false');
         body.classList.remove('mobile-menu-open');
         if (overlay) {
-            overlay.style.display = 'none';
+            // Remove inline styles to allow CSS transitions to work on next open
+            overlay.style.opacity = '';
+            overlay.style.visibility = '';
+            // Use setTimeout to allow transition to complete before hiding
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300); // Match CSS transition duration
         }
     } else {
         navbar.classList.add('mobile-open');
