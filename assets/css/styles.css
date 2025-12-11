@@ -1787,7 +1787,7 @@ p {
         display: flex;
     }
     
-    /* Mobile Menu Overlay */
+    /* Mobile Menu Overlay - Daha hafif, arka plan görünsün */
     .mobile-menu-overlay {
         display: none;
         position: fixed;
@@ -1795,13 +1795,14 @@ p {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
         z-index: 999;
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
+        pointer-events: none;
     }
 
     #navbar.mobile-open ~ .mobile-menu-overlay,
@@ -1809,6 +1810,7 @@ p {
         display: block;
         opacity: 1;
         visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-links {
@@ -1816,16 +1818,16 @@ p {
         top: 0;
         right: 0;
         bottom: 0;
-        width: 85%;
-        max-width: 350px;
-        min-width: 280px;
+        width: 70%;
+        max-width: 320px;
+        min-width: 260px;
         height: 100vh;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
-        padding: 70px 25px 25px;
+        padding: 70px 20px 20px;
         box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
         transform: translateX(100%);
         opacity: 0;
@@ -1875,10 +1877,10 @@ p {
     .nav-links .mobile-header-actions {
         display: none;
         flex-direction: column;
-        gap: 15px;
-        margin-top: auto;
-        padding-top: 25px;
-        padding-bottom: 20px;
+        gap: 12px;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-bottom: 0;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         width: 100%;
         flex-shrink: 0;
@@ -1887,6 +1889,32 @@ p {
 
     #navbar.mobile-open .nav-links .mobile-header-actions {
         display: flex;
+    }
+
+    /* Mobil menü içindeki dil butonları - daha büyük */
+    .mobile-lang-switcher {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .mobile-lang-btn {
+        padding: 12px 18px !important;
+        font-size: 1rem !important;
+        min-width: 70px;
+        justify-content: center;
+    }
+
+    .mobile-lang-btn .flag-icon {
+        width: 22px !important;
+        height: 16px !important;
+    }
+
+    .mobile-lang-btn span {
+        font-size: 1rem !important;
+        font-weight: 600;
     }
 
     .nav-links .mobile-header-actions .btn-secondary {
