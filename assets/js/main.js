@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatsCounter();
     initBalloons();
     initLightbox();
+    initFAQ();
 });
 
 /* =========================================
@@ -73,8 +74,8 @@ function applyTranslations() {
             if (span && (el.classList.contains('share-btn') || el.classList.contains('lang-btn'))) {
                 // For buttons with icons, only update the span text
                 span.textContent = translations[key];
-            } else if (el.classList.contains('thanks-msg')) {
-                // For thanks message with HTML content, use innerHTML
+            } else if (el.classList.contains('thanks-msg') || el.classList.contains('faq-answer')) {
+                // For elements with HTML content, use innerHTML
                 el.innerHTML = translations[key];
             } else {
                 // For regular elements, check if content contains HTML tags
@@ -638,4 +639,45 @@ function initLightbox() {
             closeLightbox();
         }
     });
+}
+
+/* =========================================
+   FAQ ACCORDION
+   ========================================= */
+function initFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    if (!faqQuestions.length) return;
+
+    faqQuestions.forEach(btn => {
+        btn.addEventListener('click', () => toggleFAQ(btn));
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleFAQ(btn);
+            }
+        });
+    });
+
+    function toggleFAQ(button) {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const parentItem = button.closest('.faq-item');
+        const answer = parentItem.querySelector('.faq-answer');
+        const icon = button.querySelector('.faq-icon');
+
+        // Tümünü kapat
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('open');
+            item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            item.querySelector('.faq-icon').textContent = '+';
+            item.querySelector('.faq-answer').style.maxHeight = null;
+        });
+
+        // Seçileni aç
+        if (!isExpanded) {
+            parentItem.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            icon.textContent = '−';
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    }
 }

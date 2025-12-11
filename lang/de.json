@@ -2,6 +2,7 @@
     "brand_name": "Hoffnung für Furkan",
     "brand_subtitle": "DMD-Patientenbehandlungsspendenkampagne",
     "nav_info": "Informationen",
+    "nav_faq": "FAQ",
     "nav_process": "Prozess",
     "nav_thanks": "Dankeschön",
     "nav_contact": "Kontakt",
@@ -37,5 +38,10 @@
     "share_whatsapp": "WhatsApp",
     "share_copy": "Link kopieren",
     "share_copied": "Link kopiert!",
-    "footer_credit": "Mit 💙 gemacht von Furkans Onkel"
+    "footer_credit": "Mit 💙 gemacht von Furkans Onkel",
+    "faq_title": "Häufig gestellte Fragen",
+    "faq_q1": "Wer ist Furkan Elmas?",
+    "faq_a1": "<p>Furkan Elmas, geboren in Gaziantep und der das Erdbeben vom 6. Februar mit seiner Familie erlebte, stammt ursprünglich aus Reşadiye, Tokat, und lebt derzeit im Zentrum von Tokat. Er ist ein 3-jähriges Kind mit der Diagnose DMD (Duchenne-Muskeldystrophie). Seine Mutter ist Lehrerin und sein Vater ist Bankangestellter.</p><p>Eine behördlich genehmigte Spendenkampagne wurde gestartet, um die Elevidys-Gentherapie zu ermöglichen, und das Ziel wurde mit der Unterstützung von Freiwilligen erfolgreich erreicht.</p>",
+    "faq_q2": "Was ist DMD (Duchenne-Muskeldystrophie)?",
+    "faq_a2": "<p>Duchenne-Muskeldystrophie (DMD) ist eine genetische Störung, die die Muskeln betrifft. Sie tritt auf, weil der Körper kein Protein namens Dystrophin produzieren kann, das zum Schutz der Muskeln benötigt wird.</p><h4>Grundinformationen</h4><ul><li><strong>Wer ist betroffen?</strong> Aufgrund ihrer genetischen Struktur betrifft sie hauptsächlich männliche Kinder.</li><li><strong>Wann wird es bemerkt?</strong> Symptome werden normalerweise in der frühen Kindheit erkannt.</li><li><strong>Was sind die Symptome?</strong> Motorische Schwierigkeiten wie verzögertes Gehen, Schwierigkeiten beim Treppensteigen, leichte Ermüdung, unsicheres Gehen und der Gebrauch der Hände beim Aufstehen vom Boden können beobachtet werden.</li><li><strong>Wie wird es diagnostiziert?</strong> Eine definitive Diagnose wird durch CK (Kreatinkinase)-Tests und genetische Untersuchungen gestellt.</li><li><strong>Wie wird die Überwachung durchgeführt?</strong> Muskeln, Herz und Atmungssystem werden regelmäßig von Spezialisten überwacht; Physiotherapie und Rehabilitation sind wichtige Teile des Prozesses.</li></ul><h4>Gibt es eine Behandlung?</h4><p>Im Juni 2023 entstand große Hoffnung mit der Zulassung der Elevidys-Gentherapie für DMD. Diese Behandlung ist eine Gentherapie-Option, die bei Kindern angewendet werden kann, die bestimmte Kriterien erfüllen, mit ärztlicher Bewertung.</p><p>Elevidys kann derzeit nur in wenigen Ländern im Ausland angewendet werden, und der Behandlungsprozess wird vollständig von Fachärzten verwaltet.</p>"
 }
