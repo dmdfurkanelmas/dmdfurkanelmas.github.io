@@ -319,9 +319,19 @@ function initSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
+                // Get header height for offset
+                const header = document.querySelector('#main-header');
+                const headerHeight = header ? header.offsetHeight : 80;
+                
+                // Calculate target position with header offset
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                // Smooth scroll to target with offset
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
+                
                 // Close mobile menu if open
                 const menuToggle = document.querySelector('.mobile-menu-toggle');
                 const navbar = document.querySelector('#navbar');
