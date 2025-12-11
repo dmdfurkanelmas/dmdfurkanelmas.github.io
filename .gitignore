@@ -3,6 +3,7 @@ DEPLOYMENT_PLANI.md
 GELISTIRME_PLANI.md
 ANALIZ_RAPORU.md
 MAINTENANCE_REHBERI.md
+HEADER_GELISTIRME_PLANI.md
 
 # Deployment Scripts (local kullanım için, git'e gerek yok)
 deploy.sh

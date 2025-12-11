@@ -50,6 +50,23 @@
                     <li><a href="#timeline" data-i18n="nav_process">Süreç</a></li>
                     <li><a href="#thank-you" data-i18n="nav_thanks">Teşekkür</a></li>
                     <li><a href="#footer" data-i18n="nav_contact">İletişim</a></li>
+                    <!-- Mobile Menu Actions -->
+                    <li class="mobile-header-actions" style="display: none;">
+                        <div class="lang-switcher">
+                            <button onclick="setLanguage('tr')" data-lang="tr" class="lang-btn">
+                                <img src="assets/img/tr.png" alt="Türkçe" class="flag-icon">
+                                <span>TR</span>
+                            </button>
+                            <button onclick="setLanguage('en')" data-lang="en" class="lang-btn">
+                                <img src="assets/img/gb.png" alt="English" class="flag-icon">
+                                <span>EN</span>
+                            </button>
+                            <button onclick="setLanguage('de')" data-lang="de" class="lang-btn">
+                                <img src="assets/img/de.png" alt="Deutsch" class="flag-icon">
+                                <span>DE</span>
+                            </button>
+                        </div>
+                    </li>
                 </ul>
 
                 <div class="header-actions">
@@ -67,7 +84,6 @@
                             <span>DE</span>
                         </button>
                     </div>
-                    <a href="#footer" class="btn btn-secondary" data-i18n="btn_social">Sosyal Medya</a>
                 </div>
                 <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
                     <span></span>
@@ -75,6 +91,8 @@
                     <span></span>
                 </button>
             </nav>
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu-overlay" aria-hidden="true"></div>
         </div>
     </header>
 
@@ -128,16 +146,16 @@
         <div class="container stats-wrapper">
             <div class="slider-section">
                 <h2 class="section-title" data-i18n="gallery_title">Kampanya Görselleri</h2>
-                <div class="media-slider">
-                    <div class="slider-container">
-                        <!-- Slides will be injected or controlled by JS -->
-                        <div class="slide active">
+            <div class="media-slider">
+                <div class="slider-container">
+                    <!-- Slides will be injected or controlled by JS -->
+                    <div class="slide active">
                             <video src="assets/video/1.mp4" autoplay loop muted playsinline poster="assets/img/2.png" preload="none" aria-label="Furkan Elmas kampanya videosu" class="slider-media"></video>
                         </div>
                         <div class="slide">
                             <img src="assets/img/2.png" alt="Furkan Elmas kampanya görseli" loading="lazy" decoding="async" class="slider-media" data-fullscreen="assets/img/2.png">
-                        </div>
-                        <div class="slide">
+                    </div>
+                    <div class="slide">
                             <img src="assets/img/3.png" alt="Kampanya başarı görseli" loading="lazy" decoding="async" class="slider-media" data-fullscreen="assets/img/3.png">
                         </div>
                     </div>
@@ -320,7 +338,7 @@
                 </div>
                 <div class="footer-column">
                     <h4 data-i18n="footer_legal">Yasal Bilgi</h4>
-                    <p class="legal-info">İzin No: 60.2025.3153 – Tokat Valiliği</p>
+                    <p class="legal-info">Faaliyet Numarası: 60.2025.3153 – Mustafa Elmas</p>
                 </div>
             </div>
             <div class="footer-credit">

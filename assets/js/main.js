@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initLanguageSwitcher(); 
+    initLanguageSwitcher(); 
     initSlider();
     initProgressBar();
     initSmoothScroll();
@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initBalloons();
     initLightbox();
     initFAQ();
+    initHeaderScroll();
+    initScrollSpy();
+    initLogoClick();
 });
 
 /* =========================================
@@ -335,14 +338,49 @@ function initSmoothScroll() {
    ========================================= */
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    
     if (!menuToggle) return;
 
     menuToggle.addEventListener('click', toggleMobileMenu);
+
+    // Close menu when clicking overlay
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            const navbar = document.querySelector('#navbar');
+            if (navbar && navbar.classList.contains('mobile-open')) {
+                toggleMobileMenu();
+            }
+        });
+    }
+
+    // Close menu on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const navbar = document.querySelector('#navbar');
+            if (navbar && navbar.classList.contains('mobile-open')) {
+                toggleMobileMenu();
+            }
+        }
+    });
+
+    // Close menu when clicking nav links (mobile)
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navbar = document.querySelector('#navbar');
+            if (window.innerWidth <= 768 && navbar && navbar.classList.contains('mobile-open')) {
+                toggleMobileMenu();
+            }
+        });
+    });
 }
 
 function toggleMobileMenu() {
     const navbar = document.querySelector('#navbar');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+    const body = document.body;
     
     if (!navbar || !menuToggle) return;
 
@@ -352,10 +390,22 @@ function toggleMobileMenu() {
         navbar.classList.remove('mobile-open');
         menuToggle.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        body.classList.remove('mobile-menu-open');
+        if (overlay) {
+            overlay.style.display = 'none';
+        }
     } else {
         navbar.classList.add('mobile-open');
         menuToggle.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
+        body.classList.add('mobile-menu-open');
+        if (overlay) {
+            overlay.style.display = 'block';
+            // Trigger reflow for animation
+            overlay.offsetHeight;
+            overlay.style.opacity = '1';
+            overlay.style.visibility = 'visible';
+        }
     }
 }
 
@@ -680,4 +730,99 @@ function initFAQ() {
             answer.style.maxHeight = answer.scrollHeight + 'px';
         }
     }
+}
+
+/* =========================================
+   HEADER SCROLL BEHAVIOR
+   ========================================= */
+function initHeaderScroll() {
+    const header = document.querySelector('#main-header');
+    if (!header) return;
+
+    let lastScrollTop = 0;
+    const scrollThreshold = 50;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
+}
+
+/* =========================================
+   SCROLL SPY (Active Nav Link)
+   ========================================= */
+function initScrollSpy() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+
+    if (navLinks.length === 0 || sections.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Remove active class from all links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Also check on scroll for hero section
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop < 100) {
+            // At top, remove all active classes
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+        }
+    }, { passive: true });
+}
+
+/* =========================================
+   LOGO CLICK HANDLER
+   ========================================= */
+function initLogoClick() {
+    const logo = document.querySelector('.logo');
+    if (!logo) return;
+
+    logo.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        // Close mobile menu if open
+        const navbar = document.querySelector('#navbar');
+        if (navbar && navbar.classList.contains('mobile-open')) {
+            toggleMobileMenu();
+        }
+    });
 }
