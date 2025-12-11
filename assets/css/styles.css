@@ -34,6 +34,26 @@
 
 html { scroll-behavior: smooth; }
 
+/* Skip to content link (Accessibility) */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+    font-weight: 600;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 3px solid var(--accent-yellow);
+    outline-offset: 2px;
+}
+
 body {
     font-family: var(--font-primary);
     line-height: 1.7;
@@ -44,7 +64,17 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* iOS input zoom prevention - minimum 16px font-size */
+input, textarea, select, button {
+    font-size: 16px;
+}
+
 a { text-decoration: none; color: inherit; transition: var(--transition); }
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--primary-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
 button { cursor: pointer; border: none; font-family: inherit; }
 img, video { max-width: 100%; height: auto; display: block; }
 
@@ -90,10 +120,12 @@ p {
     max-width: 100%;
     cursor: pointer;
     transition: transform 0.3s ease;
+    -webkit-transition: -webkit-transform 0.3s ease;
 }
 
 .logo:hover {
     transform: scale(1.02);
+    -webkit-transform: scale(1.02);
 }
 
 .profile-image {
@@ -105,10 +137,12 @@ p {
     box-shadow: var(--shadow-soft);
     flex-shrink: 0;
     transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    -webkit-transition: width 0.3s ease, height 0.3s ease, border-width 0.3s ease, -webkit-transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-image:hover {
     transform: scale(1.05);
+    -webkit-transform: scale(1.05);
     box-shadow: var(--shadow-hover);
 }
 
@@ -232,11 +266,13 @@ p {
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     position: sticky;
+    position: -webkit-sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     padding: 20px 0;
     transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    -webkit-transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 /* Scrolled Header State */
@@ -787,6 +823,8 @@ p {
     position: relative;
     overflow: hidden;
     will-change: width;
+    transform: translateZ(0); /* GPU acceleration */
+    -webkit-transform: translateZ(0);
     border-radius: 20px;
 }
 
@@ -1194,6 +1232,9 @@ p {
     pointer-events: none;
     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
     animation: floatUpBalloon 14s infinite linear;
+    will-change: transform, opacity;
+    transform: translateZ(0); /* GPU acceleration */
+    -webkit-transform: translateZ(0);
 }
 
 .balloon::before {

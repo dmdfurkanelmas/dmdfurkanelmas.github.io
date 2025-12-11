@@ -3,6 +3,48 @@
  * Features: Language Switcher, Slider, Animations
  */
 
+// Production mode detection
+const IS_PRODUCTION = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+
+// Feature Detection
+const features = {
+    localStorage: typeof Storage !== 'undefined',
+    fetch: typeof fetch !== 'undefined',
+    IntersectionObserver: typeof IntersectionObserver !== 'undefined',
+    clipboard: navigator.clipboard && navigator.clipboard.writeText
+};
+
+// Global Error Handler
+function handleGlobalError(event) {
+    if (!IS_PRODUCTION) {
+        console.error('Global error:', event.error);
+    }
+    // In production, could send to error logging service
+}
+
+// Promise Rejection Handler
+function handlePromiseRejection(event) {
+    if (!IS_PRODUCTION) {
+        console.error('Unhandled promise rejection:', event.reason);
+    }
+    // In production, could send to error logging service
+}
+
+// Initialize error handlers
+window.addEventListener('error', handleGlobalError);
+window.addEventListener('unhandledrejection', handlePromiseRejection);
+
+// IntersectionObserver Polyfill (basic fallback)
+if (!features.IntersectionObserver) {
+    window.IntersectionObserver = class {
+        constructor() {
+            // Fallback: trigger immediately
+            this.observe = () => {};
+            this.unobserve = () => {};
+        }
+    };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initLanguageSwitcher(); 
     initSlider();
@@ -28,26 +70,44 @@ let currentLang = 'tr';
 let translations = {};
 
 async function initLanguageSwitcher() {
-    // Check local storage or browser default
-    const savedLang = localStorage.getItem('site_lang');
-    const browserLang = navigator.language.split('-')[0];
-    
-    if (savedLang && supportedLangs.includes(savedLang)) {
-        currentLang = savedLang;
-    } else if (supportedLangs.includes(browserLang)) {
-        currentLang = browserLang;
-    }
+    try {
+        // Check local storage or browser default
+        let savedLang = null;
+        if (features.localStorage) {
+            savedLang = localStorage.getItem('site_lang');
+        }
+        
+        const browserLang = navigator.language ? navigator.language.split('-')[0] : 'tr';
+        
+        if (savedLang && supportedLangs.includes(savedLang)) {
+            currentLang = savedLang;
+        } else if (supportedLangs.includes(browserLang)) {
+            currentLang = browserLang;
+        }
 
-    await setLanguage(currentLang);
+        await setLanguage(currentLang);
+    } catch (error) {
+        if (!IS_PRODUCTION) {
+            console.error('Language switcher init error:', error);
+        }
+        // Fallback: continue with default language
+        currentLang = 'tr';
+    }
 }
 
 window.setLanguage = async (lang) => {
     if (!supportedLangs.includes(lang)) {
-        console.warn('Unsupported language:', lang);
+        if (!IS_PRODUCTION) {
+            console.warn('Unsupported language:', lang);
+        }
         return;
     }
 
     try {
+        if (!features.fetch) {
+            throw new Error('Fetch API not supported');
+        }
+
         const response = await fetch(`lang/${lang}.json`);
         if (!response.ok) {
             throw new Error(`Could not load ${lang}.json - Status: ${response.status}`);
@@ -55,15 +115,34 @@ window.setLanguage = async (lang) => {
         
         translations = await response.json();
         currentLang = lang;
-        localStorage.setItem('site_lang', lang);
+        
+        if (features.localStorage) {
+            try {
+                localStorage.setItem('site_lang', lang);
+            } catch (e) {
+                // localStorage may be disabled
+                if (!IS_PRODUCTION) {
+                    console.warn('localStorage not available:', e);
+                }
+            }
+        }
         
         applyTranslations();
         updateActiveLangButton();
         document.documentElement.lang = lang;
         
-        console.log('Language changed to:', lang);
+        if (!IS_PRODUCTION) {
+            console.log('Language changed to:', lang);
+        }
     } catch (error) {
-        console.error('Language load error:', error);
+        if (!IS_PRODUCTION) {
+            console.error('Language load error:', error);
+        }
+        // Silent fallback - don't show alert in production
+        if (IS_PRODUCTION) {
+            // Try to continue with existing translations if available
+            return;
+        }
         alert('Dil dosyası yüklenemedi. Lütfen sayfayı yenileyin.');
     }
 };
@@ -120,8 +199,15 @@ let currentSlideIndex = 0;
 let slides = [];
 
 function initSlider() {
-    slides = Array.from(document.querySelectorAll('.slide'));
-    if (slides.length === 0) return;
+    try {
+        slides = Array.from(document.querySelectorAll('.slide'));
+        if (slides.length === 0) return;
+    } catch (error) {
+        if (!IS_PRODUCTION) {
+            console.error('Slider init error:', error);
+        }
+        return;
+    }
 
     // Create dots
     const dotsContainer = document.querySelector('.slider-dots');
@@ -142,18 +228,29 @@ function initSlider() {
     if (prevBtn) prevBtn.addEventListener('click', () => changeSlide(-1));
     if (nextBtn) nextBtn.addEventListener('click', () => changeSlide(1));
 
-    // Touch/swipe support
+    // Enhanced Touch/swipe support
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
     const sliderContainer = document.querySelector('.slider-container');
     
     if (sliderContainer) {
         sliderContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
+
+        sliderContainer.addEventListener('touchmove', (e) => {
+            // Prevent default to allow smooth scrolling
+            if (Math.abs(e.changedTouches[0].screenX - touchStartX) > Math.abs(e.changedTouches[0].screenY - touchStartY)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         sliderContainer.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
             handleSwipe();
         }, { passive: true });
     }
@@ -170,10 +267,12 @@ function initSlider() {
 
 function handleSwipe() {
     const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
+    const diffX = touchStartX - touchEndX;
+    const diffY = Math.abs(touchStartY - touchEndY);
     
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
+    // Only handle horizontal swipes (ignore vertical scrolls)
+    if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+        if (diffX > 0) {
             changeSlide(1); // Swipe left - next
         } else {
             changeSlide(-1); // Swipe right - prev
@@ -256,9 +355,10 @@ function initProgressBar() {
                 animateProgressPercentage(heroProgressPercentage, 0, 100);
             }
             
-            // Add animated class after animation completes
+            // Add animated class after animation completes and remove will-change for performance
             setTimeout(() => {
                 heroProgressBar.classList.add('animated');
+                heroProgressBar.style.willChange = 'auto';
             }, 2500);
         }, 300);
     }
@@ -274,6 +374,7 @@ function initProgressBar() {
                     progressBar.style.width = '100%';
                     setTimeout(() => {
                         progressBar.classList.add('animated');
+                        progressBar.style.willChange = 'auto';
                     }, 2000);
                     observer.unobserve(entry.target);
                 }
@@ -384,6 +485,41 @@ function initMobileMenu() {
             }
         });
     });
+
+    // Swipe-to-close gesture for mobile menu
+    const navLinksElement = document.querySelector('.nav-links');
+    if (navLinksElement) {
+        let swipeStartX = 0;
+        let swipeStartY = 0;
+        let swipeEndX = 0;
+        let swipeEndY = 0;
+
+        navLinksElement.addEventListener('touchstart', (e) => {
+            swipeStartX = e.changedTouches[0].screenX;
+            swipeStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        navLinksElement.addEventListener('touchmove', (e) => {
+            // Allow menu content scrolling
+        }, { passive: true });
+
+        navLinksElement.addEventListener('touchend', (e) => {
+            swipeEndX = e.changedTouches[0].screenX;
+            swipeEndY = e.changedTouches[0].screenY;
+            
+            const diffX = swipeEndX - swipeStartX;
+            const diffY = Math.abs(swipeEndY - swipeStartY);
+            const swipeThreshold = 100;
+            
+            // Swipe right to close (only if horizontal swipe, not vertical scroll)
+            if (diffX > swipeThreshold && diffX > diffY * 1.5) {
+                const navbar = document.querySelector('#navbar');
+                if (navbar && navbar.classList.contains('mobile-open')) {
+                    toggleMobileMenu();
+                }
+            }
+        }, { passive: true });
+    }
 }
 
 function toggleMobileMenu() {
@@ -547,14 +683,23 @@ function animateCounter(element, target) {
 window.copyToClipboard = function() {
     const url = window.location.href;
     
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(() => {
-            showCopyFeedback();
-        }).catch(err => {
-            console.error('Failed to copy:', err);
+    try {
+        if (features.clipboard) {
+            navigator.clipboard.writeText(url).then(() => {
+                showCopyFeedback();
+            }).catch(err => {
+                if (!IS_PRODUCTION) {
+                    console.error('Failed to copy:', err);
+                }
+                fallbackCopyToClipboard(url);
+            });
+        } else {
             fallbackCopyToClipboard(url);
-        });
-    } else {
+        }
+    } catch (error) {
+        if (!IS_PRODUCTION) {
+            console.error('Copy to clipboard error:', error);
+        }
         fallbackCopyToClipboard(url);
     }
 }
@@ -569,10 +714,16 @@ function fallbackCopyToClipboard(text) {
     textArea.select();
     
     try {
-        document.execCommand('copy');
-        showCopyFeedback();
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopyFeedback();
+        } else {
+            throw new Error('execCommand copy failed');
+        }
     } catch (err) {
-        console.error('Fallback copy failed:', err);
+        if (!IS_PRODUCTION) {
+            console.error('Fallback copy failed:', err);
+        }
     }
     
     document.body.removeChild(textArea);
@@ -637,7 +788,10 @@ function initLightbox() {
     lightbox.innerHTML = `
         <div class="lightbox-content">
             <button class="lightbox-close" aria-label="Kapat">&times;</button>
-            <img src="" alt="" id="lightbox-image">
+            <picture id="lightbox-picture">
+                <source id="lightbox-webp" srcset="" type="image/webp">
+                <img src="" alt="" id="lightbox-image">
+            </picture>
             <video id="lightbox-video" controls style="display: none;"></video>
         </div>
     `;
@@ -648,13 +802,23 @@ function initLightbox() {
     const closeBtn = lightbox.querySelector('.lightbox-close');
     
     // Görsellere tıklama eventi ekle
-    document.querySelectorAll('.slider-media').forEach(media => {
+    document.querySelectorAll('.slider-media, picture img').forEach(media => {
         if (media.tagName === 'IMG') {
             media.addEventListener('click', () => {
+                const picture = media.closest('picture');
                 const fullImage = media.getAttribute('data-fullscreen') || media.src;
+                const fullImageWebp = fullImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
+                
+                // WebP desteği kontrolü ve picture elementi kullanımı
+                const lightboxPicture = document.getElementById('lightbox-picture');
+                const lightboxWebp = document.getElementById('lightbox-webp');
+                
+                if (lightboxWebp && fullImageWebp !== fullImage) {
+                    lightboxWebp.srcset = fullImageWebp;
+                }
                 lightboxImage.src = fullImage;
-                lightboxImage.alt = media.alt;
-                lightboxImage.style.display = 'block';
+                lightboxImage.alt = media.alt || '';
+                lightboxPicture.style.display = 'block';
                 lightboxVideo.style.display = 'none';
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -678,6 +842,10 @@ function initLightbox() {
         document.body.style.overflow = '';
         lightboxVideo.pause();
         lightboxVideo.src = '';
+        const lightboxPicture = document.getElementById('lightbox-picture');
+        if (lightboxPicture) {
+            lightboxPicture.style.display = '';
+        }
     }
     
     closeBtn.addEventListener('click', (e) => {
