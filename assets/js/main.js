@@ -69,6 +69,9 @@ const supportedLangs = ['tr', 'en', 'de'];
 let currentLang = 'tr';
 let translations = {};
 
+// Lazy load language files - cache for loaded translations
+const translationCache = {};
+
 async function initLanguageSwitcher() {
     try {
         // Check local storage or browser default
@@ -85,6 +88,7 @@ async function initLanguageSwitcher() {
             currentLang = browserLang;
         }
 
+        // Lazy load initial language - only load when needed
         await setLanguage(currentLang);
     } catch (error) {
         if (!IS_PRODUCTION) {
@@ -93,6 +97,29 @@ async function initLanguageSwitcher() {
         // Fallback: continue with default language
         currentLang = 'tr';
     }
+}
+
+// Lazy load language file (only fetch if not cached)
+async function loadLanguageFile(lang) {
+    // Check cache first
+    if (translationCache[lang]) {
+        return translationCache[lang];
+    }
+    
+    // Lazy load from server
+    if (!features.fetch) {
+        throw new Error('Fetch API not supported');
+    }
+    
+    const response = await fetch(`lang/${lang}.json`);
+    if (!response.ok) {
+        throw new Error(`Could not load ${lang}.json - Status: ${response.status}`);
+    }
+    
+    const translations = await response.json();
+    // Cache translations for future use
+    translationCache[lang] = translations;
+    return translations;
 }
 
 window.setLanguage = async (lang) => {
@@ -104,16 +131,8 @@ window.setLanguage = async (lang) => {
     }
 
     try {
-        if (!features.fetch) {
-            throw new Error('Fetch API not supported');
-        }
-
-        const response = await fetch(`lang/${lang}.json`);
-        if (!response.ok) {
-            throw new Error(`Could not load ${lang}.json - Status: ${response.status}`);
-        }
-        
-        translations = await response.json();
+        // Lazy load language file (with caching)
+        translations = await loadLanguageFile(lang);
         currentLang = lang;
         
         if (features.localStorage) {
@@ -780,7 +799,33 @@ function initBalloons() {
 /* =========================================
    LIGHTBOX (Fullscreen Image Viewer)
    ========================================= */
+let lightboxCurrentIndex = 0;
+let lightboxMediaItems = [];
+
 function initLightbox() {
+    // Tüm slider medya öğelerini topla (sadece slider-container içindeki slide'lar)
+    lightboxMediaItems = Array.from(document.querySelectorAll('.slider-container .slide')).map(slide => {
+        const img = slide.querySelector('img.slider-media, picture img.slider-media');
+        const video = slide.querySelector('video.slider-media');
+        if (img && img.classList.contains('slider-media')) {
+            const picture = img.closest('picture');
+            const source = picture ? picture.querySelector('source') : null;
+            return {
+                type: 'image',
+                src: img.getAttribute('data-fullscreen') || img.src,
+                webp: source ? source.getAttribute('data-fullscreen') || source.srcset : null,
+                alt: img.alt || ''
+            };
+        } else if (video) {
+            return {
+                type: 'video',
+                src: video.src,
+                poster: video.poster || ''
+            };
+        }
+        return null;
+    }).filter(item => item !== null);
+    
     // Lightbox container oluştur
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -788,6 +833,8 @@ function initLightbox() {
     lightbox.innerHTML = `
         <div class="lightbox-content">
             <button class="lightbox-close" aria-label="Kapat">&times;</button>
+            <button class="lightbox-prev" aria-label="Önceki" style="display: none;">‹</button>
+            <button class="lightbox-next" aria-label="Sonraki" style="display: none;">›</button>
             <picture id="lightbox-picture">
                 <source id="lightbox-webp" srcset="" type="image/webp">
                 <img src="" alt="" id="lightbox-image">
@@ -800,40 +847,110 @@ function initLightbox() {
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxVideo = document.getElementById('lightbox-video');
     const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+    const lightboxContent = lightbox.querySelector('.lightbox-content');
     
-    // Görsellere tıklama eventi ekle
-    document.querySelectorAll('.slider-media, picture img').forEach(media => {
-        if (media.tagName === 'IMG') {
-            media.addEventListener('click', () => {
-                const picture = media.closest('picture');
-                const fullImage = media.getAttribute('data-fullscreen') || media.src;
-                const fullImageWebp = fullImage.replace(/\.(png|jpg|jpeg)$/i, '.webp');
-                
-                // WebP desteği kontrolü ve picture elementi kullanımı
-                const lightboxPicture = document.getElementById('lightbox-picture');
-                const lightboxWebp = document.getElementById('lightbox-webp');
-                
-                if (lightboxWebp && fullImageWebp !== fullImage) {
-                    lightboxWebp.srcset = fullImageWebp;
+    // Lightbox'ta medya göster
+    function showLightboxMedia(index) {
+        if (index < 0 || index >= lightboxMediaItems.length) return;
+        
+        lightboxCurrentIndex = index;
+        const item = lightboxMediaItems[index];
+        
+        const lightboxPicture = document.getElementById('lightbox-picture');
+        const lightboxWebp = document.getElementById('lightbox-webp');
+        
+        if (item.type === 'image') {
+            if (lightboxWebp && item.webp) {
+                lightboxWebp.srcset = item.webp;
+            }
+            lightboxImage.src = item.src;
+            lightboxImage.alt = item.alt;
+            lightboxPicture.style.display = 'block';
+            lightboxVideo.style.display = 'none';
+        } else if (item.type === 'video') {
+            lightboxVideo.src = item.src;
+            lightboxVideo.poster = item.poster;
+            lightboxVideo.style.display = 'block';
+            lightboxPicture.style.display = 'none';
+            lightboxVideo.load();
+            lightboxVideo.play().catch(e => {
+                if (!IS_PRODUCTION) {
+                    console.log('Video autoplay prevented:', e);
                 }
-                lightboxImage.src = fullImage;
-                lightboxImage.alt = media.alt || '';
-                lightboxPicture.style.display = 'block';
-                lightboxVideo.style.display = 'none';
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        } else if (media.tagName === 'VIDEO') {
-            media.addEventListener('click', () => {
-                lightboxVideo.src = media.src;
-                lightboxVideo.poster = media.poster;
-                lightboxVideo.style.display = 'block';
-                lightboxImage.style.display = 'none';
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                lightboxVideo.play();
             });
         }
+        
+        // Navigasyon butonlarını göster/gizle
+        if (lightboxMediaItems.length > 1) {
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+        } else {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+    }
+    
+    // Lightbox'ta önceki/sonraki medya
+    function lightboxPrev() {
+        const newIndex = (lightboxCurrentIndex - 1 + lightboxMediaItems.length) % lightboxMediaItems.length;
+        showLightboxMedia(newIndex);
+    }
+    
+    function lightboxNext() {
+        const newIndex = (lightboxCurrentIndex + 1) % lightboxMediaItems.length;
+        showLightboxMedia(newIndex);
+    }
+    
+    // Lightbox'ta medya göster fonksiyonunu buraya taşıdık (yukarıda tanımlı)
+    
+    // Görsellere tıklama eventi ekle (sadece slider-container içindeki slide'lar)
+    document.querySelectorAll('.slider-container .slide').forEach((slide, index) => {
+        // Sadece slider-media class'ına sahip medyayı bul
+        const media = slide.querySelector('.slider-media');
+        if (!media) return;
+        
+        // Media'ya direkt tıklama eventi ekle
+        media.addEventListener('click', (e) => {
+            // Dil bayraklarına tıklamada lightbox açılmasın (ekstra kontrol)
+            if (e.target.closest('.lang-btn') || e.target.closest('.flag-icon') || 
+                e.target.closest('.lang-switcher')) {
+                return;
+            }
+            
+            lightboxCurrentIndex = index;
+            showLightboxMedia(lightboxCurrentIndex);
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Picture elementine tıklama (sadece slider-media içindeki)
+        const picture = slide.querySelector('picture');
+        if (picture && picture.querySelector('.slider-media')) {
+            picture.addEventListener('click', (e) => {
+                // Butonlara veya flag-icon'a tıklamada açılmasın
+                if (e.target.closest('.lang-btn') || e.target.closest('.flag-icon')) {
+                    return;
+                }
+                
+                lightboxCurrentIndex = index;
+                showLightboxMedia(lightboxCurrentIndex);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+    });
+    
+    // Navigasyon butonları
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxPrev();
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxNext();
     });
     
     // Kapatma fonksiyonları
@@ -859,17 +976,68 @@ function initLightbox() {
         }
     });
     
-    // ESC tuşu ile kapatma
+    // Keyboard navigation (ESC, Arrow keys)
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
             closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            lightboxPrev();
+        } else if (e.key === 'ArrowRight') {
+            lightboxNext();
         }
     });
     
-    // Lightbox içeriğine tıklamada kapatma
-    const lightboxContent = lightbox.querySelector('.lightbox-content');
+    // Touch swipe navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    lightbox.addEventListener('touchstart', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    lightbox.addEventListener('touchmove', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        // Prevent default scroll when swiping horizontally
+        const diffX = Math.abs(e.changedTouches[0].screenX - touchStartX);
+        const diffY = Math.abs(e.changedTouches[0].screenY - touchStartY);
+        if (diffX > diffY && diffX > 10) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    lightbox.addEventListener('touchend', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        
+        const diffX = touchEndX - touchStartX;
+        const diffY = Math.abs(touchEndY - touchStartY);
+        const swipeThreshold = 50;
+        
+        // Only handle horizontal swipes
+        if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+            if (diffX > 0) {
+                // Swipe right - previous
+                lightboxPrev();
+            } else {
+                // Swipe left - next
+                lightboxNext();
+            }
+        }
+    }, { passive: true });
+    
+    // Lightbox içeriğine tıklamada kapatma (sadece image/video'a tıklanınca, butonlara tıklamada değil)
     lightboxContent.addEventListener('click', (e) => {
-        if (e.target === lightboxContent) {
+        // Butonlara veya picture elementine tıklamada kapatma
+        if (e.target === lightboxImage || e.target === lightboxVideo || 
+            e.target.closest('#lightbox-picture') === lightboxPicture ||
+            (e.target === lightboxContent && !e.target.closest('button'))) {
             closeLightbox();
         }
     });

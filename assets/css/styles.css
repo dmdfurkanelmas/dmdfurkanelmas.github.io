@@ -391,6 +391,11 @@ p {
     object-fit: cover;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    pointer-events: none; /* Bayrak görseline tıklamada lightbox açılmasını engelle */
+}
+
+.lang-btn picture {
+    pointer-events: none; /* Picture elementine tıklamada lightbox açılmasını engelle */
 }
 
 .lang-btn:hover {
@@ -1352,15 +1357,72 @@ p {
 .lightbox-close:hover {
     background: var(--white);
     transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: var(--transition);
+    z-index: 10001;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--white);
+    transform: translateY(-50%) scale(1.1);
+    -webkit-transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev:active,
+.lightbox-next:active {
+    transform: translateY(-50%) scale(0.95);
+    -webkit-transform: translateY(-50%) scale(0.95);
 }
 
 .slider-media {
     cursor: pointer;
     transition: transform 0.2s ease;
+    -webkit-transition: -webkit-transform 0.2s ease;
 }
 
 .slider-media:hover {
     transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+}
+
+.slide {
+    cursor: pointer;
+}
+
+.slide .slider-arrow,
+.slide .slider-dot {
+    pointer-events: auto;
 }
 
 @media (max-width: 768px) {
@@ -1370,6 +1432,21 @@ p {
         width: 35px;
         height: 35px;
         font-size: 20px;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
     }
     
     .lightbox-content {
@@ -1804,6 +1881,11 @@ p {
         width: 14px;
         height: 10px;
         flex-shrink: 0;
+        pointer-events: none;
+    }
+    
+    .lang-btn picture {
+        pointer-events: none;
     }
     
     .btn-secondary {
@@ -1951,6 +2033,11 @@ p {
     .mobile-lang-btn .flag-icon {
         width: 22px !important;
         height: 16px !important;
+        pointer-events: none;
+    }
+    
+    .mobile-lang-btn picture {
+        pointer-events: none;
     }
 
     .mobile-lang-btn span {
