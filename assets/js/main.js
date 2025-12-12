@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initScrollSpy();
     initLogoClick();
+    initEventCountdown();
 });
 
 /* =========================================
@@ -1213,4 +1214,118 @@ function initLogoClick() {
             toggleMobileMenu();
         }
     });
+}
+
+/* =========================================
+   EVENT COUNTDOWN TIMER
+   ========================================= */
+function initEventCountdown() {
+    // Event date: December 20, 2025, 14:00 (Turkey time - UTC+3)
+    // Create date in local time (assuming server is in Turkey timezone, or adjust as needed)
+    const eventDate = new Date('2025-12-20T14:00:00');
+    // If server is in UTC, add 3 hours for Turkey time
+    const eventTimestamp = eventDate.getTime() + (3 * 60 * 60 * 1000);
+    
+    const daysEl = document.getElementById('countdown-days');
+    const hoursEl = document.getElementById('countdown-hours');
+    const minutesEl = document.getElementById('countdown-minutes');
+    
+    if (!daysEl || !hoursEl || !minutesEl) return;
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        // Get current time in Turkey timezone (UTC+3)
+        const nowTurkey = now + (3 * 60 * 60 * 1000);
+        const distance = eventTimestamp - nowTurkey;
+        
+        if (distance < 0) {
+            // Event has passed
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+    }
+    
+    // Update immediately
+    updateCountdown();
+    
+    // Update every minute
+    setInterval(updateCountdown, 60000);
+}
+
+/* =========================================
+   EVENT SHARE FUNCTION
+   ========================================= */
+window.shareEvent = function() {
+    const eventText = translations['event_share_text'] || 
+        'Balonlarımızı Uçuruyoruzzz! 20 Aralık 2025, Cumartesi saat 14:00\'te Tokat Belediyesi Hıdırlık Sosyal Tesislerinde hep birlikte olalım! 🎈';
+    const eventUrl = window.location.href;
+    const shareText = `${eventText}\n\n${eventUrl}`;
+    
+    // Check if Web Share API is available (mobile)
+    if (navigator.share) {
+        navigator.share({
+            title: translations['event_title'] || 'Balonlarımızı Uçuruyoruzzz!',
+            text: eventText,
+            url: eventUrl
+        }).catch((error) => {
+            if (!IS_PRODUCTION) {
+                console.log('Share cancelled or failed:', error);
+            }
+            // Fallback to copy
+            fallbackShare(shareText);
+        });
+    } else {
+        // Fallback: copy to clipboard
+        fallbackShare(shareText);
+    }
+}
+
+function fallbackShare(text) {
+    try {
+        if (features.clipboard) {
+            navigator.clipboard.writeText(text).then(() => {
+                showEventShareFeedback();
+            }).catch(() => {
+                // Fallback to execCommand
+                fallbackCopyToClipboard(text);
+                showEventShareFeedback();
+            });
+        } else {
+            fallbackCopyToClipboard(text);
+            showEventShareFeedback();
+        }
+    } catch (error) {
+        if (!IS_PRODUCTION) {
+            console.error('Share error:', error);
+        }
+    }
+}
+
+function showEventShareFeedback() {
+    const shareBtn = document.querySelector('.event-share-btn');
+    if (!shareBtn) return;
+    
+    const span = shareBtn.querySelector('span');
+    if (!span) return;
+    
+    const originalText = span.textContent;
+    const sharedText = translations['event_shared'] || 'Link kopyalandı!';
+    
+    span.textContent = sharedText;
+    shareBtn.classList.add('shared');
+    
+    setTimeout(() => {
+        span.textContent = originalText;
+        shareBtn.classList.remove('shared');
+    }, 2000);
 }
