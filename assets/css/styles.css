@@ -923,14 +923,15 @@ p {
 
 @media (max-width: 768px) {
     .event-banner-section {
-        padding: 30px 0;
+        padding: 25px 0;
     }
     
     .event-banner {
         flex-direction: column;
-        gap: 20px;
-        padding: 25px 20px;
+        gap: 18px;
+        padding: 22px 18px;
         text-align: center;
+        border-radius: 15px;
     }
     
     .event-banner-icon {
@@ -939,76 +940,222 @@ p {
     
     .event-banner-header {
         text-align: center;
+        margin-bottom: 16px;
     }
     
     .event-badge {
         left: 0;
         transform: rotate(-1deg);
         -webkit-transform: rotate(-1deg);
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        margin-bottom: 6px;
     }
     
     .event-banner-title {
         text-align: center;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        margin-bottom: 10px;
     }
     
     .event-banner-description {
         text-align: center;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+        margin-bottom: 18px;
+        line-height: 1.5;
     }
     
     .event-banner-details {
         flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 20px;
     }
     
     .event-detail-item {
         width: 100%;
         justify-content: center;
+        font-size: 0.9rem;
+    }
+    
+    .event-detail-icon {
+        font-size: 1.1rem;
+    }
+    
+    .event-countdown {
+        padding: 16px 12px;
+        border-radius: 12px;
+    }
+    
+    .countdown-label {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
     }
     
     .countdown-timer {
-        gap: 10px;
+        gap: 8px;
     }
     
     .countdown-item {
-        min-width: 60px;
+        min-width: 55px;
     }
     
     .countdown-value {
-        font-size: 2rem;
+        font-size: 1.875rem;
+    }
+    
+    .countdown-label-small {
+        font-size: 0.7rem;
     }
     
     .countdown-separator {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 0 2px;
+    }
+    
+    .event-share {
+        margin-top: 20px;
     }
     
     .event-share-btn {
         width: 100%;
-        max-width: 300px;
+        max-width: 280px;
         justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
     }
 }
 
 @media (max-width: 480px) {
+    .event-banner-section {
+        padding: 20px 0;
+    }
+    
     .event-banner {
-        padding: 20px 15px;
+        padding: 18px 14px;
+        gap: 16px;
+        border-radius: 12px;
     }
     
     .event-banner-icon {
         font-size: 2.5rem;
     }
     
+    .event-banner-header {
+        margin-bottom: 14px;
+    }
+    
+    .event-badge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+        letter-spacing: 1px;
+    }
+    
+    .event-banner-title {
+        font-size: clamp(1.35rem, 6vw, 1.75rem);
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+    
+    .event-banner-description {
+        font-size: clamp(0.85rem, 3vw, 0.95rem);
+        margin-bottom: 16px;
+        line-height: 1.5;
+    }
+    
+    .event-banner-details {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+    
+    .event-detail-item {
+        font-size: 0.85rem;
+        gap: 6px;
+    }
+    
+    .event-detail-icon {
+        font-size: 1rem;
+    }
+    
+    .event-countdown {
+        padding: 14px 10px;
+        border-radius: 10px;
+    }
+    
+    .countdown-label {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+    
+    .countdown-timer {
+        gap: 6px;
+        flex-wrap: nowrap;
+    }
+    
     .countdown-item {
-        min-width: 50px;
+        min-width: 48px;
+        flex: 1 1 auto;
     }
     
     .countdown-value {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+        margin-bottom: 4px;
     }
     
     .countdown-label-small {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+    }
+    
+    .countdown-separator {
+        font-size: 1.1rem;
+        margin: 0 1px;
+        line-height: 1.5rem;
+    }
+    
+    .event-share {
+        margin-top: 18px;
+    }
+    
+    .event-share-btn {
+        max-width: 100%;
+        padding: 11px 18px;
+        font-size: 0.9rem;
+    }
+    
+    .event-share-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .event-banner {
+        padding: 16px 12px;
+    }
+    
+    .event-banner-icon {
+        font-size: 2rem;
+    }
+    
+    .event-banner-title {
+        font-size: 1.3rem;
+    }
+    
+    .event-banner-description {
+        font-size: 0.85rem;
+    }
+    
+    .countdown-item {
+        min-width: 42px;
+    }
+    
+    .countdown-value {
+        font-size: 1.35rem;
+    }
+    
+    .countdown-separator {
+        font-size: 1rem;
     }
 }
 
