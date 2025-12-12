@@ -2,6 +2,7 @@
     "name": "Furkan İçin Umut",
     "short_name": "Furkan İçin Umut",
     "description": "DMD hastası Furkan Elmas'ın valilik izinli yardım kampanyası",
+    "version": "2.1.0",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",

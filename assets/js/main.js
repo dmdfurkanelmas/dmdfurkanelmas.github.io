@@ -112,7 +112,7 @@ async function loadLanguageFile(lang) {
         throw new Error('Fetch API not supported');
     }
     
-    const response = await fetch(`lang/${lang}.json`);
+    const response = await fetch(`lang/${lang}.json?v=2.1.0`);
     if (!response.ok) {
         throw new Error(`Could not load ${lang}.json - Status: ${response.status}`);
     }
