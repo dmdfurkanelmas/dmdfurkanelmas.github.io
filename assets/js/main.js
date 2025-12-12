@@ -882,10 +882,13 @@ function initLightbox() {
             });
         }
         
-        // Navigasyon butonlarını göster/gizle
+        // Navigasyon butonlarını göster/gizle (mobilde her zaman göster)
         if (lightboxMediaItems.length > 1) {
             prevBtn.style.display = 'flex';
             nextBtn.style.display = 'flex';
+            // Mobil cihazlarda butonların görünür olduğundan emin ol
+            prevBtn.style.opacity = '1';
+            nextBtn.style.opacity = '1';
         } else {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'none';
@@ -989,39 +992,43 @@ function initLightbox() {
         }
     });
     
-    // Touch swipe navigation
+    // Touch swipe navigation (hem lightbox hem lightbox-content üzerinde)
     let touchStartX = 0;
     let touchEndX = 0;
     let touchStartY = 0;
     let touchEndY = 0;
+    let isSwiping = false;
     
-    lightbox.addEventListener('touchstart', (e) => {
+    function handleTouchStart(e) {
         if (!lightbox.classList.contains('active')) return;
         touchStartX = e.changedTouches[0].screenX;
         touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
+        isSwiping = false;
+    }
     
-    lightbox.addEventListener('touchmove', (e) => {
+    function handleTouchMove(e) {
         if (!lightbox.classList.contains('active')) return;
         // Prevent default scroll when swiping horizontally
         const diffX = Math.abs(e.changedTouches[0].screenX - touchStartX);
         const diffY = Math.abs(e.changedTouches[0].screenY - touchStartY);
         if (diffX > diffY && diffX > 10) {
+            isSwiping = true;
             e.preventDefault();
         }
-    }, { passive: false });
+    }
     
-    lightbox.addEventListener('touchend', (e) => {
+    function handleTouchEnd(e) {
         if (!lightbox.classList.contains('active')) return;
         touchEndX = e.changedTouches[0].screenX;
         touchEndY = e.changedTouches[0].screenY;
         
         const diffX = touchEndX - touchStartX;
         const diffY = Math.abs(touchEndY - touchStartY);
-        const swipeThreshold = 50;
+        const swipeThreshold = 30; // Daha düşük threshold mobil için
         
         // Only handle horizontal swipes
-        if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+        if (isSwiping && Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+            e.preventDefault();
             if (diffX > 0) {
                 // Swipe right - previous
                 lightboxPrev();
@@ -1030,9 +1037,20 @@ function initLightbox() {
                 lightboxNext();
             }
         }
-    }, { passive: true });
+        isSwiping = false;
+    }
+    
+    // Lightbox ve lightbox-content üzerinde touch event'ler
+    lightbox.addEventListener('touchstart', handleTouchStart, { passive: true });
+    lightbox.addEventListener('touchmove', handleTouchMove, { passive: false });
+    lightbox.addEventListener('touchend', handleTouchEnd, { passive: false });
+    
+    lightboxContent.addEventListener('touchstart', handleTouchStart, { passive: true });
+    lightboxContent.addEventListener('touchmove', handleTouchMove, { passive: false });
+    lightboxContent.addEventListener('touchend', handleTouchEnd, { passive: false });
     
     // Lightbox içeriğine tıklamada kapatma (sadece image/video'a tıklanınca, butonlara tıklamada değil)
+    // Touch event'leri engellememesi için sadece click event'ini kullan
     lightboxContent.addEventListener('click', (e) => {
         // Butonlara veya picture elementine tıklamada kapatma
         if (e.target === lightboxImage || e.target === lightboxVideo || 
@@ -1040,7 +1058,7 @@ function initLightbox() {
             (e.target === lightboxContent && !e.target.closest('button'))) {
             closeLightbox();
         }
-    });
+    }, { passive: true });
 }
 
 /* =========================================

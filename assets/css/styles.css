@@ -1312,6 +1312,7 @@ p {
     max-height: 95%;
     position: relative;
     animation: lightboxZoom 0.3s ease;
+    touch-action: pan-y; /* Dikey kaydırmaya izin ver, yatay swipe için preventDefault kullanacağız */
 }
 
 @keyframes lightboxZoom {
@@ -1366,8 +1367,8 @@ p {
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -1379,9 +1380,11 @@ p {
     justify-content: center;
     color: #333;
     transition: var(--transition);
-    z-index: 10001;
+    z-index: 10002;
     user-select: none;
     -webkit-user-select: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .lightbox-prev {
@@ -1436,17 +1439,20 @@ p {
     
     .lightbox-prev,
     .lightbox-next {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+        background: rgba(255, 255, 255, 0.98);
+        border: 2px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
     
     .lightbox-prev {
-        left: 10px;
+        left: 15px;
     }
     
     .lightbox-next {
-        right: 10px;
+        right: 15px;
     }
     
     .lightbox-content {
