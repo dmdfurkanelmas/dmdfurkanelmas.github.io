@@ -882,17 +882,17 @@ function initLightbox() {
             });
         }
         
-        // Navigasyon butonlarını göster/gizle (mobilde her zaman göster)
+        // Navigasyon butonlarını göster/gizle (birden fazla medya varsa)
         if (lightboxMediaItems.length > 1) {
             prevBtn.style.display = 'flex';
             nextBtn.style.display = 'flex';
-            // Mobil cihazlarda butonların görünür olduğundan emin ol
-            prevBtn.style.opacity = '1';
-            nextBtn.style.opacity = '1';
         } else {
             prevBtn.style.display = 'none';
             nextBtn.style.display = 'none';
         }
+        
+        // Butonları başlangıçta gizle (ekrana tıklayınca gösterilecek)
+        lightbox.classList.remove('show-controls');
     }
     
     // Lightbox'ta önceki/sonraki medya
@@ -925,6 +925,7 @@ function initLightbox() {
             lightboxCurrentIndex = index;
             showLightboxMedia(lightboxCurrentIndex);
             lightbox.classList.add('active');
+            lightbox.classList.remove('show-controls'); // Başlangıçta butonları gizle
             document.body.style.overflow = 'hidden';
         });
         
@@ -940,6 +941,7 @@ function initLightbox() {
                 lightboxCurrentIndex = index;
                 showLightboxMedia(lightboxCurrentIndex);
                 lightbox.classList.add('active');
+                lightbox.classList.remove('show-controls'); // Başlangıçta butonları gizle
                 document.body.style.overflow = 'hidden';
             });
         }
@@ -948,17 +950,24 @@ function initLightbox() {
     // Navigasyon butonları
     prevBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        e.preventDefault();
         lightboxPrev();
+        // Butonlar görünür kalsın
+        lightbox.classList.add('show-controls');
     });
     
     nextBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        e.preventDefault();
         lightboxNext();
+        // Butonlar görünür kalsın
+        lightbox.classList.add('show-controls');
     });
     
     // Kapatma fonksiyonları
     function closeLightbox() {
         lightbox.classList.remove('active');
+        lightbox.classList.remove('show-controls');
         document.body.style.overflow = '';
         lightboxVideo.pause();
         lightboxVideo.src = '';
@@ -1049,14 +1058,23 @@ function initLightbox() {
     lightboxContent.addEventListener('touchmove', handleTouchMove, { passive: false });
     lightboxContent.addEventListener('touchend', handleTouchEnd, { passive: false });
     
-    // Lightbox içeriğine tıklamada kapatma (sadece image/video'a tıklanınca, butonlara tıklamada değil)
+    // Lightbox içeriğine tıklamada butonları göster/gizle toggle
     // Touch event'leri engellememesi için sadece click event'ini kullan
     lightboxContent.addEventListener('click', (e) => {
-        // Butonlara veya picture elementine tıklamada kapatma
+        // Butonlara tıklamada işlem yapma (butonlar kendi event'lerini yönetiyor)
+        if (e.target.closest('.lightbox-prev') || 
+            e.target.closest('.lightbox-next') ||
+            e.target.closest('.lightbox-close')) {
+            return;
+        }
+        
+        // Görsel/video'ya tıklamada butonları göster/gizle toggle
         if (e.target === lightboxImage || e.target === lightboxVideo || 
             e.target.closest('#lightbox-picture') === lightboxPicture ||
             (e.target === lightboxContent && !e.target.closest('button'))) {
-            closeLightbox();
+            
+            // Butonları göster/gizle toggle
+            lightbox.classList.toggle('show-controls');
         }
     }, { passive: true });
 }

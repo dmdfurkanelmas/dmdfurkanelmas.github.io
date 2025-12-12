@@ -1375,17 +1375,26 @@ p {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: #333;
-    transition: var(--transition);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 10002;
     user-select: none;
     -webkit-user-select: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
     -webkit-tap-highlight-color: transparent;
-    opacity: 0.85;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.lightbox.show-controls .lightbox-prev,
+.lightbox.show-controls .lightbox-next {
+    opacity: 0.9;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .lightbox-prev {
@@ -1454,6 +1463,11 @@ p {
     
     .lightbox-next {
         right: 15px;
+    }
+    
+    .lightbox.show-controls .lightbox-prev,
+    .lightbox.show-controls .lightbox-next {
+        opacity: 0.95;
     }
     
     .lightbox-content {
